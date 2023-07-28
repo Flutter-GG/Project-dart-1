@@ -34,21 +34,25 @@ switchCases() {
           Search().searchByQuery();
           break;
         case '3':
-          print(
-              "\n1- To add new book\n2- To delete a book\n3- To edit a book\n(press 'q' to exit):");
-          String? userInput = stdin.readLineSync();
-          switch (userInput) {
-            case '1':
-              Edits().addNewBook();
-              break;
-            case '2':
-              Edits().deleteBook();
-              break;
-            case '3':
-              Edits().modifyBookData();
-              break;
-            case 'q' || 'Q':
-              return;
+          print('\nAre you from staff?\n');
+          String? isStaff = stdin.readLineSync();
+          if (isStaff == 'y' || isStaff == 'Y') {
+            print(
+                "\n1- To add new book\n2- To delete a book\n3- To edit a book\n(press 'q' to exit):");
+            String? userInput = stdin.readLineSync();
+            switch (userInput) {
+              case '1':
+                Edits().addNewBook();
+                break;
+              case '2':
+                Edits().deleteBook();
+                break;
+              case '3':
+                Edits().modifyBookData();
+                break;
+              case 'q' || 'Q':
+                return;
+            }
           }
           break;
         case '4':
