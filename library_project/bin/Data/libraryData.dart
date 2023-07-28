@@ -47,7 +47,7 @@ List myLibrary = [
     "author": "حمزة السالم",
     "categories": ["Finance"],
     "price": 39.99,
-    "avalibale copies": 12,
+    "avalibale copies": 0,
     "First published": "March 31, 2020"
   }
 ];

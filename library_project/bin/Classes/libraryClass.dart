@@ -17,6 +17,7 @@ class Library {
 }
 
 class View extends Library {
+  //? done
   /* this class 'View' conatin all methods that belong to view,
   for example: if you want to see the availabe copies or too all categories and
   books */
@@ -78,6 +79,15 @@ class View extends Library {
 
 class Search extends Library {
   //? done
+  /* this class 'Search' conatin one method that belong to search,
+  for example: if you want to search by the title, category or author you can do it here
+  this class only for search not for view, it will print out what you looking for
+  for example: if you looking for 'Automate the Boring Stuff with Python: Practical Programming for Total Beginners'
+  you can search using query, if you select title for example you can search using 
+  'Automate' or 'Python' and it will print out all books contain these words, and 
+  also if you search using categories you can search by using one of the categories
+  TODO: maybe if I have time I will fix the issue with searching by using more than one category, I will print the book more than one time
+  */
   searchByQuery() {
     //? done
     try {
@@ -126,11 +136,22 @@ class Search extends Library {
 
 class Edits extends Library {
   //? done
+  /* this class 'Edits' conatin all methods that belong to editing the library,
+  for example: if you want to add a book, delete one or update one use these methods */
   addNewBook() {
     //? done
+    /* this method will add a new book to collection and print the list with the
+    new book, the data that will added will be the title, author name, number of copies, 
+    the price, the date of publish and the categories separated by comma, for 
+    example: if you type (python, clean code). will be a list ['python', 'clean code'] 
+    AKA the categories, because category is a list of strings */
     try {
-      print("please enter title:");
+      print("please enter title (press q to exit):");
       String title = stdin.readLineSync() ?? '';
+      if (title.toLowerCase() == 'q') {
+        print("We didn't add any book");
+        exit(0);
+      }
       print("\nplease enter author name:");
       String author = stdin.readLineSync() ?? '';
       print("\nplease enter copies:");
@@ -151,23 +172,28 @@ class Edits extends Library {
         "price": price,
         "avalibale copies": copies,
         "First published": publishDate
-      });
+      }); // this will update the exists list and append the new book
       for (var book in myLibrary) {
         viweNewList +=
             'Book name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price']}\$\navalibale copies: ${book['avalibale copies']}\n\n';
       }
       print(viweNewList);
     } catch (error) {
-      print('error: $error');
+      print(
+          'error: $error'); // if there is any error it will show up in the terminal
     }
   }
 
   deleteBook() {
     //? done
+    /* this method will delete a book, then print the updated list, this is 
+    case sensitive because you will delete the book so you need to be sure 
+    about the spiling of the book, I cange it from decrease one of the copies to
+    delete the whole book with all copies */
     try {
-      print("What book do you want to delete (press 'q' to quit):");
-      String? titleOfTheBook = stdin.readLineSync();
-      if (titleOfTheBook == 'q' || titleOfTheBook == 'q') {
+      print("What the book do you want to delete (press 'q' to exit):");
+      String? titleOfTheBook = stdin.readLineSync() ?? '';
+      if (titleOfTheBook.toLowerCase() == 'q') {
         print("We didn't delete anything");
         exit(0);
       }
@@ -179,13 +205,8 @@ class Edits extends Library {
           String title = book['title'];
           if (title.toLowerCase() == titleOfTheBook?.toLowerCase()) {
             bookFound = true;
-            if (book['avalibale copies'] < 1) {
-              print(
-                  "You can't delete '${book['title']}' because it is out of stock.");
-            } else {
-              book['avalibale copies']--;
-              booksToRemove.add(book);
-            }
+            book['avalibale copies']--;
+            booksToRemove.add(book);
             break;
           }
         }
@@ -194,10 +215,11 @@ class Edits extends Library {
           print("Book with title '$titleOfTheBook' does not exists.");
         }
 
-        print("Is there any other book? (type 'q' to quit):");
+        print("Is there any other book? (type 'q' to exit):");
         titleOfTheBook = stdin.readLineSync();
       }
-      myLibrary.removeWhere((book) => booksToRemove.contains(book));
+      myLibrary.removeWhere((book) => booksToRemove.contains(
+          book)); // I tries to add 'myList.remove(book)' inside 'for (var book in myLibrary)' but it make error like printing the deleted book only or don't delete the book from the list
 
       String newList = '';
       for (var book in myLibrary) {
@@ -212,10 +234,11 @@ class Edits extends Library {
 
   modifyBookData() {
     //?done
+    /*  */
     try {
       while (true) {
         print(
-            "\nPlease enter the title of the book you want to modify (press 'q' to quit):");
+            "\nPlease enter the title of the book you want to modify (press 'q' to exit):");
         String titleToModify = stdin.readLineSync() ?? '';
         if (titleToModify.toLowerCase() == 'q') {
           break;
