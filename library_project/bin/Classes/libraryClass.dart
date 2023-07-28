@@ -17,10 +17,17 @@ class Library {
 }
 
 class View extends Library {
-  //? done
+  /* this class 'View' conatin all methods that belong to view,
+  for example: if you want to see the availabe copies or too all categories and
+  books */
   viewAvailableCopies() {
     //? done
-    String availableCopies = '';
+    /* this method only show the name of the book and how many copies left for
+    this title I added some spicific like if the book is more or equal 3 will print 
+    the available cpies but if the copies is less than 3 it will print 'Avalibale copies!!!'
+    to make it exited but if the copies is equal 0 it will print 'sold out'*/
+    String availableCopies =
+        ''; // this variuble is empty string just to access to it and then print the title and number of available copies
     for (var index in myLibrary) {
       if (index['avalibale copies'] >= 3) {
         availableCopies +=
@@ -38,6 +45,10 @@ class View extends Library {
 
   viewCategories() {
     //? done
+    /* this just show all categories I make it empty list because I used 'for in' loop
+    and append every category in the index of categories, if string is doublecated 
+    it will ignore it, I use this method because unlike python,
+    tuples are not built-in in Dart and I don't know how to use packages in dart */
     List allCategories = [];
     for (var index in myLibrary) {
       for (var category in index['categories']) {
@@ -52,6 +63,8 @@ class View extends Library {
 
   viewBooks() {
     //? done
+    /* this method is only to view all books in the myLibrary database, also I added 
+    empty string to easily access to it and print it out */
     String bookDetails = '';
     for (var index in myLibrary) {
       bookDetails +=
@@ -60,7 +73,7 @@ class View extends Library {
     print(bookDetails);
   }
 
-  //? viewPurchased() {// Purchase().makePurchase(titleInput: titleInput, numberOfCopies: numberOfCopies)// }
+  //TODO viewPurchased() {// Purchase().makePurchase(titleInput: titleInput, numberOfCopies: numberOfCopies)// }
 }
 
 class Search extends Library {
@@ -201,7 +214,8 @@ class Edits extends Library {
     //?done
     try {
       while (true) {
-        print('Please enter the title of the book you want to modify:');
+        print(
+            "\nPlease enter the title of the book you want to modify (press 'q' to quit):");
         String titleToModify = stdin.readLineSync() ?? '';
         if (titleToModify.toLowerCase() == 'q') {
           break;
@@ -215,7 +229,7 @@ class Edits extends Library {
         }
 
         if (bookToModify == null) {
-          print("Book with title '$titleToModify' not found.");
+          print("\nThe book with title '$titleToModify' not found.");
           return;
         }
         print("\nPlease enter the new title:");
@@ -257,13 +271,13 @@ class Edits extends Library {
           bookToModify['categories'] = newCategories;
         }
         var newList =
-            'You just edit the book and new data is:\nname: ${bookToModify['title']}\nFor author: ${bookToModify['author']}\nFirst published: ${bookToModify['First published']}\nCategories: ${bookToModify['categories']}\nPrice: ${bookToModify['price']}\$\nAvalibale copies: ${bookToModify['avalibale copies']}\n\n';
+            '\nYou just edit the book and new data is:\nname: ${bookToModify['title']}\nFor author: ${bookToModify['author']}\nFirst published: ${bookToModify['First published']}\nCategories: ${bookToModify['categories']}\nPrice: ${bookToModify['price']}\$\nAvalibale copies: ${bookToModify['avalibale copies']}\n\n';
 
         print(newList);
         myLibrary.add({bookToModify});
       }
     } catch (error) {
-      print('error: $error');
+      print('\nerror: $error');
     }
   }
 }
