@@ -1,6 +1,6 @@
-import '../bin/Classes/libraryClass.dart';
+import 'Classes/switchCaseFunction.dart';
 
 void main() {
-  var lib = Purchases().makePurchase();
-  lib;
+  var switchCase = switchCases();
+  switchCase;
 }

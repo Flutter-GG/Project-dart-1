@@ -1267,3 +1267,48 @@
 //   // receiveInvoice() {}
 // //      print("please enter categories");
 //       // List categories = stdin.readLineSync().split(', ') ?? [];
+// try {
+  //   print(
+  //       "Please select:\n\n1- If you want to view the library\n2- If you want to search in the library\n3- If you want to edit the library\n4- If you want to buy a book\n(press 'q' to exit):");
+  //   String? userInput = stdin.readLineSync();
+
+  //   switch (userInput) {
+  //     case == '1':
+  //       print(
+  //           "\n1- If you want to view available copies\n2- If you want to view categories\n3- If you want to view all books\n(press 'q' to exit):");
+  //       String? userInput = stdin.readLineSync();
+  //       switch (userInput) {
+  //         case == '1':
+  //           View().viewAvailableCopies();
+  //         case == '2':
+  //           View().viewCategories();
+  //         case == '3':
+  //           View().viewBooks();
+  //       }
+  //       break;
+  //     case == '2':
+  //       Search().searchByQuery();
+  //       break;
+  //     case == '3':
+  //       print(
+  //           "\n1- If you want to add new book\n2- If you want to delete a book\n3- If you want to edit a book\n(press 'q' to exit):");
+  //       String? userInput = stdin.readLineSync();
+  //       switch (userInput) {
+  //         case == '1':
+  //           Edits().addNewBook();
+  //           break;
+  //         case == '2':
+  //           Edits().deleteBook();
+  //           break;
+  //         case == '3':
+  //           Edits().modifyBookData();
+  //           break;
+  //       }
+  //       break;
+  //     case == '4':
+  //       Purchases().makePurchase();
+  //       break;
+  //   }
+  // } catch (error) {
+  //   print('Error: $error');
+  // }
