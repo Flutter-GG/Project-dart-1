@@ -29,7 +29,7 @@ class View extends Library {
     to make it exited but if the copies is equal 0 it will print 'sold out'*/
     String availableCopies =
         ''; // this variuble is empty string just to access to it and then print the title and number of available copies
-    for (var index in myLibrary) {
+    for (var index in theLibrary) {
       if (index['avalibale copies'] >= 3) {
         availableCopies +=
             "The book: ${index['title']},\nhas '${index['avalibale copies']}' Avalibale copies.\n\n";
@@ -51,7 +51,7 @@ class View extends Library {
     it will ignore it, I use this method because unlike python,
     tuples are not built-in in Dart and I don't know how to use packages in dart */
     List allCategories = [];
-    for (var index in myLibrary) {
+    for (var index in theLibrary) {
       for (var category in index['categories']) {
         if (!allCategories.contains(category)) {
           allCategories.add(category);
@@ -64,10 +64,10 @@ class View extends Library {
 
   viewBooks() {
     //? done
-    /* this method is only to view all books in the myLibrary database, also I added 
+    /* this method is only to view all books in the theLibrary database, also I added 
     empty string to easily access to it and print it out */
     String bookDetails = '';
-    for (var index in myLibrary) {
+    for (var index in theLibrary) {
       bookDetails +=
           'The book name: ${index['title']}\nFor author: ${index['author']}\nFirst published: ${index['First published']}\nCategories: ${index['categories']}\nPrice: ${index['price']}\$\navalibale copies: ${index['avalibale copies']}\n\n';
     }
@@ -97,7 +97,7 @@ class Search extends Library {
 
       searchByFunc({required String userInput, required String index}) {
         String book = '';
-        for (var item in myLibrary) {
+        for (var item in theLibrary) {
           String theKey = item[index].toString().toLowerCase();
           if (theKey.contains(userInput.toLowerCase())) {
             book +=
@@ -129,7 +129,7 @@ class Search extends Library {
           print('$userSelector is not a valid number');
       }
     } catch (error) {
-      print('error: $error');
+      print('Error: $error');
     }
   }
 }
@@ -165,7 +165,7 @@ class Edits extends Library {
       categories.split(', ');
 
       String viweNewList = '';
-      myLibrary.add({
+      theLibrary.add({
         "title": title,
         "author": author,
         "categories": [categories],
@@ -173,14 +173,14 @@ class Edits extends Library {
         "avalibale copies": copies,
         "First published": publishDate
       }); // this will update the exists list and append the new book
-      for (var book in myLibrary) {
+      for (var book in theLibrary) {
         viweNewList +=
             'Book name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price']}\$\navalibale copies: ${book['avalibale copies']}\n\n';
       }
       print(viweNewList);
     } catch (error) {
       print(
-          'error: $error'); // if there is any error it will show up in the terminal
+          'Error: $error'); // if there is any error it will show up in the terminal
     }
   }
 
@@ -201,7 +201,7 @@ class Edits extends Library {
 
       while (titleOfTheBook?.toLowerCase() != 'q') {
         bool bookFound = false;
-        for (var book in myLibrary) {
+        for (var book in theLibrary) {
           String title = book['title'];
           if (title.toLowerCase() == titleOfTheBook?.toLowerCase()) {
             bookFound = true;
@@ -218,23 +218,25 @@ class Edits extends Library {
         print("Is there any other book? (type 'q' to exit):");
         titleOfTheBook = stdin.readLineSync();
       }
-      myLibrary.removeWhere((book) => booksToRemove.contains(
-          book)); // I tries to add 'myList.remove(book)' inside 'for (var book in myLibrary)' but it make error like printing the deleted book only or don't delete the book from the list
+      theLibrary.removeWhere((book) => booksToRemove.contains(
+          book)); // I tries to add 'myList.remove(book)' inside 'for (var book in theLibrary)' but it make error like printing the deleted book only or don't delete the book from the list
 
       String newList = '';
-      for (var book in myLibrary) {
+      for (var book in theLibrary) {
         newList +=
             'Book name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price']}\$\nAvalibale copies: ${book['avalibale copies']}\n\n';
       }
       print(newList);
     } catch (error) {
-      print('error: $error');
+      print('Error: $error');
     }
   }
 
   modifyBookData() {
     //?done
-    /*  */
+    /* this method to modify the data of a book if the user didn't add a new data or empty string
+    the exist data will stay, but if the user add a data the method will add it
+    and delete the old data */
     try {
       while (true) {
         print(
@@ -244,7 +246,7 @@ class Edits extends Library {
           break;
         }
         Map? bookToModify;
-        for (var book in myLibrary) {
+        for (var book in theLibrary) {
           if (book['title'] == titleToModify) {
             bookToModify = book;
             break;
@@ -297,52 +299,73 @@ class Edits extends Library {
             '\nYou just edit the book and new data is:\nname: ${bookToModify['title']}\nFor author: ${bookToModify['author']}\nFirst published: ${bookToModify['First published']}\nCategories: ${bookToModify['categories']}\nPrice: ${bookToModify['price']}\$\nAvalibale copies: ${bookToModify['avalibale copies']}\n\n';
 
         print(newList);
-        myLibrary.add({bookToModify});
+        theLibrary.add({bookToModify});
       }
     } catch (error) {
-      print('\nerror: $error');
+      print('\nError: $error');
     }
   }
 }
 
 class Purchases extends Library {
   //? done
+  /* this class is for makeing purchases, if the user want to but a book with 0 
+  copies it wont allow the user to do it, also recieve the invoice of 
+  the purchase */
   List invoice = [];
   makePurchase() {
-    print('What book do you want to buy:');
-    for (var index = 0; index < myLibrary.length; index++) {
-      print('$index: ${myLibrary[index]['title']}\n');
-    }
-
-    print('Enter the number of the book you want to buy:');
-    int bookNumber = int.parse(stdin.readLineSync() ?? '');
-
-    if (bookNumber >= 0 && bookNumber < myLibrary.length) {
-      Map<String, dynamic> selectedBook = myLibrary[bookNumber];
-      print('Selected Book: ${selectedBook['title']}');
-
-      print('Enter the number of copies you want to purchase:');
-      int numberOfCopies = int.parse(stdin.readLineSync() ?? '');
-
-      if (numberOfCopies > 0 &&
-          numberOfCopies <= selectedBook['avalibale copies']) {
-        double totalPrice = selectedBook['price'] * numberOfCopies;
-
-        invoice.add({
-          'title': selectedBook['title'],
-          'author': selectedBook['author'],
-          'numberOfCopies': numberOfCopies,
-          'totalPrice': totalPrice,
-        });
-
-        print(
-            "You purchased '$numberOfCopies' copy/copies of '${selectedBook['title']}'.");
-        print('Total Price: $totalPrice \$');
-      } else {
-        print('Invalid number of copies. Please enter a valid quantity.');
+    try {
+      print('What book do you want to buy (or press q to quit):');
+      for (var index = 1; index < theLibrary.length; index++) {
+        if (theLibrary[index]['avalibale copies'] == 0) {
+          print('\n$index: ${theLibrary[index]['title']}, is sold out\n');
+        } else {
+          print('$index: ${theLibrary[index]['title']}\n');
+        }
       }
-    } else {
-      print('Invalid book number. Please enter a valid book number.');
+
+      print(
+          'Enter the number of the book you want to buy (or press q to quit):');
+      String userInput = stdin.readLineSync() ?? '';
+
+      if (userInput.toLowerCase() == 'q') {
+        print('No purchase made.');
+        return;
+      }
+
+      int bookNumber = int.tryParse(userInput) ?? -1;
+      if (bookNumber >= 0 && bookNumber < theLibrary.length) {
+        Map selectedBook = theLibrary[bookNumber];
+        print('Selected Book: ${selectedBook['title']}');
+
+        print('Enter the number of copies you want to purchase:');
+        int numberOfCopies = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
+
+        if (numberOfCopies > 0 &&
+            numberOfCopies <= selectedBook['avalibale copies']) {
+          double totalPrice = selectedBook['price'] * numberOfCopies;
+
+          invoice.add({
+            'title': selectedBook['title'],
+            'author': selectedBook['author'],
+            'numberOfCopies': numberOfCopies,
+            'totalPrice': totalPrice,
+          });
+
+          print(
+              "You purchased '$numberOfCopies' copy/copies of '${selectedBook['title']}'.\nTotal Price: $totalPrice \$");
+          selectedBook['avalibale copies']--;
+          print(selectedBook);
+        } else if (selectedBook['avalibale copies'] == 0) {
+          print("The book '${selectedBook['title']}' is sold out.");
+        } else {
+          print('Invalid number of copies. Please enter a valid quantity.');
+        }
+      } else {
+        print('Invalid book number. Please enter a valid book number.');
+      }
+    } catch (error) {
+      print('Error: $error');
     }
   }
 }

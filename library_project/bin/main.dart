@@ -1,6 +1,6 @@
 import '../bin/Classes/libraryClass.dart';
 
 void main() {
-  var lib = Edits().modifyBookData();
+  var lib = Purchases().makePurchase();
   lib;
 }

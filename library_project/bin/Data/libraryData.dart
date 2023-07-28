@@ -1,4 +1,4 @@
-List myLibrary = [
+List theLibrary = [
   {
     "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
     "author": "Robert C. Martin",
