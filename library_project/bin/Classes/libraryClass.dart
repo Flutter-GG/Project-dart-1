@@ -1,6 +1,8 @@
 import "dart:io";
 import "../Data/libraryData.dart";
 
+// TODO: database
+
 class Library {
   String? title;
   String? author;
@@ -196,7 +198,7 @@ class Edits extends Library {
       print(
           "Write the 'title' of the book that you want to 'delete' (press 'q' to exit):\n");
       for (var index = 0; index < theLibrary.length; index++) {
-        print("${index+1}: ${theLibrary[index]['title']}");
+        print("${index + 1}: ${theLibrary[index]['title']}");
       }
       String? titleOfTheBook = stdin.readLineSync() ?? "";
       if (titleOfTheBook.toLowerCase() == 'q') {
