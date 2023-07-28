@@ -124,7 +124,7 @@ class Edits extends Library {
       int copies = int.parse(stdin.readLineSync() ?? '');
       print("\nplease enter price:");
       double price = double.parse(stdin.readLineSync() ?? '');
-      print("\nplease enter publishDate:");
+      print("\nplease enter publish date:");
       String publishDate = stdin.readLineSync() ?? '';
       print("\nplease enter categories separated by comma:");
       String categories = stdin.readLineSync() ?? '';
@@ -154,7 +154,11 @@ class Edits extends Library {
     try {
       print("What book do you want to delete (press 'q' to quit):");
       String? titleOfTheBook = stdin.readLineSync();
-      List<Map<String, dynamic>> booksToRemove = [];
+      if (titleOfTheBook == 'q' || titleOfTheBook == 'q') {
+        print("We didn't delete anything");
+        exit(0);
+      }
+      List booksToRemove = [];
 
       while (titleOfTheBook?.toLowerCase() != 'q') {
         bool bookFound = false;
