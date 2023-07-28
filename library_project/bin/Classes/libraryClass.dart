@@ -19,7 +19,7 @@ class Library {
 class View extends Library {
   //? done
   /* this class 'View' conatin all methods that belong to view,
-  for example: if you want to see the availabe copies or too all categories and
+  for example: if you want to see the availabe copies or all categories and
   books */
   viewAvailableCopies() {
     //? done
@@ -33,7 +33,7 @@ class View extends Library {
       if (index['avalibale copies'] >= 3) {
         availableCopies +=
             "The book: ${index['title']},\nhas '${index['avalibale copies']}' Avalibale copies.\n\n";
-      } else if (index['avalibale copies'] > 1 &&
+      } else if (index['avalibale copies'] >= 1 &&
           index['avalibale copies'] < 3) {
         availableCopies +=
             "The book: ${index['title']},\nis only has '${index['avalibale copies']}' Avalibale copies!!!.\n\n";
@@ -73,8 +73,6 @@ class View extends Library {
     }
     print(bookDetails);
   }
-
-  //TODO viewPurchased() {}
 }
 
 class Search extends Library {
@@ -372,10 +370,11 @@ class Purchases extends Library {
               "You purchased '$numberOfCopies' copy/copies of '${selectedBook['title']}'.\nTotal Price: $totalPrice \$");
           var remainingCopies =
               selectedBook['avalibale copies'] - numberOfCopies;
-          print(remainingCopies);
 
-          invoice =
-              updatedInvoice; // Update the main 'invoice' list with the updatedInvoice.
+          print("\nThe remaining copies '$remainingCopies'");
+
+          selectedBook['avalibale copies'] = remainingCopies;
+          invoice = updatedInvoice;
         } else if (selectedBook['avalibale copies'] == 0) {
           print("The book '${selectedBook['title']}' is sold out.");
         } else {
@@ -387,5 +386,25 @@ class Purchases extends Library {
     } catch (error) {
       print('Error: $error');
     }
+  }
+
+  viewPurchases() {
+    if (invoice.isEmpty) {
+      print("You haven't made any purchases yet.");
+      return;
+    }
+
+    double totalAmount = 0.0;
+
+    print("Your Purchases:");
+    for (var purchase in invoice) {
+      print("\nTitle: ${purchase['title']}");
+      print("Author: ${purchase['author']}");
+      print("Number of Copies: ${purchase['numberOfCopies']}");
+      print("Total Price: \$${purchase['totalPrice']}");
+      totalAmount += purchase['totalPrice'];
+    }
+
+    print("\nTotal Amount Spent: \$${totalAmount.toStringAsFixed(2)}");
   }
 }

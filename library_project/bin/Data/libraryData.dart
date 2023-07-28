@@ -12,7 +12,7 @@ List theLibrary = [
     "author": "Robert C. Martin",
     "categories": ["C#", "Programming"],
     "price": 94.99,
-    "avalibale copies": 5,
+    "avalibale copies": 1,
     "First published": "July 1, 2006"
   },
   {
@@ -30,7 +30,7 @@ List theLibrary = [
     "author": "Al Sweigart",
     "categories": ["Python", "Clean Code"],
     "price": 74.99,
-    "avalibale copies": 0,
+    "avalibale copies": 1,
     "First published": "December 16, 2020"
   },
   {
@@ -39,7 +39,7 @@ List theLibrary = [
     "author": "V. Anton Spraul",
     "categories": ["Problem Solving"],
     "price": 49.99,
-    "avalibale copies": 5,
+    "avalibale copies": 1,
     "First published": "July 29, 2012"
   },
   {
@@ -47,7 +47,7 @@ List theLibrary = [
     "author": "حمزة السالم",
     "categories": ["Finance"],
     "price": 39.99,
-    "avalibale copies": 0,
+    "avalibale copies": 1,
     "First published": "March 31, 2020"
   }
 ];

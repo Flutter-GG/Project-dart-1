@@ -5,7 +5,7 @@ switchCases() {
   try {
     do {
       print(
-          "Please select:\n\n1- To view the library\n2- To search in the library\n3- To edit the library\n4- To buy a book\n(press 'q' to exit):");
+          "Please select:\n\n1- To view the library\n2- To search in the library\n3- To edit the library\n4- To buy a book\n5- To show what you buy\n(press 'q' to exit):");
       String? userInput = stdin.readLineSync();
 
       switch (userInput) {
@@ -52,8 +52,9 @@ switchCases() {
           Purchases().makePurchase();
           break;
         case '5':
-          print("\n1- Show what I purchase\n");
+          Purchases().viewPurchases();
           break;
+
         case 'q' || 'Q':
           return;
         default:
