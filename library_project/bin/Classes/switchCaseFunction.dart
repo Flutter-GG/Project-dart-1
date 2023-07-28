@@ -34,7 +34,7 @@ switchCases() {
           Search().searchByQuery();
           break;
         case '3':
-          print('\nAre you from staff?\n');
+          print('\nAre you from staff? Y/N\n');
           String? isStaff = stdin.readLineSync();
           if (isStaff == 'y' || isStaff == 'Y') {
             print(
