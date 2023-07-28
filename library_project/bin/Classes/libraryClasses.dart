@@ -60,9 +60,7 @@ class View extends Library {
     print(bookDetails);
   }
 
-  viewPurchased() {
-    // Purchase().makePurchase(titleInput: titleInput, numberOfCopies: numberOfCopies)
-  }
+  //? viewPurchased() {// Purchase().makePurchase(titleInput: titleInput, numberOfCopies: numberOfCopies)// }
 }
 
 class Search extends Library {
@@ -266,33 +264,44 @@ class Edits extends Library {
   }
 }
 
-class Purchase extends Library {
+class Purchases extends Library {
+  //? done
   List invoice = [];
-  makePurchase(/*{required String titleInput, required int numberOfCopies}*/) {
-    String bookPurchase = '';
+  makePurchase() {
     print('What book do you want to buy:');
-    for (var index=1; index< myLibrary.length; index++){
-    print('$index: ${myLibrary[index]['title']}');
-
+    for (var index = 0; index < myLibrary.length; index++) {
+      print('$index: ${myLibrary[index]['title']}\n');
     }
-    String titleInput = stdin.readLineSync()!;
-    // switch(titleInput){
-    //   case 
-    // }
-    print('\n how many copies do you want:');
-    String numberOfCopies = stdin.readLineSync()!;
 
-    for (var index in myLibrary) {
-      String title = index['title'];
-      if (title.toLowerCase() == titleInput.toLowerCase()) {
-        bookPurchase +=
-            "You bought '$numberOfCopies' copies of '${index['title']}' book, that will costs you ${numberOfCopies * index['price']}\$";
-        invoice.add(bookPurchase);
+    print('Enter the number of the book you want to buy:');
+    int bookNumber = int.parse(stdin.readLineSync() ?? '');
+
+    if (bookNumber >= 0 && bookNumber < myLibrary.length) {
+      Map<String, dynamic> selectedBook = myLibrary[bookNumber];
+      print('Selected Book: ${selectedBook['title']}');
+
+      print('Enter the number of copies you want to purchase:');
+      int numberOfCopies = int.parse(stdin.readLineSync() ?? '');
+
+      if (numberOfCopies > 0 &&
+          numberOfCopies <= selectedBook['avalibale copies']) {
+        double totalPrice = selectedBook['price'] * numberOfCopies;
+
+        invoice.add({
+          'title': selectedBook['title'],
+          'author': selectedBook['author'],
+          'numberOfCopies': numberOfCopies,
+          'totalPrice': totalPrice,
+        });
+
+        print(
+            "You purchased '$numberOfCopies' copy/copies of '${selectedBook['title']}'.");
+        print('Total Price: $totalPrice \$');
+      } else {
+        print('Invalid number of copies. Please enter a valid quantity.');
       }
+    } else {
+      print('Invalid book number. Please enter a valid book number.');
     }
-    print(bookPurchase);
   }
 }
-// receiveInvoice() {}
-//      print("please enter categories");
-// List categories = stdin.readLineSync().split(', ') ?? [];
