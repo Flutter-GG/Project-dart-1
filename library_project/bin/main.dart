@@ -1,6 +1,8 @@
+import 'dart:convert' show utf8;
+
 import 'Classes/libraryClass.dart';
 
 void main() {
-  var lib = Search().searchByQuery();
+  var lib = utf8.encode(Purchase().makePurchase());
   lib;
 }
