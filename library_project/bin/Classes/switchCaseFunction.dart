@@ -1,4 +1,4 @@
-import 'Classes/libraryClass.dart';
+import './libraryClass.dart';
 
 switchCase() {
   print('Please select:\n');
