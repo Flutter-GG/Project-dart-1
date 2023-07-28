@@ -195,8 +195,8 @@ class Edits extends Library {
     try {
       print(
           "Write the 'title' of the book that you want to 'delete' (press 'q' to exit):\n");
-      for (var index = 1; index < theLibrary.length; index++) {
-        print("$index: ${theLibrary[index]['title']}");
+      for (var index = 0; index < theLibrary.length; index++) {
+        print("${index+1}: ${theLibrary[index]['title']}");
       }
       String? titleOfTheBook = stdin.readLineSync() ?? "";
       if (titleOfTheBook.toLowerCase() == 'q') {
@@ -231,6 +231,8 @@ class Edits extends Library {
             "\nBook name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price']}\$\nAvalibale copies: ${book['avalibale copies']}\n\n";
       }
       print(printedList);
+      for (var index = 0; index < booksToRemove.length; index++)
+        print("\nThe book '${booksToRemove[index]['title']}' was deleted.");
 
       // List updatedBookList = List.from(theLibrary);
     } catch (error) {
