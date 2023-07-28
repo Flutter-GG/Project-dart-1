@@ -2,10 +2,13 @@ import 'dart:io';
 import './libraryClass.dart';
 
 switchCases() {
+  final purchases =
+      Purchases(); // Create a single instance of the Purchases class.
+
   try {
     do {
       print(
-          "Please select:\n\n1- To view the library\n2- To search in the library\n3- To edit the library\n4- To buy a book\n5- To show what you buy\n(press 'q' to exit):");
+          "\nPlease select:\n\n1- To view the library\n2- To search in the library\n3- To edit the library\n4- To buy a book\n5- To show what you buy\n(press 'q' to exit):");
       String? userInput = stdin.readLineSync();
 
       switch (userInput) {
@@ -49,10 +52,10 @@ switchCases() {
           }
           break;
         case '4':
-          Purchases().makePurchase();
+          purchases.makePurchase();
           break;
         case '5':
-          Purchases().viewPurchases();
+          purchases.viewPurchases();
           break;
 
         case 'q' || 'Q':
