@@ -214,4 +214,4 @@ Total Amount Spent: $394.97
 
 # Image shows how to use this script
 
-![alt text](Data/Assets/projectDart.png)
+![alt text](Assets/projectDart.png)
