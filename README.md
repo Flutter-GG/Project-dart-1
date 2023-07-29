@@ -1,83 +1,217 @@
-# Project #1 - Library Project using Dart
+## In this readme file I will talked about what di you expected to see from this app
 
-Congratulations on reaching the project phase! This project will assess your ability to develop a "Library Project using Dart" with a Command Line Interface (CLI) to manage a library's book inventory and user interactions. Below are the key requirements and evaluation criteria:
+## The 'main' section:
+
+#### you will see something like this, this is the main section:
+
+Please select:
+
+```
+(base) ~$ dart run main.dart
+
+1- To 'view the library'
+2- To 'search in the library'
+3- To 'edit the library'
+4- To 'buy a book'
+5- To 'show what you bought'
+
+(or press 'q' to exit)
+```
+
+#### if you type 'q' in the keyboard you will quit from the app.
+
+\_\_
+
+## The 'view the library' section:
+
+#### if you type '1' in the keyboard you will go to viewing the library section:
+
+```
+1- To view 'available copies'
+2- To view 'categories'
+3- To view all 'books'
+
+(or press 'q' to exit):
+```
+
+#### if you type '1' in the keyboard the program will show the name of the book and the available copies and go to the main section:
+
+```
+The book: Clean Code: A Handbook of Agile Software Craftsmanship,
+has '5' Avalibale copies.
+
+The book: Agile Principles, Patterns, and Practices in C#,
+is only has '1' Avalibale copies!!!.
+
+The book: Automate the Boring Stuff with Python: Practical Programming for Total Beginners,
+is only has '2' Avalibale copies!!!.
+
+The book: اقتصاديات القرض والبيع,
+is sold out.
+```
+
+#### if you type '2' in the keyboard the program will show all the categories of the books and go to the main section:
+
+```
+We have categories: [Programming, Clean Code, C#, Python, Automation, Problem Solving, Finance]
+```
+
+#### if you typed '3' in the keyboard the program will show all the books with details and go to the main section:
+
+```
+The book name: Clean Code: A Handbook of Agile Software Craftsmanship
+For author: Robert C. Martin
+First published: January 1, 2007
+Categories: [Programming, Clean Code]
+Price: 99.99$
+avalibale copies: 5
+```
+
+\_\_
+
+## The 'search in the library' section:
+
+#### if you typed '2' in the main section you will go to the 'search in the library' section and you will see
+
+```
+Please select what you want to search by:
+
+1: by title name
+2: by author name
+3: by category
+```
+
+#### if you select 'by the title name' you can write the full name or any thing that you remmber in the name, for this example I write 'clean code' and get the books contain clean code in their title:
+
+```
+Write the 'title' of the book:
+clean code
+
+Book name: Clean Code: A Handbook of Agile Software Craftsmanship
+For author: Robert C. Martin
+First published: January 1, 2007
+Categories: [Programming, Clean Code]
+Price: 99.99$
+Avalibale copies: 5
 
 
-## Description:
+Book name: Beyond the Basic Stuff with Python: Best Practices for Writing Clean Code
+For author: Al Sweigart
+First published: December 16, 2020
+Categories: [Python, Clean Code]
+Price: 74.99$
+Avalibale copies: 1
+```
 
-The "Library Project using Dart" is an exciting software application designed to efficiently manage a library's book inventory and streamline user interactions through a Command Line Interface (CLI). This capstone project provides you, as a student, with an excellent opportunity to apply your knowledge and skills in Flutter Development, showcasing your proficiency in Dart programming.
+#### if the book or author does not exist it wont crash but it will return to the main section without printing anythin,
 
-The primary goal of the project is to develop a user-friendly and efficient CLI that caters to both library staff and patrons. With this CLI, users can effortlessly query books, view the number of available copies, add new books to the library, delete books from the inventory, make book purchases, and receive detailed invoices after each purchase. Additionally, the project demands an essential feature - updating the number of book copies after a purchase is made to maintain accurate inventory records.
+\_\_
 
-To begin, you will create a new Dart project, ensuring that the project structure is appropriately organized for a clean and manageable codebase. As you progress, it is crucial to write code that is clear, well-organized, and scalable, adhering to standard coding conventions to enhance code readability. Demonstrating your comprehensive understanding of programming concepts and techniques is essential for a successful outcome.
+## The 'edit the library' section:
 
-Your CLI should allow users to search for books by title, author, or category, providing a straightforward and accessible way to retrieve information about the library's collection. Implementing a method to add new books to the library with the appropriate updates to the book count will further enhance the system's usability.
+#### if you select 'edit the library' the program will ask you if you are from the staff of the library or not, if it is, you can enter to add, delete or eedit book details, for delete and edit detail you need to select the book with the correct name and spiling.
 
-Managing the library's inventory also involves implementing a method to delete books, ensuring smooth handling of cases where a book to be deleted does not exist. Facilitating book purchases through the CLI is another critical aspect, requiring you to decrease the number of book copies according to the books purchased and generate an informative invoice for the user.
+```
+Are you from the staff? Y/N
 
-As an extra credit opportunity, you can implement features such as displaying all book categories in the library, returning a list of books belonging to a selected category. Additionally, providing a method to count the number of purchased books will further showcase your skills.
+y
 
-The project must be written entirely in the Dart language and fully submitted through GitHub using version control (Git). Remember to create descriptive commits to showcase your progress and follow the provided guidelines for academic integrity.
+1- To 'add new book'
+2- To 'delete a book'
+3- To 'edit a book'
+
+(or press 'q' to exit):
+2
+Write the 'title' of the book that you want to 'delete'
+(or press 'q' to exit):
+
+1: Clean Code: A Handbook of Agile Software Craftsmanship
+2: Agile Principles, Patterns, and Practices in C#
+3: Automate the Boring Stuff with Python: Practical Programming for Total Beginners
+4: Beyond the Basic Stuff with Python: Best Practices for Writing Clean Code
+5: Think Like a Programmer: An Introduction to Creative Problem Solving
+6: اقتصاديات القرض والبيع
+e
+Book with title 'e' does not exist.
+Is there any other book?
+(type 'q' to exit):
+q
+```
+
+#### after quiting it will print the new book list without the books that you deleted.
+
+\_\_
+
+## The 'buy a book' section:
+
+#### here you will buy a book, if the avaliable copies is 0 the book will be sold out and you cant but it, if you buy more than availbale copies the app wont let you buy the book.
+
+```
+What book do you want to buy (or press 'q' to exit):
+1: Agile Principles, Patterns, and Practices in C#
+
+2: Automate the Boring Stuff with Python: Practical Programming for Total Beginners
+
+3: Beyond the Basic Stuff with Python: Best Practices for Writing Clean Code
+
+4: Think Like a Programmer: An Introduction to Creative Problem Solving
+
+5: اقتصاديات القرض والبيع, is sold out
+
+Enter the number of the book you want to buy
+(or press 'q' to exit):
+1
+Selected Book: Agile Principles, Patterns, and Practices in C#
+Enter the number of copies you want to purchase:
+1
+You purchased '1' copy/copies of 'Agile Principles, Patterns, and Practices in C#'.
+Total Price: 94.99 $
+
+The remaining copies '0'
+```
+
+#### if you tried to but it again:
+
+```
+Enter the number of the book you want to buy
+(or press 'q' to exit):
+1
+Selected Book: Agile Principles, Patterns, and Practices in C#
+Enter the number of copies you want to purchase:
+1
+The book 'Agile Principles, Patterns, and Practices in C#' is sold out.
+```
+
+\_\_
+
+## The 'show what you bought' section:
+
+#### after make a purchase and then select 'show what you bought' you will see something like this:
+
+```
+(or press 'q' to exit)
+5
+
+Your Purchases:
+
+Title: Agile Principles, Patterns, and Practices in C#
+Author: Robert C. Martin
+Number of Copies: 1
+Total Price: $94.99
 
 
+Title: Automate the Boring Stuff with Python: Practical Programming for Total Beginners
+Author: Al Sweigart
+Number of Copies: 2
+Total Price: $299.98
 
-## Minimum Requirements:
 
-1. **Project Structure**: Create a new Dart project and organize its structure appropriately. Set up the necessary folders, files, and ensure a clean and organized project layout.
+Total Amount Spent: $394.97
 
-2. **Clean Code**: Write clear, well-organized, and scalable code. Use meaningful variable and function names, following standard coding conventions to improve code readability. Well-structured and easily maintainable code is essential.
+```
 
-3. **Applying Concepts**: Demonstrate a comprehensive understanding of programming concepts and techniques. Implement the CLI features with efficiency and correctness.
+\_\_
 
-4. **Query Books**: Develop a simple CLI user interface that allows users to query books and view the number of available copies. Users should be able to search for books by title, author, or category.
+# Image shows how to use this script
 
-5. **Add New Book**: Provide a method to add a new book to the library and update the number of book copies accordingly. Ensure proper error handling for invalid inputs.
-
-6. **Delete Book**: Implement a method to delete a book from the library and update the book count. Handle cases where the book to be deleted does not exist.
-
-7. **Purchase**: Implement the purchase process, allowing users to buy books from the library. Ensure that the number of book copies is decreased according to the books purchased.
-
-8. **Invoice**: Display a detailed invoice after the purchase, showing the books purchased, their prices, and the total cost.
-
-9. **Editing Capability**: Add the ability to modify book data, such as title, author, and price. Users should be able to update book information easily.
-
-## Ideas for Extra Credit:
-
-- **Display all Book Categories**: Provide a method to display a list of all book categories in the library. When a category is selected, return a list of all books belonging to that category.
-- **Reporting:** Provide a method to present a report that contains the number of all purchased books from the library, and calculate their amount.
-- 
-
-## Delivery Requirements:
-
-- **Language**: The project should be written in Dart language.
-
-- **GitHub Submission**:
-   - Create a Fork from the exam’s GitHub repository.
-   - Create a new branch with your name, i.e., Nawaf-Alshawan.
-   - Commit frequently with descriptive messages to show your progress.
-   - Finally, create a Pull Request to the exam’s original repository containing your solution.
-
-- **README.md File**: Include a README.md file with instructions on how to run and test the project. This file should provide a clear guide for users to understand how to interact with the CLI.
-
-- **Screenshots**: Include relevant screenshots of the app to showcase its appearance and functionalities. Visuals can help users understand the app's design and layout.
-
-## Schedule & Deadlines:
-
-- Exam Start Date: 27/7/2023 - 3:00 PM
-- Exam Submission Deadline: 30/7/2023 – 11:59 AM
-
-## Evaluation Criteria:
-
-The project will be evaluated based on the following criteria:
-
-- **Completion**: The extent to which the project meets all the minimum requirements, including the extra credit ideas if implemented.
-
-- **Quality**: The overall quality of the project, including the coding style, organization, and ease of maintenance. Well-structured and readable code will be favorably evaluated.
-
-- **Use of Programming Concepts**: How well you utilize programming concepts such as classes, abstracts, functions, and other relevant techniques.
-
-## Resources
-
-- [Dart Tutorials](https://dart.dev/tutorials)
-
-Good luck with the project, and feel free to ask any additional questions if needed!
+![alt text](Data/Assets/projectDart.png)
