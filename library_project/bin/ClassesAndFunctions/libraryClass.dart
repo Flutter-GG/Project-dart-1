@@ -17,6 +17,17 @@ class Library {
       this.price,
       this.availableCopies,
       this.myLibrary});
+  static searchingByFunc({required String userInput, required String index}) {
+    String book = "";
+    for (var item in theLibrary) {
+      String theKey = item[index].toString().toLowerCase();
+      if (theKey.contains(userInput.toLowerCase())) {
+        book +=
+            "\nBook name: ${item['title']}\nFor author: ${item['author']}\nFirst published: ${item['First published']}\nCategories: ${item['categories']}\nPrice: ${item['price'].toStringAsFixed(2)}\$\nAvalibale copies: ${item['avalibale copies']}\n\n";
+      }
+    }
+    print(book);
+  }
 }
 
 class GetView extends Library {
@@ -63,6 +74,9 @@ class GetView extends Library {
     }
     String availableCategories = "\nWe have categories: $allCategories\n";
     print(availableCategories);
+    print("\nWrite the 'category' of the book:");
+    String userInput = stdin.readLineSync()!;
+    Library.searchingByFunc(userInput: userInput, index: 'categories');
   }
 
   getBooks() {
@@ -96,33 +110,21 @@ class GetSearch extends Library {
       print("\n1: by title name\n2: by author name\n3: by category\n");
       String userSelector = stdin.readLineSync()!;
 
-      searchingByFunc({required String userInput, required String index}) {
-        String book = "";
-        for (var item in theLibrary) {
-          String theKey = item[index].toString().toLowerCase();
-          if (theKey.contains(userInput.toLowerCase())) {
-            book +=
-                "\nBook name: ${item['title']}\nFor author: ${item['author']}\nFirst published: ${item['First published']}\nCategories: ${item['categories']}\nPrice: ${item['price'].toStringAsFixed(2)}\$\nAvalibale copies: ${item['avalibale copies']}\n\n";
-          }
-        }
-        print(book);
-      }
-
       switch (userSelector.toLowerCase()) {
         case == '1':
           print("\nWrite the 'title' of the book:");
           String userInput = stdin.readLineSync()!;
-          searchingByFunc(userInput: userInput, index: 'title');
+          Library.searchingByFunc(userInput: userInput, index: 'title');
           break;
         case == '2':
           print("\nWrite the 'author' of the book:");
           String userInput = stdin.readLineSync()!;
-          searchingByFunc(userInput: userInput, index: 'author');
+          Library.searchingByFunc(userInput: userInput, index: 'author');
           break;
         case == '3':
           print("\nWrite the 'category' of the book:");
           String userInput = stdin.readLineSync()!;
-          searchingByFunc(userInput: userInput, index: 'categories');
+          Library.searchingByFunc(userInput: userInput, index: 'categories');
           break;
         case == 'q':
           exit(0);
