@@ -20,7 +20,7 @@ List theLibrary = [
         "Automate the Boring Stuff with Python: Practical Programming for Total Beginners",
     "author": "Al Sweigart",
     "categories": ["Python", "Automation"],
-    "price": 149.93459,
+    "price": 149.973459,
     "avalibale copies": 2,
     "First published": "November 24+1, 2014"
   },
