@@ -1,0 +1,93 @@
+[
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "briefDescription": "A classic of the American literature, portraying racial injustice",
+      "publicationDate": "1960-07-11",
+      "category": "Fiction",
+      "price": 9.99,
+      "availableCopies": 200
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "briefDescription": "A dystopian novel set in a totalitarian regime",
+      "publicationDate": "1949-06-08",
+      "category": "Fiction",
+      "price": 7.99,
+      "availableCopies": 150
+    },
+    {
+      "title": "Worm",
+      "author": "John McCrae",
+      "briefDescription": "A web serial by John McCrae that follows the story of a teenage girl, Taylor Hebert, who is bullied at her high school in the fictional East Coast city of Brockton Bay.",
+      "publicationDate": "2011-06-11",
+      "category": "Web",
+      "price": 14.99,
+      "availableCopies": 170
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "briefDescription": "A romantic novel of manners written by Jane Austen",
+      "publicationDate": "1813-01-28",
+      "category": "Romantic",
+      "price": 9.99,
+      "availableCopies": 230
+    },
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "briefDescription": "A novel written by American author F. Scott Fitzgerald",
+      "publicationDate": "1925-04-10",
+      "category": "Novella",
+      "price": 8.99,
+      "availableCopies": 130
+    },
+    {
+      "title": "Moby Dick",
+      "author": "Herman Melville",
+      "briefDescription": "An 1851 novel by Herman Melville",
+      "publicationDate": "1851-10-18",
+      "category": "Adventure",
+      "price": 11.99,
+      "availableCopies": 120
+    },
+    {
+      "title": "The Catcher in the Rye",
+      "author": "J. D. Salinger",
+      "briefDescription": "A novel by J. D. Salinger, partially published in serial form in 1945–1946",
+      "publicationDate": "1951-07-16",
+      "category": "Fiction",
+      "price": 10.99,
+      "availableCopies": 140
+    },
+    {
+      "title": "Ulysses",
+      "author": "James Joyce",
+      "briefDescription": "A novel by Irish writer James Joyce",
+      "publicationDate": "1922-02-02",
+      "category": "Modernist",
+      "price": 12.99,
+      "availableCopies": 110
+    },
+    {
+      "title": "Don Quixote",
+      "author": "Miguel de Cervantes",
+      "briefDescription": "A novel written by Spanish author Miguel de Cervantes",
+      "publicationDate": "1615-01-16",
+      "category": "Fiction",
+      "price": 13.99,
+      "availableCopies": 160
+    },
+    {
+      "title": "War and Peace",
+      "author": "Leo Tolstoy",
+      "briefDescription": "A novel by the Russian author Leo Tolstoy, published serially, then in its entirety in 1869",
+      "publicationDate": "1869-01-01",
+      "category": "Historical",
+      "price": 14.99,
+      "availableCopies": 150
+    }
+  ]
+  
