@@ -8,17 +8,16 @@ class Library {
   List? categories;
   double? price;
   int? availableCopies;
-  List? myLibrary;
 
   Library(
       {this.title,
       this.author,
       this.categories,
       this.price,
-      this.availableCopies,
-      this.myLibrary});
+      this.availableCopies});
 }
-class getView extends Library {
+
+class View extends Library {
   //? done
   /* this class 'View' conatin all methods that belong to view,
   for example: if you want to see the availabe copies or all categories and
@@ -43,7 +42,7 @@ class getView extends Library {
         availableCopies += "The book: ${index['title']},\nis sold out.\n\n";
       }
     }
-    print(availableCopies);
+    return availableCopies;
   }
 
   getCategories() {
@@ -61,7 +60,7 @@ class getView extends Library {
       }
     }
     String availableCategories = "\nWe have categories: $allCategories\n";
-    print(availableCategories);
+    return availableCategories;
   }
 
   getBooks() {
@@ -73,12 +72,11 @@ class getView extends Library {
       bookDetails +=
           "\nThe book name: ${index['title']}\nFor author: ${index['author']}\nFirst published: ${index['First published']}\nCategories: ${index['categories']}\nPrice: ${index['price']}\$\navalibale copies: ${index['avalibale copies']}\n\n";
     }
-    print(bookDetails);
+    return bookDetails;
   }
 }
 
-
-class getSearch extends Library {
+class Search extends Library {
   //? done
   /* this class 'Search' conatin one method that belong to search,
   for example: if you want to search by the title, category or author you can do it here
@@ -89,7 +87,7 @@ class getSearch extends Library {
   also if you search using categories you can search by using one of the categories
   TODO: maybe if I have time I will fix the issue with searching by using more than one category, I will print the book more than one time
   */
-  getSearchByQuery() {
+  searchByQuery() {
     //? done
     try {
       print("\nPlease select what you want to search by:");
@@ -105,7 +103,7 @@ class getSearch extends Library {
                 "\nBook name: ${item['title']}\nFor author: ${item['author']}\nFirst published: ${item['First published']}\nCategories: ${item['categories']}\nPrice: ${item['price']}\$\nAvalibale copies: ${item['avalibale copies']}\n\n";
           }
         }
-        print(book);
+        return book;
       }
 
       switch (userSelector.toLowerCase()) {
@@ -135,7 +133,7 @@ class getSearch extends Library {
   }
 }
 
-class EditingLibrary extends Library {
+class Edits extends Library {
   //? done
   /* this class 'Edits' conatin all methods that belong to editing the library,
   for example: if you want to add a book, delete one or update one use these methods */
@@ -393,7 +391,7 @@ class Purchases extends Library {
     }
   }
 
-  getPurchases() {
+  viewPurchases() {
     if (invoice.isEmpty) {
       print("\nYou haven't made any purchases yet.");
       return;

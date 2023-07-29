@@ -2,9 +2,6 @@ import 'dart:io';
 import './libraryClass.dart';
 
 switchCases() {
-  final purchases =
-      Purchases(); // Create a single instance of the Purchases class.
-
   try {
     do {
       print(
@@ -13,42 +10,46 @@ switchCases() {
 
       switch (userInput) {
         case '1':
+          getView viewData = getView();
           print(
               "\n1- To view 'available copies'\n2- To view 'categories'\n3- To view all 'books'\n(press 'q' to exit):");
           String? userInput = stdin.readLineSync();
           switch (userInput) {
             case '1':
-              View().viewAvailableCopies();
+              viewData.getAvailableCopies();
               break;
             case '2':
-              View().viewCategories();
+              viewData.getCategories();
               break;
             case '3':
-              View().viewBooks();
+              viewData.getBooks();
               break;
             case 'q' || 'Q':
               return;
           }
           break;
         case '2':
-          Search().searchByQuery();
+          getSearch searching = getSearch();
+          print(searching.getSearchByQuery());
           break;
         case '3':
+          EditingLibrary editLibrary = EditingLibrary();
+
           print('\nAre you from staff? Y/N\n');
           String? isStaff = stdin.readLineSync();
           if (isStaff == 'y' || isStaff == 'Y') {
             print(
-                "\n1- To add new book\n2- To delete a book\n3- To edit a book\n(press 'q' to exit):");
+                "\n1- To add new book\n2- To delete a book\n3- To edit a book\n(or press 'q' to exit):");
             String? userInput = stdin.readLineSync();
             switch (userInput) {
               case '1':
-                Edits().addNewBook();
+                editLibrary.addNewBook();
                 break;
               case '2':
-                Edits().deleteBook();
+                editLibrary.deleteBook();
                 break;
               case '3':
-                Edits().modifyBookData();
+                editLibrary.modifyBookData();
                 break;
               case 'q' || 'Q':
                 return;
@@ -56,10 +57,12 @@ switchCases() {
           }
           break;
         case '4':
-          purchases.makePurchase();
+          Purchases purchase = Purchases();
+          purchase.makePurchase();
           break;
         case '5':
-          purchases.viewPurchases();
+          Purchases viewPurchases = Purchases();
+          viewPurchases.getPurchases();
           break;
 
         case 'q' || 'Q':

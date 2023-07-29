@@ -1,37 +1,30 @@
-import "dart:io";
-import "../Data/libraryData.dart";
+import 'dart:io';
 
-// TODO: database
+import '../Data/libraryData.dart';
+
+// Define the libraryData list with book information
+List libraryData = theLibrary;
+
 class Library {
   String? title;
   String? author;
   List? categories;
   double? price;
   int? availableCopies;
-  List? myLibrary;
 
-  Library(
-      {this.title,
-      this.author,
-      this.categories,
-      this.price,
-      this.availableCopies,
-      this.myLibrary});
+  Library({
+    this.title,
+    this.author,
+    this.categories,
+    this.price,
+    this.availableCopies,
+  });
 }
-class getView extends Library {
-  //? done
-  /* this class 'View' conatin all methods that belong to view,
-  for example: if you want to see the availabe copies or all categories and
-  books */
-  getAvailableCopies() {
-    //? done
-    /* this method only show the name of the book and how many copies left for
-    this title I added some spicific like if the book is more or equal 3 will print 
-    the available cpies but if the copies is less than 3 it will print 'Avalibale copies!!!'
-    to make it exited but if the copies is equal 0 it will print 'sold out'*/
-    String availableCopies =
-        ""; // this variuble is empty string just to access to it and then print the title and number of available copies
-    for (var index in theLibrary) {
+
+class View extends Library {
+  void viewAvailableCopies() {
+    String availableCopies = "";
+    for (var index in libraryData) {
       if (index['avalibale copies'] >= 3) {
         availableCopies +=
             "The book: ${index['title']},\nhas '${index['avalibale copies']}' Avalibale copies.\n\n";
@@ -46,14 +39,9 @@ class getView extends Library {
     print(availableCopies);
   }
 
-  getCategories() {
-    //? done
-    /* this just show all categories I make it empty list because I used 'for in' loop
-    and append every category in the index of categories, if string is doublecated 
-    it will ignore it, I use this method because unlike python,
-    tuples are not built-in in Dart and I don't know how to use packages in dart */
+  void viewCategories() {
     List allCategories = [];
-    for (var index in theLibrary) {
+    for (var index in libraryData) {
       for (var category in index['categories']) {
         if (!allCategories.contains(category)) {
           allCategories.add(category);
@@ -64,12 +52,9 @@ class getView extends Library {
     print(availableCategories);
   }
 
-  getBooks() {
-    //? done
-    /* this method is only to view all books in the theLibrary database, also I added 
-    empty string to easily access to it and print it out */
+  void viewBooks() {
     String bookDetails = "";
-    for (var index in theLibrary) {
+    for (var index in libraryData) {
       bookDetails +=
           "\nThe book name: ${index['title']}\nFor author: ${index['author']}\nFirst published: ${index['First published']}\nCategories: ${index['categories']}\nPrice: ${index['price']}\$\navalibale copies: ${index['avalibale copies']}\n\n";
     }
@@ -77,20 +62,8 @@ class getView extends Library {
   }
 }
 
-
-class getSearch extends Library {
-  //? done
-  /* this class 'Search' conatin one method that belong to search,
-  for example: if you want to search by the title, category or author you can do it here
-  this class only for search not for view, it will print out what you looking for
-  for example: if you looking for 'Automate the Boring Stuff with Python: Practical Programming for Total Beginners'
-  you can search using query, if you select title for example you can search using 
-  'Automate' or 'Python' and it will print out all books contain these words, and 
-  also if you search using categories you can search by using one of the categories
-  TODO: maybe if I have time I will fix the issue with searching by using more than one category, I will print the book more than one time
-  */
-  getSearchByQuery() {
-    //? done
+class Search extends Library {
+  void searchByQuery() {
     try {
       print("\nPlease select what you want to search by:");
       print("\n1: by title name\n2: by author name\n3: by category\n");
@@ -98,7 +71,7 @@ class getSearch extends Library {
 
       searchingByFunc({required String userInput, required String index}) {
         String book = "";
-        for (var item in theLibrary) {
+        for (var item in libraryData) {
           String theKey = item[index].toString().toLowerCase();
           if (theKey.contains(userInput.toLowerCase())) {
             book +=
@@ -109,25 +82,25 @@ class getSearch extends Library {
       }
 
       switch (userSelector.toLowerCase()) {
-        case == '1':
+        case '1':
           print("\nWrite the 'title' of the book:");
           String userInput = stdin.readLineSync()!;
           searchingByFunc(userInput: userInput, index: 'title');
           break;
-        case == '2':
+        case '2':
           print("\nWrite the 'author' of the book:");
           String userInput = stdin.readLineSync()!;
           searchingByFunc(userInput: userInput, index: 'author');
           break;
-        case == '3':
+        case '3':
           print("\nWrite the 'category' of the book:");
           String userInput = stdin.readLineSync()!;
           searchingByFunc(userInput: userInput, index: 'categories');
           break;
-        case == 'q':
+        case 'q':
           exit(0);
         default:
-          print("\n'$userSelector'is not a valid number");
+          print("\n'$userSelector' is not a valid number");
       }
     } catch (error) {
       print("Error: $error");
@@ -135,17 +108,8 @@ class getSearch extends Library {
   }
 }
 
-class EditingLibrary extends Library {
-  //? done
-  /* this class 'Edits' conatin all methods that belong to editing the library,
-  for example: if you want to add a book, delete one or update one use these methods */
-  addNewBook() {
-    //? done
-    /* this method will add a new book to collection and print the list with the
-    new book, the data that will added will be the title, author name, number of copies, 
-    the price, the date of publish and the categories separated by comma, for 
-    example: if you type (python, clean code). will be a list ['python', 'clean code'] 
-    AKA the categories, because category is a list of strings */
+class Edits extends Library {
+  void addNewBook() {
     try {
       print("please enter title (press q to exit):");
       String title = stdin.readLineSync() ?? "";
@@ -165,8 +129,8 @@ class EditingLibrary extends Library {
       String categoriesInput = stdin.readLineSync() ?? "";
       List<String> categories = categoriesInput.split(', ');
 
-      String viweNewList = "";
-      List<Map<String, dynamic>> updatedBookList = List.from(theLibrary);
+      String viewNewList = "";
+      List<Map<String, dynamic>> updatedBookList = List.from(libraryData);
 
       updatedBookList.add({
         "title": title,
@@ -178,28 +142,23 @@ class EditingLibrary extends Library {
       });
 
       for (var book in updatedBookList) {
-        viweNewList +=
+        viewNewList +=
             "\nBook name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price']}\$\navalibale copies: ${book['avalibale copies']}\n\n";
       }
-      print(viweNewList);
+      print(viewNewList);
 
-      theLibrary = updatedBookList;
+      libraryData = updatedBookList;
     } catch (error) {
       print("Error: $error");
     }
   }
 
-  deleteBook() {
-    //? done
-    /* this method will delete a book, then print the updated list, this is 
-    case sensitive because you will delete the book so you need to be sure 
-    about the spiling of the book, I cange it from decrease one of the copies to
-    delete the whole book with all copies */
+  void deleteBook() {
     try {
       print(
           "Write the 'title' of the book that you want to 'delete' (press 'q' to exit):\n");
-      for (var index = 0; index < theLibrary.length; index++) {
-        print("${index + 1}: ${theLibrary[index]['title']}");
+      for (var index = 0; index < libraryData.length; index++) {
+        print("${index + 1}: ${libraryData[index]['title']}");
       }
       String? titleOfTheBook = stdin.readLineSync() ?? "";
       if (titleOfTheBook.toLowerCase() == 'q') {
@@ -210,7 +169,7 @@ class EditingLibrary extends Library {
 
       while (titleOfTheBook?.toLowerCase() != 'q') {
         bool bookFound = false;
-        for (var book in theLibrary) {
+        for (var book in libraryData) {
           String title = book['title'];
           if (title.toLowerCase() == titleOfTheBook?.toLowerCase()) {
             bookFound = true;
@@ -226,30 +185,25 @@ class EditingLibrary extends Library {
         print("Is there any other book? (type 'q' to exit):");
         titleOfTheBook = stdin.readLineSync();
       }
-      theLibrary.removeWhere((book) => booksToRemove.contains(book));
+      libraryData.removeWhere((book) => booksToRemove.contains(book));
 
       String printedList = "";
-      for (var book in theLibrary) {
+      for (var book in libraryData) {
         printedList +=
             "\nBook name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price']}\$\nAvalibale copies: ${book['avalibale copies']}\n\n";
       }
       print(printedList);
-      for (var index = 0; index < booksToRemove.length; index++)
+      for (var index = 0; index < booksToRemove.length; index++) {
         print("\nThe book '${booksToRemove[index]['title']}' was deleted.");
-
-      // List updatedBookList = List.from(theLibrary);
+      }
     } catch (error) {
       print("Error: $error");
     }
   }
 
-  modifyBookData() {
-    //?done
-    /* this method to modify the data of a book if the user didn't add a new data or empty string
-    the exist data will stay, but if the user add a data the method will add it
-    and delete the old data */
+  void modifyBookData() {
     try {
-      List<Map<String, dynamic>> updatedBookList = List.from(theLibrary);
+      List<Map<String, dynamic>> updatedBookList = List.from(libraryData);
 
       while (true) {
         print(
@@ -317,7 +271,7 @@ class EditingLibrary extends Library {
         print(newList);
       }
 
-      theLibrary = updatedBookList;
+      libraryData = updatedBookList;
     } catch (error) {
       print("\nError: $error");
     }
@@ -325,21 +279,18 @@ class EditingLibrary extends Library {
 }
 
 class Purchases extends Library {
-  //? done
-  /* this class is for makeing purchases, if the user want to but a book with 0 
-  copies it wont allow the user to do it, also recieve the invoice of 
-  the purchase */
-  List invoice = [];
-  makePurchase() {
+  List<Map<String, dynamic>> invoice = [];
+
+  void makePurchase() {
     try {
       List<Map<String, dynamic>> updatedInvoice = List.from(invoice);
 
       print("What book do you want to buy (or press q to quit):");
-      for (var index = 1; index < theLibrary.length; index++) {
-        if (theLibrary[index]['avalibale copies'] == 0) {
-          print("\n$index: ${theLibrary[index]['title']}, is sold out\n");
+      for (var index = 1; index < libraryData.length; index++) {
+        if (libraryData[index]['avalibale copies'] == 0) {
+          print("\n$index: ${libraryData[index]['title']}, is sold out\n");
         } else {
-          print("$index: ${theLibrary[index]['title']}\n");
+          print("$index: ${libraryData[index]['title']}\n");
         }
       }
 
@@ -353,8 +304,8 @@ class Purchases extends Library {
       }
 
       int bookNumber = int.tryParse(userInput) ?? -1;
-      if (bookNumber >= 0 && bookNumber < theLibrary.length) {
-        Map<String, dynamic> selectedBook = theLibrary[bookNumber];
+      if (bookNumber >= 0 && bookNumber < libraryData.length) {
+        Map<String, dynamic> selectedBook = libraryData[bookNumber];
         print("Selected Book: ${selectedBook['title']}");
 
         print("Enter the number of copies you want to purchase:");
@@ -393,7 +344,7 @@ class Purchases extends Library {
     }
   }
 
-  getPurchases() {
+  void viewPurchases() {
     if (invoice.isEmpty) {
       print("\nYou haven't made any purchases yet.");
       return;
@@ -409,5 +360,72 @@ class Purchases extends Library {
     }
 
     print("\nTotal Amount Spent: \$${totalAmount.toStringAsFixed(2)}");
+  }
+}
+
+void main() {
+  View view = View();
+  Search search = Search();
+  Edits edits = Edits();
+  Purchases purchases = Purchases();
+
+  while (true) {
+    try {
+      print("\nLibrary Management System");
+      print("1. View available copies");
+      print("2. View categories");
+      print("3. View all books");
+      print("4. Search for a book");
+      print("5. Add a new book");
+      print("6. Delete a book");
+      print("7. Modify book data");
+      print("8. Make a purchase");
+      print("9. View purchases");
+      print("10. Exit");
+      print("Enter your choice:");
+
+      String? choice = stdin.readLineSync();
+      if (choice == null) {
+        continue;
+      }
+
+      switch (int.tryParse(choice)) {
+        case 1:
+          view.viewAvailableCopies();
+          break;
+        case 2:
+          view.viewCategories();
+          break;
+        case 3:
+          view.viewBooks();
+          break;
+        case 4:
+          search.searchByQuery();
+          break;
+        case 5:
+          edits.addNewBook();
+          break;
+        case 6:
+          edits.deleteBook();
+          break;
+        case 7:
+          edits.modifyBookData();
+          break;
+        case 8:
+          purchases.makePurchase();
+          break;
+        case 9:
+          purchases.viewPurchases();
+          break;
+        case 10:
+          print("Exiting the Library Management System. Goodbye!");
+          exit(0);
+        default:
+          print("Invalid choice. Please enter a valid option.");
+          break;
+      }
+    } catch (error) {
+      print("Error: $error");
+    }
   }
 }
