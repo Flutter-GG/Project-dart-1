@@ -166,7 +166,7 @@ class EditingLibrary extends Library {
       List<String> categories = categoriesInput.split(', ');
 
       String viweNewList = "";
-      List<Map<String, dynamic>> updatedBookList = List.from(theLibrary);
+      List updatedBookList = List.from(theLibrary);
 
       updatedBookList.add({
         "title": title,
@@ -249,7 +249,7 @@ class EditingLibrary extends Library {
     the exist data will stay, but if the user add a data the method will add it
     and delete the old data */
     try {
-      List<Map<String, dynamic>> updatedBookList = List.from(theLibrary);
+      List updatedBookList = List.from(theLibrary);
 
       while (true) {
         print(
@@ -261,7 +261,7 @@ class EditingLibrary extends Library {
         if (titleToModify.toLowerCase() == 'q') {
           break;
         }
-        Map<String, dynamic>? bookToModify;
+        Map? bookToModify;
         for (var book in updatedBookList) {
           if (book['title'] == titleToModify) {
             bookToModify = book;
@@ -332,7 +332,7 @@ class Purchases extends Library {
   List invoice = [];
   makePurchase() {
     try {
-      List<Map<String, dynamic>> updatedInvoice = List.from(invoice);
+      List updatedInvoice = List.from(invoice);
 
       print("What book do you want to buy (or press 'q' to exit):");
       for (var index = 1; index < theLibrary.length; index++) {
@@ -354,7 +354,7 @@ class Purchases extends Library {
 
       int bookNumber = int.tryParse(userInput) ?? -1;
       if (bookNumber >= 0 && bookNumber < theLibrary.length) {
-        Map<String, dynamic> selectedBook = theLibrary[bookNumber];
+        Map selectedBook = theLibrary[bookNumber];
         print("Selected Book: ${selectedBook['title']}");
 
         print("Enter the number of copies you want to purchase:");
