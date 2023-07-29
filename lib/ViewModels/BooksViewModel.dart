@@ -23,8 +23,9 @@ void searchBooksByTitle() {
   List<Book> matchingBooks = books.where((book) => book.title.toLowerCase().contains(title)).toList();
 
   if (matchingBooks.isEmpty) {
-    print("No books found with the title '$title'.");
+    print("No mystical tomes found with the title '$title'.");
   } else {
+    print("Behold the magical books found with the title '$title':");
     for (var book in matchingBooks) {
       print('Title: ${book.title}, Remaining Copies: ${book.availableCopies}');
     }
@@ -33,25 +34,78 @@ void searchBooksByTitle() {
 
 
 
+
   List<Book> searchBooksByAuthor() {
-  print("Enter the author you want to search for:");
+  print("Enter the name of the esteemed author you wish to explore:");
   String author = stdin.readLineSync()?.toLowerCase() ?? '';
-  return books.where((book) => book.author.toLowerCase().contains(author)).toList();
+
+  List<Book> matchingBooks = books.where((book) => book.author.toLowerCase().contains(author)).toList();
+
+  if (matchingBooks.isEmpty) {
+    print("Alas, no magical tomes authored by '$author' were found in our mystical library.");
+  } else {
+    print("Embark on a journey through the mystical works of '$author':");
+    for (var book in matchingBooks) {
+      print('Title: ${book.title}, Remaining Copies: ${book.availableCopies}');
+    }
+  }
+
+  return matchingBooks; // Add the return statement at the end of the function
 }
 
 
-  List<Book> searchBooksByCategory() {
-  print("Enter the category you want to search for:");
-  String category = stdin.readLineSync()?.toLowerCase() ?? '';
-  return books.where((book) => book.category.toLowerCase().contains(category)).toList();
+
+
+  List<String> getAvailableCategories() {
+  return books.map((book) => book.category).toSet().toList();
 }
+
+List<Book> searchBooksByCategory() {
+  List<String> availableCategories = getAvailableCategories();
+
+  print("Available Categories:");
+  for (int i = 0; i < availableCategories.length; i++) {
+    print("${i + 1}: ${availableCategories[i]}");
+  }
+
+  print("Choose the category you want to explore (enter the number):");
+  String input = stdin.readLineSync() ?? '';
+  int categoryNumber = int.tryParse(input) ?? 0;
+
+  if (categoryNumber >= 1 && categoryNumber <= availableCategories.length) {
+    String selectedCategory = availableCategories[categoryNumber - 1];
+    List<Book> matchingBooks = books.where((book) => book.category.toLowerCase() == selectedCategory.toLowerCase()).toList();
+
+    if (matchingBooks.isEmpty) {
+      print("Alas, no enchanting books are available in the category '${selectedCategory}'.");
+    } else {
+      print("Embark on a mystical journey through the category '${selectedCategory}':");
+      for (var book in matchingBooks) {
+        print('Title: ${book.title}, Remaining Copies: ${book.availableCopies}');
+      }
+    }
+
+    return matchingBooks;
+  } else {
+    print("Invalid category number. Please choose a valid option.");
+    return [];
+  }
+}
+
 
 
   void displayAllBooks() {
+  if (books.isEmpty) {
+    print("Alas, there are no enchanting books available in our library.");
+  } else {
+    print("Behold! Here are the mystical books that grace our enchanted shelves:");
+
     for (var book in books) {
       print('Title: ${book.title}, Remaining Copies: ${book.availableCopies}');
     }
   }
+}
+
 
 void createBook() {
   // Read user input for the book details
