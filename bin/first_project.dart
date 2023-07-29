@@ -7,12 +7,12 @@ void main(List<String> arguments) {
     print("Welcome to Wejdan Library!");
     print("please select from menu:");
     print(
-        "1: Query about books, 2: Update the library , 3: Make book purchases, Q: quite.");
+        "1: Query about books.\n2: Update the library.\n3: Make book purchases.\nQ: quite.");
     String selected = stdin.readLineSync()!;
     switch (selected) {
       case "1":
         print(
-            "1: To view all books, 2: To search in books, 3: Display all Book Categories, Q: quite.");
+            "1: To view all books.\n2: To search in books.\n3: Display all Book Categories.\nQ: quite.");
         String? selected = stdin.readLineSync();
         switch (selected) {
           case '1':
@@ -20,7 +20,7 @@ void main(List<String> arguments) {
             break;
           case '2':
             print(
-                "1: To search books by title, 2: To search books by author, 3: To search books by category, Q: quite.");
+                "1: To search books by title.\n2: To search books by author.\n3: To search books by category.\nQ: quite.");
             String? selected = stdin.readLineSync();
             switch (selected) {
               case '1':
@@ -39,7 +39,7 @@ void main(List<String> arguments) {
           case '3':
             print("please select the category from menu:");
             print(
-                "1: Mystery/Thriller, 2: Science Fiction/Dystopian, 3: Short Stories/Fiction, 4:Fiction/Romance, 5: Fiction/Self-Help, 6: NonFiction/Science, 7: Fiction/Drama,  Q: quite.");
+                "1: Mystery/Thriller.\n2: Science Fiction/Dystopian.\n3: Short Stories/Fiction.\n4: Fiction/Romance.\n5: Fiction/Self-Help.\n6: NonFiction/Science.\n7: Fiction/Drama.\nQ: quite.");
             String? selected = stdin.readLineSync();
             switch (selected) {
               case '1':
@@ -74,7 +74,7 @@ void main(List<String> arguments) {
 
       case "2":
         print(
-            "1: To add new book, 2: To delete book, 3: To update book info, Q: quite.");
+            "1: To add new book.\n2: To delete book.\n3: To update book info.\nQ: quite.");
         String? selected = stdin.readLineSync();
         switch (selected) {
           case '1':
@@ -84,7 +84,40 @@ void main(List<String> arguments) {
             deleteBook();
             break;
           case '3':
-            // TODO To update book info
+            print(
+                "1: To update the title of book.\n2: To update the author name.\n3: To update the brief description.\n4: To update the publication date of the book.\n5: To update the category of the book.\n6: To update the available copies of book.\n7: To update the price of the book.\nQ: quite.");
+            String? selected = stdin.readLineSync();
+            print("Please enter the title of the book you want to update:");
+            String selectedBook = stdin.readLineSync()!;
+            switch (selected) {
+              case '1':
+                updateBookInfo(selectedBook, '1');
+                break;
+              case '2':
+                updateBookInfo(selectedBook, '2');
+                break;
+              case '3':
+                updateBookInfo(selectedBook, '3');
+                break;
+              case '4':
+                updateBookInfo(selectedBook, '4');
+                break;
+              case '5':
+                updateBookInfo(selectedBook, '5');
+                break;
+              case '6':
+                print("Please entr the title of the book?");
+                String selectedBook = stdin.readLineSync()!;
+                updateBookInfo(selectedBook, '6');
+                break;
+              case '7':
+                print("Please entr the title of the book?");
+                String selectedBook = stdin.readLineSync()!;
+                updateBookInfo(selectedBook, '7');
+                break;
+              case 'q' || 'Q':
+                break;
+            }
             break;
           case 'q' || 'Q':
             break;
@@ -92,7 +125,7 @@ void main(List<String> arguments) {
         break;
 
       case "3":
-        // TODO Make book purchases && detailed invoice after the purchase
+        //TODO: Make book purchases && detailed invoice after the purchase
         break;
 
       case "Q" || "q":
@@ -132,7 +165,7 @@ addNewBook() {
       "price": price
     };
     myData.insert(0, bookMap);
-    print("The book has been added successfully!");
+    print("\nThe book has been added successfully!");
   } catch (error) {
     print("Error: $error");
   }
@@ -146,11 +179,11 @@ deleteBook() {
     for (int i = 0; i <= myData.length - 1; i++) {
       if (myData[i]['bookTitle'] == bookTitle) {
         myData.removeWhere((item) => item["bookTitle"] == bookTitle);
-        print("The book has been deleted successfully!");
+        print("\nThe book has been deleted successfully!");
         flag = true;
       } else if (i == myData.length - 1 && flag != true) {
         print(
-            "The book does not exist! please check the spelling and try again.");
+            "\nThe book does not exist! please check the spelling and try again.");
       }
     }
   } catch (error) {
@@ -234,6 +267,119 @@ searchInCategory(String category) {
   }
 }
 
+updateBookInfo(String selectedBook, String caseNumber) {
+  print("Please if you want to cancel press C.");
+  switch (caseNumber) {
+    case '1':
+      bool flag = false;
+      for (int i = 0; i <= myData.length - 1; i++) {
+        if (myData[i]['bookTitle'] == selectedBook) {
+          print("Please entr the new title of the book:");
+          String newBookTitle = stdin.readLineSync()!;
+          myData[i]['bookTitle'] = newBookTitle;
+          flag = true;
+          print("\nThe book has been updated successfully!");
+        } else if (i == myData.length - 1 && flag != true) {
+          print(
+              "The book does not exist! please check the spelling and try again.");
+        }
+      }
+      break;
+    case '2':
+      bool flag = false;
+      for (int i = 0; i <= myData.length - 1; i++) {
+        if (myData[i]['bookTitle'] == selectedBook) {
+          print("Please entr the new author name the book:");
+          String newAuthorName = stdin.readLineSync()!;
+          myData[i]['authorName'] = newAuthorName;
+          flag = true;
+          print("\nThe book has been updated successfully!");
+        } else if (i == myData.length - 1 && flag != true) {
+          print(
+              "The book does not exist! please check the spelling and try again.");
+        }
+      }
+      break;
+    case '3':
+      bool flag = false;
+      for (int i = 0; i <= myData.length - 1; i++) {
+        if (myData[i]['bookTitle'] == selectedBook) {
+          print("Please entr the new brief description the book:");
+          String newBriefDescription = stdin.readLineSync()!;
+          myData[i]['briefDescription'] = newBriefDescription;
+          flag = true;
+          print("\nThe book has been updated successfully!");
+        } else if (i == myData.length - 1 && flag != true) {
+          print(
+              "The book does not exist! please check the spelling and try again.");
+        }
+      }
+      break;
+    case '4':
+      bool flag = false;
+      for (int i = 0; i <= myData.length - 1; i++) {
+        if (myData[i]['bookTitle'] == selectedBook) {
+          print("Please entr the new publication date the book:");
+          String newPublicationDate = stdin.readLineSync()!;
+          myData[i]['publicationDate'] = newPublicationDate;
+          flag = true;
+          print("\nThe book has been updated successfully!");
+        } else if (i == myData.length - 1 && flag != true) {
+          print(
+              "The book does not exist! please check the spelling and try again.");
+        }
+      }
+      break;
+    case '5':
+      bool flag = false;
+      for (int i = 0; i <= myData.length - 1; i++) {
+        if (myData[i]['bookTitle'] == selectedBook) {
+          print("Please entr the new category the book:");
+          String newCategory = stdin.readLineSync()!;
+          myData[i]['category'] = newCategory;
+          flag = true;
+          print("\nThe book has been updated successfully!");
+        } else if (i == myData.length - 1 && flag != true) {
+          print(
+              "The book does not exist! please check the spelling and try again.");
+        }
+      }
+      break;
+    case '6':
+      bool flag = false;
+      for (int i = 0; i <= myData.length - 1; i++) {
+        if (myData[i]['bookTitle'] == selectedBook) {
+          print("Please entr the new available copies the book:");
+          int newAvailableCopies = int.parse(stdin.readLineSync()!);
+          myData[i]['availableCopies'] = newAvailableCopies;
+          flag = true;
+          print("\nThe book has been updated successfully!");
+        } else if (i == myData.length - 1 && flag != true) {
+          print(
+              "The book does not exist! please check the spelling and try again.");
+        }
+      }
+      break;
+    case '7':
+      bool flag = false;
+      for (int i = 0; i <= myData.length - 1; i++) {
+        if (myData[i]['bookTitle'] == selectedBook) {
+          print("Please entr the new category the book:");
+          int newPrice = int.parse(stdin.readLineSync()!);
+          myData[i]['price'] = newPrice;
+          flag = true;
+          print("\nThe book has been updated successfully!");
+        } else if (i == myData.length - 1 && flag != true) {
+          print(
+              "The book does not exist! please check the spelling and try again.");
+        }
+      }
+      break;
+    case 'C' || 'c':
+      break;
+  }
+}
+
 class Book {
   late String? bookTitle;
   late String? authorName;
@@ -253,7 +399,7 @@ class Book {
       this.price});
   displayData() {
     print(
-        "Book Title:$bookTitle Author Name: $authorName Brief Description: $briefDescription Publication Date: $publicationDate Category: $category Available Copies: $availableCopies Price: $price");
+        "Book Title:$bookTitle\nAuthor Name: $authorName\nBrief Description: $briefDescription/nPublication Date: $publicationDate/nCategory: $category\nAvailable Copies: $availableCopies\nPrice: $price");
   }
 }
 
