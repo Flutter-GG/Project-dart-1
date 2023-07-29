@@ -1,29 +1,29 @@
 import 'dart:io';
 import '../ViewModels/BooksViewModel.dart';
 
-class EnchantedBookLibrary extends BooksViewModel{
+class EnchantedBookLibraryViewModel extends BooksViewModel{
 
 
-EnchantedBookLibrary(String jsonFilePath) : super(jsonFilePath);
+EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
 
 
   void displayWelcomeMenu()  {
     print("Welcome to the Enchanted Book Library, where stories come to life!\n");
     stdout.flush();
     sleep(Duration(seconds:3));
-    print("Embark on a magical journey through the written word by choosing one of the following options:\n");
+    print("Embark on a magical journey by choosing one of the following options:\n");
     stdout.flush();
     sleep(Duration(seconds:3));
-    print("1: Explore Books - Uncover the secrets of our vast collection of books, where each tome holds its own adventure and wonder!\n");
+    print("1: Explore Books \n- Uncover the secrets of our vast collection of books, where each tome holds its own adventure and wonder!\n");
     stdout.flush();
     sleep(Duration(seconds:5));
-    print("2: Manage Library - Become the master librarian and wield the power to organize and curate the enchanted shelves!\n");
+    print("2: Manage Library \n- Become the master librarian and wield the power to organize and curate the enchanted shelves!\n");
     stdout.flush();
     sleep(Duration(seconds:5));
-    print("3: Purchase and Reports - Delight in a mystical buying experience, and witness your collection grow with each acquisition! Also, receive mystical reports on your literary quests!\n");
+    print("3: Purchase and Reports \n- Delight in a mystical buying experience, and witness your collection grow with each acquisition! Also, receive mystical reports on your literary quests!\n");
     stdout.flush();
     sleep(Duration(seconds:5));
-    print("4: Quit - Return to the mortal realm and exit the enchanted realm of books.\n");
+    print("4: Quit \n- Return to the mortal realm and exit the enchanted realm of books.\n");
     stdout.flush();
 
     displayMenuInstructions();
@@ -85,6 +85,9 @@ EnchantedBookLibrary(String jsonFilePath) : super(jsonFilePath);
     stdout.flush();
 
     displayMenuInstructions();
+
+     var userInput = stdin.readLineSync();
+     processManagementMenuUserInput(userInput);
   }
 
   void displayPurchasingMenu()  {
@@ -100,13 +103,10 @@ EnchantedBookLibrary(String jsonFilePath) : super(jsonFilePath);
     print("1: Purchase \n- Embark on a journey of acquiring captivating books from our enchanted shelves. Watch your collection grow with each acquisition!\n");
     stdout.flush();
     sleep(Duration(seconds:5));
-    print("2: Invoice \n- After making a purchase, receive a mystical invoice that reveals the books you've acquired, their prices, and the total cost of your literary treasures.\n");
+    print("2: Reporting \n- Unveil magical reports on your literary quests, showing the number of books purchased and the total amount spent.\n");
     stdout.flush();
     sleep(Duration(seconds:5));
-    print("3: Reporting \n- Unveil magical reports on your literary quests, showing the number of books purchased and the total amount spent.\n");
-    stdout.flush();
-    sleep(Duration(seconds:5));
-    print("4: Back \n- Return to the main menu and continue your magical adventure.\n");
+    print("3: Back \n- Return to the main menu and continue your magical adventure.\n");
     stdout.flush();
     displayMenuInstructions();
   }
@@ -115,9 +115,7 @@ EnchantedBookLibrary(String jsonFilePath) : super(jsonFilePath);
     print("To select an option, simply utter the corresponding number and press Enter.\n");
     stdout.flush();
     sleep(Duration(seconds:3));
-    print("If you ever desire to journey back to the previous menu, invoke the sacred word \"back\" and press Enter.\n");
-    stdout.flush();
-    sleep(Duration(seconds:3));
+
     print("May the magic of words guide you on this enchanting quest! Happy reading!\n");
     stdout.flush();
     sleep(Duration(seconds:3));
@@ -216,6 +214,66 @@ void processExplorationMenuUserInput(String? userInput) {
   }
 }
 
+void processManagementMenuUserInput(String? userInput) {
+  if (userInput == null) {
+    print("Invalid input. Please try again.");
+    return;
+  }
+
+
+  switch (userInput) {
+    case '1':
+      createBook();
+      break;
+
+    case '2':
+      updateBookInfo();
+      break;
+
+    case '3':
+      deleteBook();
+      break;
+
+    case '4':
+      displayWelcomeMenu();
+      break;
+
+    default:
+      print("Invalid choice. Please choose a valid option.");
+      break;
+  }
+}
+
+
+void processPurchasingMenuUserInput(String? userInput) {
+
+
+  if (userInput == null) {
+    print("Invalid input. Please try again.");
+    return;
+  }
+
+  switch (userInput) {
+    case '1':
+      purchaseBook();
+      break;
+
+    case '2':
+      displayPurchases();
+      break;
+
+    case '3':
+      displayWelcomeMenu();
+      break;
+
+    default:
+      print("Invalid choice. Please choose a valid option.");
+      break;
+  }
+}
 
 
 }
+
+
+

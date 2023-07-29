@@ -3,7 +3,7 @@
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
       "briefDescription": "A classic of the American literature, portraying racial injustice",
-      "publicationDate": "1960",
+      "publicationDate": 1960,
       "category": "Fiction",
       "price": 9.99,
       "availableCopies": 200
@@ -12,7 +12,7 @@
       "title": "1984",
       "author": "George Orwell",
       "briefDescription": "A dystopian novel set in a totalitarian regime",
-      "publicationDate": "1949",
+      "publicationDate": 1949,
       "category": "Fiction",
       "price": 7.99,
       "availableCopies": 150
@@ -21,7 +21,7 @@
       "title": "Worm",
       "author": "John McCrae",
       "briefDescription": "A web serial by John McCrae that follows the story of a teenage girl, Taylor Hebert, who is bullied at her high school in the fictional East Coast city of Brockton Bay.",
-      "publicationDate": "2011",
+      "publicationDate": 2011,
       "category": "Action",
       "price": 14.99,
       "availableCopies": 170
@@ -30,7 +30,7 @@
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
       "briefDescription": "A romantic novel of manners written by Jane Austen",
-      "publicationDate": "1813",
+      "publicationDate": 1813,
       "category": "Romance",
       "price": 9.99,
       "availableCopies": 230
@@ -39,7 +39,7 @@
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
       "briefDescription": "A novel written by American author F. Scott Fitzgerald",
-      "publicationDate": "1925",
+      "publicationDate": 1925,
       "category": "Classic",
       "price": 8.99,
       "availableCopies": 130
@@ -48,7 +48,7 @@
       "title": "Moby Dick",
       "author": "Herman Melville",
       "briefDescription": "An 1851 novel by Herman Melville",
-      "publicationDate": "1851",
+      "publicationDate": 1851,
       "category": "Adventure",
       "price": 11.99,
       "availableCopies": 120
@@ -57,7 +57,7 @@
       "title": "The Catcher in the Rye",
       "author": "J. D. Salinger",
       "briefDescription": "A novel by J. D. Salinger, partially published in serial form in 1945–1946",
-      "publicationDate": "1951",
+      "publicationDate": 1951,
       "category": "Fiction",
       "price": 10.99,
       "availableCopies": 140
@@ -66,7 +66,7 @@
       "title": "Ulysses",
       "author": "James Joyce",
       "briefDescription": "A novel by Irish writer James Joyce",
-      "publicationDate": "1922",
+      "publicationDate": 1922,
       "category": "Modernist",
       "price": 12.99,
       "availableCopies": 110
@@ -76,7 +76,7 @@
       "title": "War and Peace",
       "author": "Leo Tolstoy",
       "briefDescription": "A novel by the Russian author Leo Tolstoy, published serially, then in its entirety in 1869",
-      "publicationDate": "1869",
+      "publicationDate": 1869,
       "category": "Historical",
       "price": 14.99,
       "availableCopies": 150
@@ -85,7 +85,7 @@
       "title": "Green Earth",
       "author": "Ahmed Abdelmati Hegazy",
       "briefDescription": "A novel that follows the life story of an Egyptian farmer, addressing issues of poverty and social injustice.",
-      "publicationDate": "2017",
+      "publicationDate": 2017,
       "category": "Novel",
       "price": 20.0,
       "availableCopies": 100
@@ -94,7 +94,7 @@
       "title": "The Granada Trilogy",
       "author": "Radwa Ashour",
       "briefDescription": "A historical trilogy that narrates the story of the last Christian kingdom in Andalusia and the Muslim invasion of the Visigoths in the 8th century.",
-      "publicationDate": "2019",
+      "publicationDate": 2019,
       "category": "Historical",
       "price": 25.0,
       "availableCopies": 80
@@ -103,7 +103,7 @@
       "title": "Arabia of the Last Days",
       "author": "Jalal Al-Ghatees",
       "briefDescription": "A fictional novel that transports the reader to a distant future blending advanced technology with Arab heritage.",
-      "publicationDate": "2020",
+      "publicationDate": 2020,
       "category": "Novel",
       "price": 30.0,
       "availableCopies": 90
@@ -112,7 +112,7 @@
       "title": "Her Majesty",
       "author": "Ghada Al-Saman",
       "briefDescription": "A novel that tells the story of a young girl living in a conservative society, facing societal challenges and contradictions.",
-      "publicationDate": "2018",
+      "publicationDate": 2018,
       "category": "Novel",
       "price": 18.0,
       "availableCopies": 120
@@ -122,7 +122,7 @@
     "title": "The Notebook",
     "author": "Nicholas Sparks",
     "briefDescription": "A heartwarming love story about a young couple from different social backgrounds.",
-    "publicationDate": "1996",
+    "publicationDate": 1996,
     "category": "Romance",
     "price": 12.99,
     "availableCopies": 180
@@ -131,7 +131,7 @@
     "title": "Murder on the Orient Express",
     "author": "Agatha Christie",
     "briefDescription": "A classic mystery novel featuring Hercule Poirot as he investigates a murder on a luxury train.",
-    "publicationDate": "1934",
+    "publicationDate": 1934,
     "category": "Mystery",
     "price": 8.99,
     "availableCopies": 150
@@ -140,7 +140,7 @@
     "title": "Gone Girl",
     "author": "Gillian Flynn",
     "briefDescription": "A gripping psychological thriller about a woman who goes missing and the secrets that unravel.",
-    "publicationDate": "2012",
+    "publicationDate": 2012,
     "category": "Mystery",
     "price": 10.99,
     "availableCopies": 120
@@ -149,7 +149,7 @@
     "title": "It",
     "author": "Stephen King",
     "briefDescription": "A horror novel about a shape-shifting entity that preys on children and their fears.",
-    "publicationDate": "1986",
+    "publicationDate": 1986,
     "category": "Horror",
     "price": 11.99,
     "availableCopies": 100
@@ -158,7 +158,7 @@
     "title": "The Shining",
     "author": "Stephen King",
     "briefDescription": "A haunted hotel drives a man to madness in this classic horror novel.",
-    "publicationDate": "1977",
+    "publicationDate": 1977,
     "category": "Horror",
     "price": 9.99,
     "availableCopies": 90
@@ -167,7 +167,7 @@
     "title": "Dracula",
     "author": "Bram Stoker",
     "briefDescription": "The iconic vampire tale that follows Count Dracula's attempt to move from Transylvania to England.",
-    "publicationDate": "1897",
+    "publicationDate": 1897,
     "category": "Horror",
     "price": 7.99,
     "availableCopies": 80

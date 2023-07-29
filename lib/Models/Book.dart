@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 class Book {
-  final String title;
-  final String author;
-  final String briefDescription;
-  final String publicationDate;
-  final String category;
-  final double price;
-   int availableCopies;
+  String title;
+  String author;
+  String briefDescription;
+  int publicationDate;
+  String category;
+  double price;
+  int availableCopies;
 
   Book({
     required this.title,
