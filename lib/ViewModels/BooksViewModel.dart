@@ -16,23 +16,36 @@ class BooksViewModel {
     books = jsonData.map((json) => Book.fromJson(json)).toList();
   }
 
-  List<Book> searchBooksByTitle(String title) {
-    return books
-        .where((book) => book.title.toLowerCase().contains(title.toLowerCase()))
-        .toList();
-  }
+void searchBooksByTitle() {
+  print("Enter the title you want to search for:");
+  String title = stdin.readLineSync()?.toLowerCase() ?? '';
 
-  List<Book> searchBooksByAuthor(String author) {
-    return books
-        .where((book) => book.author.toLowerCase().contains(author.toLowerCase()))
-        .toList();
-  }
+  List<Book> matchingBooks = books.where((book) => book.title.toLowerCase().contains(title)).toList();
 
-  List<Book> searchBooksByCategory(String category) {
-    return books
-        .where((book) => book.category.toLowerCase().contains(category.toLowerCase()))
-        .toList();
+  if (matchingBooks.isEmpty) {
+    print("No books found with the title '$title'.");
+  } else {
+    for (var book in matchingBooks) {
+      print('Title: ${book.title}, Remaining Copies: ${book.availableCopies}');
+    }
   }
+}
+
+
+
+  List<Book> searchBooksByAuthor() {
+  print("Enter the author you want to search for:");
+  String author = stdin.readLineSync()?.toLowerCase() ?? '';
+  return books.where((book) => book.author.toLowerCase().contains(author)).toList();
+}
+
+
+  List<Book> searchBooksByCategory() {
+  print("Enter the category you want to search for:");
+  String category = stdin.readLineSync()?.toLowerCase() ?? '';
+  return books.where((book) => book.category.toLowerCase().contains(category)).toList();
+}
+
 
   void displayAllBooks() {
     for (var book in books) {
@@ -286,5 +299,12 @@ void purchaseBook() {
   print("Available Copies: ${book.availableCopies}");
 }
 
+
+}
+void main() {
+    String jsonFilePath = 'Assets/Data/books.json';
+  BooksViewModel booksViewModel = BooksViewModel(jsonFilePath);
+
+booksViewModel.searchBooksByTitle();
 
 }

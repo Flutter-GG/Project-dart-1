@@ -170,34 +170,16 @@ void processExplorationMenuUserInput(String? userInput) {
   switch (userInput) {
 
     case '1':
-      print("Enter the title you want to search for:");
-      var titleInput = stdin.readLineSync();
-      if (titleInput != null) {
-        searchBooksByTitle(titleInput);
-      } else {
-        print("Invalid input for title.");
-      }
+        searchBooksByTitle();
       break;
 
     case '2':
-      print("Enter the author you want to search for:");
-      var authorInput = stdin.readLineSync();
-      if (authorInput != null) {
-        searchBooksByAuthor(authorInput);
-      } else {
-        print("Invalid input for author.");
-      }
+        searchBooksByAuthor();
       break;
 
 
     case '3':
-      print("Enter the category you want to search for:");
-      var categoryInput = stdin.readLineSync();
-      if (categoryInput != null) {
-        searchBooksByCategory(categoryInput);
-      } else {
-        print("Invalid input for category.");
-      }
+        searchBooksByCategory();
       break;
 
     case '4':
