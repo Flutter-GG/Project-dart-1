@@ -19,7 +19,7 @@ class Library {
       this.myLibrary});
 }
 
-class getView extends Library {
+class GetView extends Library {
   //? done
   /* this class 'View' conatin all methods that belong to view,
   for example: if you want to see the availabe copies or all categories and
@@ -78,7 +78,7 @@ class getView extends Library {
   }
 }
 
-class getSearch extends Library {
+class GetSearch extends Library {
   //? done
   /* this class 'Search' conatin one method that belong to search,
   for example: if you want to search by the title, category or author you can do it here
@@ -127,7 +127,7 @@ class getSearch extends Library {
         case == 'q':
           exit(0);
         default:
-          print("\n'$userSelector'is not a valid number");
+          print("\n'$userSelector'is not a valid.");
       }
     } catch (error) {
       print("Error: $error");
@@ -329,8 +329,10 @@ class Purchases extends Library {
   /* this class is for makeing purchases, if the user want to but a book with 0 
   copies it wont allow the user to do it, also recieve the invoice of 
   the purchase */
-  List invoice = [];
+  static List invoice = [];
+
   makePurchase() {
+    /* this method will */
     try {
       List updatedInvoice = List.from(invoice);
 
@@ -339,7 +341,8 @@ class Purchases extends Library {
         if (theLibrary[index]['avalibale copies'] == 0) {
           print("\n$index: ${theLibrary[index]['title']}, is sold out\n");
         } else {
-          print("$index: ${theLibrary[index]['title']}\n");
+          print(
+              "$index: ${theLibrary[index]['title']}, '${theLibrary[index]['avalibale copies']}' copy/copies\n");
         }
       }
 
@@ -393,7 +396,7 @@ class Purchases extends Library {
     }
   }
 
-  getPurchases() {
+  getInvoice() {
     if (invoice.isEmpty) {
       print("\nYou haven't made any purchases yet.");
       return;

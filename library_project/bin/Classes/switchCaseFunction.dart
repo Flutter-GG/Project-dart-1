@@ -10,7 +10,7 @@ switchCases() {
 
       switch (userInput) {
         case '1':
-          getView viewData = getView();
+          GetView viewData = GetView();
           print(
               "\n1- To view 'available copies'\n2- To view 'categories'\n3- To view all 'books'\n\n(or press 'q' to exit):");
           String? userInput = stdin.readLineSync();
@@ -29,7 +29,7 @@ switchCases() {
           }
           break;
         case '2':
-          getSearch searching = getSearch();
+          GetSearch searching = GetSearch();
           searching.getSearchByQuery();
           break;
         case '3':
@@ -62,7 +62,7 @@ switchCases() {
           break;
         case '5':
           Purchases viewPurchases = Purchases();
-          viewPurchases.getPurchases();
+          viewPurchases.getInvoice();
           break;
 
         case 'q' || 'Q':
