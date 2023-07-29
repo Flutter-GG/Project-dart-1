@@ -151,7 +151,7 @@ class EditingLibrary extends Library {
       String title = stdin.readLineSync() ?? "";
       if (title.toLowerCase() == 'q') {
         print("We didn't add any book");
-        exit(0);
+        return;
       }
       print("\nplease enter author name:");
       String author = stdin.readLineSync() ?? "";
