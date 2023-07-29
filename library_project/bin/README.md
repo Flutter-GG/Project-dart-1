@@ -1,13 +1,5 @@
 ## In this readme file I will talked about what di you expected to see from this app
 
-#### if you run the command:
-
-```
-dart run main.dart
-```
-
-\_\_
-
 ## The 'main' section:
 
 #### you will see something like this, this is the main section:
@@ -217,3 +209,9 @@ Total Price: $299.98
 Total Amount Spent: $394.97
 
 ```
+
+\_\_
+
+# Image shows how to use this script
+
+![alt text](Data/Assets/projectDart.png)
