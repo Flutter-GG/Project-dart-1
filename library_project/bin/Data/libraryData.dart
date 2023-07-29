@@ -3,7 +3,7 @@ List theLibrary = [
     "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
     "author": "Robert C. Martin",
     "categories": ["Programming", "Clean Code"],
-    "price": 99.99,
+    "price": 99.9345349,
     "avalibale copies": 5,
     "First published": "January 1, 2007"
   },
@@ -20,7 +20,7 @@ List theLibrary = [
         "Automate the Boring Stuff with Python: Practical Programming for Total Beginners",
     "author": "Al Sweigart",
     "categories": ["Python", "Automation"],
-    "price": 149.99,
+    "price": 149.93459,
     "avalibale copies": 2,
     "First published": "November 24+1, 2014"
   },
@@ -29,7 +29,7 @@ List theLibrary = [
         "Beyond the Basic Stuff with Python: Best Practices for Writing Clean Code",
     "author": "Al Sweigart",
     "categories": ["Python", "Clean Code"],
-    "price": 74.99,
+    "price": 74.934539,
     "avalibale copies": 1,
     "First published": "December 16, 2020"
   },
@@ -38,7 +38,7 @@ List theLibrary = [
         "Think Like a Programmer: An Introduction to Creative Problem Solving",
     "author": "V. Anton Spraul",
     "categories": ["Problem Solving"],
-    "price": 49.99,
+    "price": 49.953459,
     "avalibale copies": 1,
     "First published": "July 29, 2012"
   },
@@ -46,7 +46,7 @@ List theLibrary = [
     "title": "اقتصاديات القرض والبيع",
     "author": "حمزة السالم",
     "categories": ["Finance"],
-    "price": 39.99,
+    "price": 39.995345,
     "avalibale copies": 0,
     "First published": "March 31, 2020"
   }

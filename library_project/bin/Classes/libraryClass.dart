@@ -70,9 +70,9 @@ class GetView extends Library {
     /* this method is only to view all books in the theLibrary database, also I added 
     empty string to easily access to it and print it out */
     String bookDetails = "";
-    for (var index in theLibrary) {
+    for (var book in theLibrary) {
       bookDetails +=
-          "\nThe book name: ${index['title']}\nFor author: ${index['author']}\nFirst published: ${index['First published']}\nCategories: ${index['categories']}\nPrice: ${index['price']}\$\navalibale copies: ${index['avalibale copies']}\n\n";
+          "\nThe book name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price'].toStringAsFixed(2)}\$\navalibale copies: ${book['avalibale copies']}\n\n";
     }
     print(bookDetails);
   }
@@ -102,7 +102,7 @@ class GetSearch extends Library {
           String theKey = item[index].toString().toLowerCase();
           if (theKey.contains(userInput.toLowerCase())) {
             book +=
-                "\nBook name: ${item['title']}\nFor author: ${item['author']}\nFirst published: ${item['First published']}\nCategories: ${item['categories']}\nPrice: ${item['price']}\$\nAvalibale copies: ${item['avalibale copies']}\n\n";
+                "\nBook name: ${item['title']}\nFor author: ${item['author']}\nFirst published: ${item['First published']}\nCategories: ${item['categories']}\nPrice: ${item['price'].toStringAsFixed(2)}\$\nAvalibale copies: ${item['avalibale copies']}\n\n";
           }
         }
         print(book);
@@ -165,7 +165,7 @@ class EditingLibrary extends Library {
       String categoriesInput = stdin.readLineSync() ?? "";
       List<String> categories = categoriesInput.split(', ');
 
-      String viweNewList = "";
+      String newListStrig = "";
       List updatedBookList = List.from(theLibrary);
 
       updatedBookList.add({
@@ -178,10 +178,10 @@ class EditingLibrary extends Library {
       });
 
       for (var book in updatedBookList) {
-        viweNewList +=
-            "\nBook name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price']}\$\navalibale copies: ${book['avalibale copies']}\n\n";
+        newListStrig +=
+            "\nBook name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price'].toStringAsFixed(2)}\$\navalibale copies: ${book['avalibale copies']}\n\n";
       }
-      print(viweNewList);
+      print(newListStrig);
 
       theLibrary = updatedBookList;
     } catch (error) {
@@ -198,8 +198,8 @@ class EditingLibrary extends Library {
     try {
       print(
           "Write the 'title' of the book that you want to 'delete' \n(or press 'q' to exit):\n");
-      for (var index = 0; index < theLibrary.length; index++) {
-        print("${index + 1}: ${theLibrary[index]['title']}");
+      for (var bookIndex = 0; bookIndex < theLibrary.length; bookIndex++) {
+        print("${bookIndex + 1}: ${theLibrary[bookIndex]['title']}");
       }
       String? titleOfTheBook = stdin.readLineSync() ?? "";
       if (titleOfTheBook.toLowerCase() == 'q') {
@@ -209,17 +209,17 @@ class EditingLibrary extends Library {
       List booksToRemove = [];
 
       while (titleOfTheBook?.toLowerCase() != 'q') {
-        bool bookFound = false;
+        bool bookFinder = false;
         for (var book in theLibrary) {
           String title = book['title'];
           if (title.toLowerCase() == titleOfTheBook?.toLowerCase()) {
-            bookFound = true;
+            bookFinder = true;
             booksToRemove.add(book);
             break;
           }
         }
 
-        if (!bookFound) {
+        if (!bookFinder) {
           print("Book with title '$titleOfTheBook' does not exist.");
         }
 
@@ -231,13 +231,15 @@ class EditingLibrary extends Library {
       String printedList = "";
       for (var book in theLibrary) {
         printedList +=
-            "\nBook name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price']}\$\nAvalibale copies: ${book['avalibale copies']}\n\n";
+            "\nBook name: ${book['title']}\nFor author: ${book['author']}\nFirst published: ${book['First published']}\nCategories: ${book['categories']}\nPrice: ${book['price'].toStringAsFixed(2)}\$\nAvalibale copies: ${book['avalibale copies']}\n\n";
       }
       print(printedList);
-      for (var index = 0; index < booksToRemove.length; index++)
-        print("\nThe book '${booksToRemove[index]['title']}' was deleted.");
-
-      // List updatedBookList = List.from(theLibrary);
+      for (var deletedBookIndex = 0;
+          deletedBookIndex < booksToRemove.length;
+          deletedBookIndex++) {
+        print(
+            "\nThe book '${booksToRemove[deletedBookIndex]['title']}' was deleted.");
+      }
     } catch (error) {
       print("Error: $error");
     }
@@ -254,8 +256,10 @@ class EditingLibrary extends Library {
       while (true) {
         print(
             "\nPlease enter the 'title' of the book you want to 'modify' \n(or press 'q' to exit):");
-        for (var index = 0; index < updatedBookList.length; index++) {
-          print("${index + 1}: ${updatedBookList[index]['title']}");
+        for (var bookIndex = 0;
+            bookIndex < updatedBookList.length;
+            bookIndex++) {
+          print("${bookIndex + 1}: ${updatedBookList[bookIndex]['title']}");
         }
         String titleToModify = stdin.readLineSync() ?? "";
         if (titleToModify.toLowerCase() == 'q') {
@@ -313,7 +317,7 @@ class EditingLibrary extends Library {
         }
 
         var newList =
-            "\nYou just edit the book and new data is:\nname: ${bookToModify['title']}\nFor author: ${bookToModify['author']}\nFirst published: ${bookToModify['First published']}\nCategories: ${bookToModify['categories']}\nPrice: ${bookToModify['price']}\$\nAvalibale copies: ${bookToModify['avalibale copies']}\n\n";
+            "\nYou just edit the book and new data is:\nname: ${bookToModify['title']}\nFor author: ${bookToModify['author']}\nFirst published: ${bookToModify['First published']}\nCategories: ${bookToModify['categories']}\nPrice: ${bookToModify['price'].toStringAsFixed(2)}\$\nAvalibale copies: ${bookToModify['avalibale copies']}\n\n";
         print(newList);
       }
 
@@ -329,7 +333,7 @@ class Purchases extends Library {
   /* this class is for makeing purchases, if the user want to but a book with 0 
   copies it wont allow the user to do it, also recieve the invoice of 
   the purchase */
-  static List invoice = [];
+  static List invoice = []; //
 
   makePurchase() {
     /* this method will */
@@ -337,12 +341,13 @@ class Purchases extends Library {
       List updatedInvoice = List.from(invoice);
 
       print("What book do you want to buy (or press 'q' to exit):");
-      for (var index = 1; index < theLibrary.length; index++) {
-        if (theLibrary[index]['avalibale copies'] == 0) {
-          print("\n$index: ${theLibrary[index]['title']}, is sold out\n");
+      for (var bookIndex = 1; bookIndex < theLibrary.length; bookIndex++) {
+        if (theLibrary[bookIndex]['avalibale copies'] == 0) {
+          print(
+              "\n$bookIndex: ${theLibrary[bookIndex]['title']}, is sold out\n");
         } else {
           print(
-              "$index: ${theLibrary[index]['title']}, '${theLibrary[index]['avalibale copies']}' copy/copies\n");
+              "$bookIndex: ${theLibrary[bookIndex]['title']}, '${theLibrary[bookIndex]['avalibale copies']}' copy/copies\n");
         }
       }
 
@@ -375,7 +380,7 @@ class Purchases extends Library {
           });
 
           print(
-              "You purchased '$numberOfCopies' copy/copies of '${selectedBook['title']}'.\nTotal Price: $totalPrice \$");
+              "You purchased '$numberOfCopies' copy/copies of '${selectedBook['title']}'.\nTotal Price: ${totalPrice.toStringAsFixed(2)} \$");
           var remainingCopies =
               selectedBook['avalibale copies'] - numberOfCopies;
 
@@ -407,7 +412,7 @@ class Purchases extends Library {
     print("\nYour Purchases:");
     for (var purchase in invoice) {
       print(
-          "\nTitle: ${purchase['title']}\nAuthor: ${purchase['author']}\nNumber of Copies: ${purchase['numberOfCopies']}\nTotal Price: \$${purchase['totalPrice']}\n");
+          "\nTitle: ${purchase['title']}\nAuthor: ${purchase['author']}\nNumber of Copies: ${purchase['numberOfCopies']}\nTotal Price: \$${purchase['totalPrice'].toStringAsFixed(2)}\n");
       totalAmount += purchase['totalPrice'];
     }
 
