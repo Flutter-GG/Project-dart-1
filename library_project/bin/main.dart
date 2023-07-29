@@ -1,4 +1,4 @@
-import 'Classes/switchCaseFunction.dart';
+import 'ClassesAndFunctions/switchCaseFunction.dart';
 
 void main() {
   var switchCase = switchCases();
