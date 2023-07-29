@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:first_project/first_project.dart' as first_project;
 import 'package:first_project/book_data.dart';
 
 void main(List<String> arguments) {
@@ -13,7 +12,7 @@ void main(List<String> arguments) {
 
     switch (selected) {
       case "1":
-        print("object");
+        displayAvailableBook();
         break;
 
       case "2":
@@ -21,11 +20,11 @@ void main(List<String> arguments) {
         break;
 
       case "3":
-        print("3 in progress");
+        deleteBook();
         break;
 
       case "4":
-        print(" 4 in progress");
+        print("$myData[0]['briefDescription']");
         break;
 
       case "Q" || "q":
@@ -41,15 +40,15 @@ void main(List<String> arguments) {
 addNewBook() {
   try {
     print("please inter book title:");
-    String? bookTitle = stdin.readLineSync()!;
+    String bookTitle = stdin.readLineSync()!;
     print("please inter author name:");
-    String? authorName = stdin.readLineSync()!;
+    String authorName = stdin.readLineSync()!;
     print("please inter brief Description about the book:");
-    String? briefDescription = stdin.readLineSync()!;
+    String briefDescription = stdin.readLineSync()!;
     print("please inter publication date:");
-    String? publicationDate = stdin.readLineSync()!;
+    String publicationDate = stdin.readLineSync()!;
     print("please inter book category:");
-    String? category = stdin.readLineSync()!;
+    String category = stdin.readLineSync()!;
     print("please inter available copies of the book:");
     int availableCopies = int.parse(stdin.readLineSync()!);
     print("please inter the book price:");
@@ -64,7 +63,26 @@ addNewBook() {
       "availableCopies": availableCopies,
       "price": price
     };
-    myData.add(bookMap);
+    myData.insert(0, bookMap);
+    print("The book has been added successfully!");
+  } catch (error) {
+    print("error");
+  }
+}
+
+deleteBook() {
+  try {
+    print("please inter book title:");
+    String bookTitle = stdin.readLineSync()!;
+    for (int i = 0; i <= myData.length - 1; i++) {
+      if (myData[i]['bookTitle'] == bookTitle) {
+        myData.removeWhere((item) => item["bookTitle"] == bookTitle);
+        print("The book has been deleted successfully!");
+      } else if (i == myData.length - 1) {
+        print(
+            "The book does not exist! please check the spelling and try again.");
+      }
+    }
   } catch (error) {
     print("error");
   }
@@ -77,7 +95,7 @@ class Book {
   late String? publicationDate;
   late String? category;
   late int? availableCopies;
-  late String? price;
+  late int? price;
 
   Book(
       {this.bookTitle,
@@ -90,5 +108,26 @@ class Book {
   displayData() {
     print(
         "Book Title:$bookTitle Author Name: $authorName Brief Description: $briefDescription Publication Date: $publicationDate Category: $category Available Copies: $availableCopies Price: $price");
+  }
+}
+
+displayAvailableBook() {
+  List<Book> listItem = [];
+  for (var element in myData) {
+    listItem.add(Book(
+      bookTitle: element["bookTitle"],
+      authorName: element["authorName"],
+      briefDescription: element["briefDescription"],
+      publicationDate: element["publicationDate"],
+      category: element["category"],
+      availableCopies: element["availableCopies"],
+      price: element["price"],
+    ));
+  }
+  int number = 1;
+  for (var item in listItem) {
+    print("------$number------");
+    number++;
+    item.displayData();
   }
 }
