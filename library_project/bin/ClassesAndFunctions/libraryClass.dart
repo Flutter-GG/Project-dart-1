@@ -19,14 +19,21 @@ class Library {
       this.myLibrary});
   static searchingByFunc({required String userInput, required String index}) {
     String book = "";
-    for (var item in theLibrary) {
-      String theKey = item[index].toString().toLowerCase();
-      if (theKey.contains(userInput.toLowerCase())) {
-        book +=
-            "\nBook name: ${item['title']}\nFor author: ${item['author']}\nFirst published: ${item['First published']}\nCategories: ${item['categories']}\nPrice: ${item['price'].toStringAsFixed(2)}\$\nAvalibale copies: ${item['avalibale copies']}\n\n";
+    if (userInput.toLowerCase() != 'q') {
+      for (var item in theLibrary) {
+        String theKey = item[index].toString().toLowerCase();
+        if (theKey.contains(userInput.toLowerCase())) {
+          book +=
+              "\nBook name: ${item['title']}\nFor author: ${item['author']}\nFirst published: ${item['First published']}\nCategories: ${item['categories']}\nPrice: ${item['price'].toStringAsFixed(2)}\$\nAvalibale copies: ${item['avalibale copies']}\n\n";
+        }
       }
+      print(book);
+    } else if (userInput.toLowerCase() == 'q') {
+      print('quit!');
+      return;
+    } else {
+      print('not valid category');
     }
-    print(book);
   }
 }
 
@@ -65,8 +72,8 @@ class GetView extends Library {
     it will ignore it, I use this method because unlike python,
     tuples are not built-in in Dart and I don't know how to use packages in dart */
     List allCategories = [];
-    for (var index in theLibrary) {
-      for (var category in index['categories']) {
+    for (var categoryIndex in theLibrary) {
+      for (var category in categoryIndex['categories']) {
         if (!allCategories.contains(category)) {
           allCategories.add(category);
         }
@@ -74,7 +81,7 @@ class GetView extends Library {
     }
     String availableCategories = "\nWe have categories: $allCategories\n";
     print(availableCategories);
-    print("\nWrite the 'category' of the book:");
+    print("\nWrite the 'category' of the book (or press 'q' to exit):");
     String userInput = stdin.readLineSync()!;
     Library.searchingByFunc(userInput: userInput, index: 'categories');
   }
