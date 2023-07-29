@@ -18,6 +18,7 @@ class Library {
       this.availableCopies,
       this.myLibrary});
 }
+
 class getView extends Library {
   //? done
   /* this class 'View' conatin all methods that belong to view,
@@ -76,7 +77,6 @@ class getView extends Library {
     print(bookDetails);
   }
 }
-
 
 class getSearch extends Library {
   //? done
@@ -147,7 +147,7 @@ class EditingLibrary extends Library {
     example: if you type (python, clean code). will be a list ['python', 'clean code'] 
     AKA the categories, because category is a list of strings */
     try {
-      print("please enter title (press q to exit):");
+      print("please enter title \n(or press 'q' to exit):");
       String title = stdin.readLineSync() ?? "";
       if (title.toLowerCase() == 'q') {
         print("We didn't add any book");
@@ -197,7 +197,7 @@ class EditingLibrary extends Library {
     delete the whole book with all copies */
     try {
       print(
-          "Write the 'title' of the book that you want to 'delete' (press 'q' to exit):\n");
+          "Write the 'title' of the book that you want to 'delete' \n(or press 'q' to exit):\n");
       for (var index = 0; index < theLibrary.length; index++) {
         print("${index + 1}: ${theLibrary[index]['title']}");
       }
@@ -223,7 +223,7 @@ class EditingLibrary extends Library {
           print("Book with title '$titleOfTheBook' does not exist.");
         }
 
-        print("Is there any other book? (type 'q' to exit):");
+        print("Is there any other book? \n(type 'q' to exit):");
         titleOfTheBook = stdin.readLineSync();
       }
       theLibrary.removeWhere((book) => booksToRemove.contains(book));
@@ -253,9 +253,9 @@ class EditingLibrary extends Library {
 
       while (true) {
         print(
-            "\nPlease enter the 'title' of the book you want to 'modify' (press 'q' to exit):");
+            "\nPlease enter the 'title' of the book you want to 'modify' \n(or press 'q' to exit):");
         for (var index = 0; index < updatedBookList.length; index++) {
-          print("$index: ${updatedBookList[index]['title']}");
+          print("${index + 1}: ${updatedBookList[index]['title']}");
         }
         String titleToModify = stdin.readLineSync() ?? "";
         if (titleToModify.toLowerCase() == 'q') {
@@ -334,7 +334,7 @@ class Purchases extends Library {
     try {
       List<Map<String, dynamic>> updatedInvoice = List.from(invoice);
 
-      print("What book do you want to buy (or press q to quit):");
+      print("What book do you want to buy (or press 'q' to exit):");
       for (var index = 1; index < theLibrary.length; index++) {
         if (theLibrary[index]['avalibale copies'] == 0) {
           print("\n$index: ${theLibrary[index]['title']}, is sold out\n");
@@ -344,7 +344,7 @@ class Purchases extends Library {
       }
 
       print(
-          "Enter the number of the book you want to buy (or press q to quit):");
+          "Enter the number of the book you want to buy \n(or press 'q' to exit):");
       String userInput = stdin.readLineSync() ?? "";
 
       if (userInput.toLowerCase() == 'q') {

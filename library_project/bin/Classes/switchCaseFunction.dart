@@ -5,14 +5,14 @@ switchCases() {
   try {
     do {
       print(
-          "\nPlease select:\n\n1- To 'view the library'\n2- To 'search in the library'\n3- To 'edit the library'\n4- To 'buy a book'\n5- To 'show what you bought'\n(press 'q' to exit):");
+          "\nPlease select:\n\n1- To 'view the library'\n2- To 'search in the library'\n3- To 'edit the library'\n4- To 'buy a book'\n5- To 'show what you bought'\n\n(or press 'q' to exit)");
       String? userInput = stdin.readLineSync();
 
       switch (userInput) {
         case '1':
           getView viewData = getView();
           print(
-              "\n1- To view 'available copies'\n2- To view 'categories'\n3- To view all 'books'\n(press 'q' to exit):");
+              "\n1- To view 'available copies'\n2- To view 'categories'\n3- To view all 'books'\n\n(or press 'q' to exit):");
           String? userInput = stdin.readLineSync();
           switch (userInput) {
             case '1':
@@ -39,7 +39,7 @@ switchCases() {
           String? isStaff = stdin.readLineSync();
           if (isStaff == 'y' || isStaff == 'Y') {
             print(
-                "\n1- To add new book\n2- To delete a book\n3- To edit a book\n(or press 'q' to exit):");
+                "\n1- To 'add new book'\n2- To 'delete a book'\n3- To 'edit a book'\n\n(or press 'q' to exit):");
             String? userInput = stdin.readLineSync();
             switch (userInput) {
               case '1':
