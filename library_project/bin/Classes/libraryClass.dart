@@ -254,7 +254,7 @@ class EditingLibrary extends Library {
       while (true) {
         print(
             "\nPlease enter the 'title' of the book you want to 'modify' (press 'q' to exit):");
-        for (var index = 1; index < updatedBookList.length; index++) {
+        for (var index = 0; index < updatedBookList.length; index++) {
           print("$index: ${updatedBookList[index]['title']}");
         }
         String titleToModify = stdin.readLineSync() ?? "";

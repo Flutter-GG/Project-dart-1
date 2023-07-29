@@ -5,7 +5,7 @@ switchCases() {
   try {
     do {
       print(
-          "\nPlease select:\n\n1- To view the library\n2- To search in the library\n3- To edit the library\n4- To buy a book\n5- To show what you buy\n(press 'q' to exit):");
+          "\nPlease select:\n\n1- To 'view the library'\n2- To 'search in the library'\n3- To 'edit the library'\n4- To 'buy a book'\n5- To 'show what you bought'\n(press 'q' to exit):");
       String? userInput = stdin.readLineSync();
 
       switch (userInput) {
@@ -25,17 +25,17 @@ switchCases() {
               viewData.getBooks();
               break;
             case 'q' || 'Q':
-              return;
+              break;
           }
           break;
         case '2':
           getSearch searching = getSearch();
-          print(searching.getSearchByQuery());
+          searching.getSearchByQuery();
           break;
         case '3':
           EditingLibrary editLibrary = EditingLibrary();
 
-          print('\nAre you from staff? Y/N\n');
+          print('\nAre you from the staff? Y/N\n');
           String? isStaff = stdin.readLineSync();
           if (isStaff == 'y' || isStaff == 'Y') {
             print(
@@ -52,7 +52,7 @@ switchCases() {
                 editLibrary.modifyBookData();
                 break;
               case 'q' || 'Q':
-                return;
+                break;
             }
           }
           break;
