@@ -5,7 +5,7 @@
 The "Library Project using Dart" is an exciting software application designed to efficiently manage a library's book inventory and streamline user interactions through a Command Line Interface (CLI). 
 
 ## The main menu:
-![Main Function pic](/assest/assest/Main.png)  
+![Main Function pic](/assest/Main.png)  
 
 
 ## If you press 2 then this menu will apper:
