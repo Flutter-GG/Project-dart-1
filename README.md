@@ -117,6 +117,7 @@ Congratulations on reaching the project phase! This project will assess your abi
   
   ## (0):Eixt 
   close the projramm , the print thanks message 
+  ![alt text](project1_aw2/Assets/16.png)
   
 
 
