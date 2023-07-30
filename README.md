@@ -2,8 +2,9 @@
 
 ## The 'main' section:
 
-#### you will see something like this, this is the main section:
+![alt text](Assets/main.png)
 
+#### you will see something like this, this is the main section:
 
 ```
 (base) ~$ dart run main.dart
@@ -23,6 +24,8 @@ Please select:
 \_\_
 
 ## The 'view the library' section:
+
+![alt text](Assets/selectOne.png)
 
 #### if you type '1' in the keyboard you will go to viewing the library section:
 
@@ -71,6 +74,8 @@ avalibale copies: 5
 
 ## The 'search in the library' section:
 
+![alt text](Assets/selectTwo.png)
+
 #### if you typed '2' in the main section you will go to the 'search in the library' section and you will see
 
 ```
@@ -109,6 +114,8 @@ Avalibale copies: 1
 
 ## The 'edit the library' section:
 
+![alt text](Assets/selectThree.png)
+
 #### if you select 'edit the library' the program will ask you if you are from the staff of the library or not, if it is, you can enter to add, delete or eedit book details, for delete and edit detail you need to select the book with the correct name and spiling.
 
 ```
@@ -143,6 +150,8 @@ q
 \_\_
 
 ## The 'buy a book' section:
+
+![alt text](Assets/selectFour.png)
 
 #### here you will buy a book, if the avaliable copies is 0 the book will be sold out and you cant but it, if you buy more than availbale copies the app wont let you buy the book.
 
@@ -186,6 +195,8 @@ The book 'Agile Principles, Patterns, and Practices in C#' is sold out.
 
 ## The 'show what you bought' section:
 
+![alt text](Assets/selectFive.png)
+
 #### after make a purchase and then select 'show what you bought' you will see something like this:
 
 ```
@@ -211,7 +222,3 @@ Total Amount Spent: $394.97
 ```
 
 \_\_
-
-# Image shows how to use this script
-
-![alt text](Assets/projectDart.png)
