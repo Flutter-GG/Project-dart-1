@@ -11,17 +11,14 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
     print("Welcome to the Enchanted Book Library, where stories come to life!\n");
     stdout.flush();
     sleep(Duration(seconds:1));
-    print("Embark on a magical journey by choosing one of the following options:\n");
+    print("Embark on a magical journey by choosing one of the following options:\n\n\n");
     stdout.flush();
     sleep(Duration(seconds:1));
-    print("1: Explore Books \n- Uncover the secrets of our vast collection of books, where each tome holds its own adventure and wonder!\n");
 
+    print("1: Explore Books \n- Uncover the secrets of our vast collection of books.\n");
     print("2: Manage Library \n- Become the master librarian and wield the power to organize and curate the enchanted shelves!\n");
-
-    print("3: Purchase and Reports \n- Delight in a mystical buying experience, and witness your collection grow with each acquisition! \nAlso, receive mystical reports on your literary quests!\n");
-
+    print("3: Purchase and Reports \n- Witness your collection grow with each acquisition!\n");
     print("4: Quit \n- Return to the mortal realm and exit the enchanted realm of books.\n");
-
 
     displayMenuInstructions();
 
@@ -31,18 +28,14 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
     print("Welcome to the Enchanted Book Library's Exploration Menu!\n");
     stdout.flush();
     sleep(Duration(seconds:1));
-    print("Unravel the mysteries of our mystical collection by choosing one of the following paths:\n");
+    print("Unravel the mysteries of our mystical collection by choosing one of the following paths:\n\n\n");
     stdout.flush();
     sleep(Duration(seconds:1));
-    print("1: Search by Title \n- Embark on a quest to find books by their captivating titles!\n");
-
-    print("2: Seek by Author \n- Uncover the mystical tomes authored by the greatest minds of \nboth past and present!\n");
-
-    print("3: Journey by Category \n- Traverse through enchanted realms by exploring books categorized \nby their magical themes!\n");
-
-    print("4: List All \n- Discover the entire collection of books in our mystical library!\n");
-
-    print("5: Back \n- Return to the main menu and continue your adventure.\n");
+    print("1: Search by Title\n");
+    print("2: Seek by Author\n");
+    print("3: Journey by Category\n");
+    print("4: List All\n");
+    print("5: Back \n- Return to the main menu.\n");
     stdout.flush();
 
     displayMenuInstructions();
@@ -62,18 +55,15 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
     print("As the master librarian, you hold the key to organizing and curating the enchanted shelves.\n");
     stdout.flush();
     sleep(Duration(seconds:1));
-    print("Choose one of the following spells to weave the magic of order:\n");
+    print("Choose one of the following spells to weave the magic of order:\n\n\n");
     stdout.flush();
     sleep(Duration(seconds:1));
-    print("1: Add New Book \n- Conjure a new book into existence and add it to our mystical collection. \nProvide the book's details to give it life!\n");
 
-    print("2: Delete Book \n- Unravel the pages of a book and remove it from the enchanted shelves. \nDouble-check the title before casting this spell.\n");
-
-    print("3: Editing Capability \n- Harness the magic of words to update book information, such as title, author, and price. \nEnsure your enchantments are accurate!\n");
-
-    print("4: Back \n- Return to the main menu and continue your magical adventure.\n");
-    stdout.flush();
-
+    print("1: Add New Book\n");
+    print("2: Delete Book\n");
+    print("3: Editing Capability\n");
+    print("4: Back \n- Return to the main menu.\n");
+  
     displayMenuInstructions();
 
      var userInput = stdin.readLineSync();
@@ -87,36 +77,28 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
     print("Delight in a mystical buying experience as you add enchanting books to your collection.\n");
     stdout.flush();
     sleep(Duration(seconds:3));
-    print("Choose one of the following options to witness the magic unfold:\n");
+    print("Choose one of the following options to witness the magic unfold:\n\n\n");
     stdout.flush();
     sleep(Duration(seconds:3));
-    print("1: Purchase \n- Embark on a journey of acquiring captivating books from our enchanted shelves. Watch your collection grow with each acquisition!\n");
 
-    print("2: Reporting \n- Unveil magical reports on your literary quests, showing the number of books purchased and the total amount spent.\n");
+    print("1: Purchase\n");
+    print("2: Reporting \n");
+    print("3: Back \n- Return to the main menu.\n");
 
-    print("3: Back \n- Return to the main menu and continue your magical adventure.\n");
-
-    stdout.flush();
-    sleep(Duration(seconds:1));
     displayMenuInstructions();
+
+    var userInput = stdin.readLineSync();
+    processPurchasingMenuUserInput(userInput);
   }
 
   void displayMenuInstructions() {
     print("To select an option, simply utter the corresponding number and press Enter.");
-  
-
-    print("May the magic of words guide you on this enchanting quest! Happy reading!\n");
-    stdout.flush();
-    sleep(Duration(seconds:1));
-
+    print("Happy reading!\n");
     print("Your choise is:  ");
-    
   }
 
   void quitProgram() {
-
-    print("Thank you for visiting the Enchanted Book Library! \nMay the magic of words continue to guide you on your adventures. \nHappy reading! ✨📚");
-  
+    print("Thank you for visiting the Enchanted Book Library! \nWe hope you enjoyed your stay.\n");
     exit(0); 
 
   }
@@ -139,12 +121,9 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
         case '4':
           quitProgram();
           return;
+
         default:
           print("Invalid choice. Please choose a valid option.");
-          stdout.flush();
-          
-          sleep(Duration(seconds:1));
-          
            break;
       }
     }
@@ -161,19 +140,23 @@ void processExplorationMenuUserInput(String? userInput) {
   switch (userInput) {
 
     case '1':
+    print("Embark on a quest to find books by their captivating titles!");
         searchBooksByTitle();
       break;
 
     case '2':
+    print("Seek out books by their enchanting authors!");
         searchBooksByAuthor();
       break;
 
 
     case '3':
+    print("Journey through the mystical categories of books!");
         searchBooksByCategory();
       break;
 
     case '4':
+    print("Behold the entire collection of books in the Enchanted Book Library!");
       displayAllBooks();
       break;
 
@@ -196,15 +179,18 @@ void processManagementMenuUserInput(String? userInput) {
 
   switch (userInput) {
     case '1':
+    print("Conjure a new book into existence and add it to our mystical collection. \nProvide the book's details to give it life!");
       createBook();
       break;
 
     case '2':
-      updateBookInfo();
+    print("Unravel the pages of a book and remove it from the enchanted shelves. \nDouble-check the title before casting this spell.");
+    deleteBook();
       break;
 
     case '3':
-      deleteBook();
+    print("Harness the magic of words to update book information, such as title, author, and price. \nEnsure your enchantments are accurate!");
+      updateBookInfo();
       break;
 
     case '4':
@@ -228,10 +214,12 @@ void processPurchasingMenuUserInput(String? userInput) {
 
   switch (userInput) {
     case '1':
+    print("Embark on a journey of acquiring captivating books from our enchanted shelves. Watch your collection grow with each acquisition!\n");
       purchaseBook();
       break;
 
     case '2':
+    print("Behold the books you have acquired from the Enchanted Book Library!\n");
       displayPurchases();
       break;
 
@@ -242,10 +230,8 @@ void processPurchasingMenuUserInput(String? userInput) {
     default:
       print("Invalid choice. Please choose a valid option.");
       break;
+   }
   }
-}
-
-
 }
 
 

@@ -251,18 +251,51 @@ void updateBookInfo() {
 
 
 void deleteBook() {
-  // Read user input for the book index to delete
-  print("Enter the index of the book to delete:");
-  String? indexInput = stdin.readLineSync();
-  int bookIndex = int.tryParse(indexInput ?? '') ?? -1;
+  if (books.isEmpty) {
+    print("No books available in the Enchanted Book Library.");
+    return;
+  }
 
-  if (bookIndex >= 0 && bookIndex < books.length) {
-    // Delete the book from the library
-    books.removeAt(bookIndex);
-  } else {
-    print("Invalid book index.");
+  print("Listing all books in the Enchanted Book Library:\n");
+  for (int i = 0; i < books.length; i++) {
+    print("${i}: ${books[i].title}");
+  }
+
+  print("\nEnter the number(s) of the book(s) you wish to remove from the enchanted shelves (separate multiple numbers with commas):");
+  String? indexInput = stdin.readLineSync();
+
+  List<int> bookIndices = indexInput?.split(',').map((index) => int.tryParse(index.trim()) ?? -1).toList() ?? [];
+
+  List<String> deletedTitles = [];
+  List<int> invalidIndices = [];
+
+  for (int bookIndex in bookIndices) {
+    if (bookIndex >= 0 && bookIndex < books.length) {
+      // Delete the book from the library
+      String title = books[bookIndex].title;
+      books.removeAt(bookIndex);
+      deletedTitles.add(title);
+    } else {
+      invalidIndices.add(bookIndex + 1);
+    }
+  }
+
+  if (deletedTitles.isNotEmpty) {
+    print("\nPoof! The enchanting magic of the library has removed the following book(s) from its shelves:");
+    for (String title in deletedTitles) {
+      print(" - $title");
+    }
+  }
+
+  if (invalidIndices.isNotEmpty) {
+    print("\nAlas! The enchanted library could not find books with the following index(s):");
+    for (int index in invalidIndices) {
+      print(" - Book number $index does not exist.");
+    }
   }
 }
+
+
 
 //---------------------------------------------------------------------------
 
@@ -366,6 +399,6 @@ void main() {
     String jsonFilePath = 'Assets/Data/books.json';
   BooksViewModel booksViewModel = BooksViewModel(jsonFilePath);
 
-booksViewModel.searchBooksByCategory();
+booksViewModel.deleteBook();
 
 }
