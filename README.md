@@ -8,6 +8,7 @@ The main functions in this project are:
 3. **Let user edit Book information**
 4. **Let user query Books**
 5. **The user can purchase a book and then the invoice details will be shown to him/her**
+
 Secondary objective:
 1. **Let user view all Book Categories and then choes one of them to view books related to chosen categorie**
 
