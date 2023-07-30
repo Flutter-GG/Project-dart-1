@@ -49,7 +49,7 @@ once the user enter "y" then the system will update the available copies depend 
 
 ![Alt text](image-5.png) 
 
-befor: 
+before: 
 
 ![Alt text](image-7.png)
 
