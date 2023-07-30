@@ -6,7 +6,7 @@ import 'data.dart';
 import 'dart:io';
 
 List<Book> booksList = loadDateToList();
-List copyBooksList = booksData.toList();
+List copyBooksData = booksData.toList();
 Set titles = getDistinctTitles();
 void main() {
   print("---------------------");
