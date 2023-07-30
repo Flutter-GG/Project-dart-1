@@ -32,6 +32,8 @@ void searchBooksByTitle() {
       print('Title: ${book.title}, Remaining Copies: ${book.availableCopies}');
     }
   }
+
+   
 }
 
 
@@ -392,13 +394,4 @@ void purchaseBook() {
   print("Price: ${book.price}");
   print("Available Copies: ${book.availableCopies}");
  }
-
-
-}
-void main() {
-    String jsonFilePath = 'Assets/Data/books.json';
-  BooksViewModel booksViewModel = BooksViewModel(jsonFilePath);
-
-booksViewModel.deleteBook();
-
 }
