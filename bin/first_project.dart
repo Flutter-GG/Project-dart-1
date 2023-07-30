@@ -138,6 +138,29 @@ void main(List<String> arguments) {
   }
 }
 
+class Book {
+  late String? bookTitle;
+  late String? authorName;
+  late String? briefDescription;
+  late String? publicationDate;
+  late String? category;
+  late int? availableCopies;
+  late int? price;
+
+  Book(
+      {this.bookTitle,
+      this.authorName,
+      this.briefDescription,
+      this.publicationDate,
+      this.category,
+      this.availableCopies,
+      this.price});
+  displayData() {
+    print(
+        "Book Title:$bookTitle\nAuthor Name: $authorName\nBrief Description: $briefDescription/nPublication Date: $publicationDate/nCategory: $category\nAvailable Copies: $availableCopies\nPrice: $price");
+  }
+}
+
 addNewBook() {
   try {
     print("please inter book title:");
@@ -188,6 +211,27 @@ deleteBook() {
     }
   } catch (error) {
     print("Error: $error");
+  }
+}
+
+displayAvailableBook() {
+  List<Book> listItem = [];
+  for (var element in myData) {
+    listItem.add(Book(
+      bookTitle: element["bookTitle"],
+      authorName: element["authorName"],
+      briefDescription: element["briefDescription"],
+      publicationDate: element["publicationDate"],
+      category: element["category"],
+      availableCopies: element["availableCopies"],
+      price: element["price"],
+    ));
+  }
+  int number = 1;
+  for (var item in listItem) {
+    print("------$number------");
+    number++;
+    item.displayData();
   }
 }
 
@@ -377,49 +421,5 @@ updateBookInfo(String selectedBook, String caseNumber) {
       break;
     case 'C' || 'c':
       break;
-  }
-}
-
-class Book {
-  late String? bookTitle;
-  late String? authorName;
-  late String? briefDescription;
-  late String? publicationDate;
-  late String? category;
-  late int? availableCopies;
-  late int? price;
-
-  Book(
-      {this.bookTitle,
-      this.authorName,
-      this.briefDescription,
-      this.publicationDate,
-      this.category,
-      this.availableCopies,
-      this.price});
-  displayData() {
-    print(
-        "Book Title:$bookTitle\nAuthor Name: $authorName\nBrief Description: $briefDescription/nPublication Date: $publicationDate/nCategory: $category\nAvailable Copies: $availableCopies\nPrice: $price");
-  }
-}
-
-displayAvailableBook() {
-  List<Book> listItem = [];
-  for (var element in myData) {
-    listItem.add(Book(
-      bookTitle: element["bookTitle"],
-      authorName: element["authorName"],
-      briefDescription: element["briefDescription"],
-      publicationDate: element["publicationDate"],
-      category: element["category"],
-      availableCopies: element["availableCopies"],
-      price: element["price"],
-    ));
-  }
-  int number = 1;
-  for (var item in listItem) {
-    print("------$number------");
-    number++;
-    item.displayData();
   }
 }
