@@ -13,7 +13,8 @@ Once Dart is installed, follow these steps:
 3. Run the following command to start the app:
 
 ```
-dart run main.dart
+dart run lib/views/main.dart
+
 ```
 
 ## Main Menu
@@ -88,3 +89,5 @@ In the Purchasing Menu, you can delight in a mystical buying experience and expa
 To quit the Enchanted Book Library app at any time, simply enter `4` in the main menu or press `q` while in any of the sub-menus.
 
 We hope you enjoy your mystical journey through the Enchanted Book Library! Happy reading! 📚✨
+
+![alt text]()
