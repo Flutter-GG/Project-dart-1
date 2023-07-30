@@ -4,11 +4,11 @@
 
 #### you will see something like this, this is the main section:
 
-Please select:
 
 ```
 (base) ~$ dart run main.dart
 
+Please select:
 1- To 'view the library'
 2- To 'search in the library'
 3- To 'edit the library'
