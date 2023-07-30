@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
 
 class Book {
   String title;
@@ -31,11 +29,4 @@ class Book {
       availableCopies: json['availableCopies'],
     );
   }
-}
-
-List<Book> parseBooksFromJsonFile(String path) {
-  String jsonString = File(path).readAsStringSync();
-  List<dynamic> jsonData = json.decode(jsonString);
-
-  return jsonData.map((json) => Book.fromJson(json)).toList();
 }

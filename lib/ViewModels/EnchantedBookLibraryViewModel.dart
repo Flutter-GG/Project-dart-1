@@ -9,7 +9,7 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
 
   void displayWelcomeMenu()  {
 
-    sleep(Duration(seconds:5));
+    sleep(Duration(seconds:2));
     print("\n\n1: Explore Books \n- Uncover the secrets.\n");
     print("2: Manage Library \n- wield the power of the master librarian.\n");
     print("3: Purchase and Reports \n- Witness your collection grow with each acquisition!'\n");
@@ -28,18 +28,16 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
   }
 
   void displayExplorationMenu()  {
-    print("Welcome to the Enchanted Book Library's Exploration Menu!\n");
-    stdout.flush();
-    sleep(Duration(seconds:1));
+    print("\n\nWelcome to the Enchanted Book Library's Exploration Menu!\n");
     print("Unravel the mysteries of our mystical collection by choosing one of the following paths:\n");
     stdout.flush();
-    sleep(Duration(seconds:1));
+    sleep(Duration(seconds:2));
+
     print("1: Search by Title");
     print("2: Seek by Author");
     print("3: Journey by Category");
     print("4: List All");
-    print("5: Back \n- Return to the main menu.");
-    stdout.flush();
+    print("5: Back - Return to the main menu.");
 
     displayMenuInstructions();
 
@@ -49,20 +47,16 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
   }
 
   void displayManagementMenu()  {
-    print("Welcome to the Enchanted Book Library's Management Menu!\n");
-    stdout.flush();
-    sleep(Duration(seconds:3));
+    print("\n\nWelcome to the Enchanted Book Library's Management Menu!\n");
     print("As the master librarian, you hold the key to organizing and curating the enchanted shelves.\n");
     stdout.flush();
-    sleep(Duration(seconds:1));
+    sleep(Duration(seconds:3));
     print("Choose one of the following spells to weave the magic of order:\n\n");
-    stdout.flush();
-    sleep(Duration(seconds:1));
 
     print("1: Add New Book");
     print("2: Delete Book");
     print("3: Editing Capability");
-    print("4: Back \n- Return to the main menu.");
+    print("4: Back - Return to the main menu.");
   
     displayMenuInstructions();
 
@@ -71,19 +65,15 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
   }
 
   void displayPurchasingMenu()  {
-    print("Welcome to the Enchanted Book Library's Purchasing Menu!\n");
-    stdout.flush();
-    sleep(Duration(seconds:3));
+    print("\n\nWelcome to the Enchanted Book Library's Purchasing Menu!\n");
     print("Delight in a mystical buying experience as you add enchanting books to your collection.\n");
     stdout.flush();
     sleep(Duration(seconds:3));
     print("Choose one of the following options to witness the magic unfold:\n\n");
-    stdout.flush();
-    sleep(Duration(seconds:3));
 
     print("1: Purchase");
     print("2: Reporting ");
-    print("3: Back \n- Return to the main menu.");
+    print("3: Back - Return to the main menu.");
 
     displayMenuInstructions();
 

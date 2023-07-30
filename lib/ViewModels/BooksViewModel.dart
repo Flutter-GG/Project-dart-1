@@ -155,20 +155,27 @@ void createBook() {
 }
 
 void updateBookInfo() {
+  if (books.isEmpty) {
+    print("No books available to update.");
+    return;
+  }
 
-  print("Enter the index of the book to update:");
+  print("Listing all books:\n");
+  for (int i = 0; i < books.length; i++) {
+    print("${i}: ${books[i].title}");
+  }
+
+  print("\nEnter the index of the book to update:");
   String? indexInput = stdin.readLineSync();
   int bookIndex = int.tryParse(indexInput ?? '') ?? -1;
 
   if (bookIndex >= 0 && bookIndex < books.length) {
     Book selectedBook = books[bookIndex];
 
-   
     print("Current book information:");
     printBookInfo(selectedBook);
 
-    
-    print("Which property do you want to update?");
+    print("\nWhich property do you want to update?");
     print("1: Title");
     print("2: Author");
     print("3: Brief Description");
@@ -179,7 +186,6 @@ void updateBookInfo() {
     String? propertyInput = stdin.readLineSync();
     int propertyChoice = int.tryParse(propertyInput ?? '') ?? 0;
 
-    
     String? updatedValue;
     switch (propertyChoice) {
       case 1:
@@ -215,7 +221,6 @@ void updateBookInfo() {
         return;
     }
 
-    
     switch (propertyChoice) {
       case 1:
         selectedBook.title = updatedValue ?? '';
@@ -243,8 +248,7 @@ void updateBookInfo() {
         break;
     }
 
-    
-    print("Book information updated:");
+    print("\nBook information updated:");
     printBookInfo(selectedBook);
   } else {
     print("Invalid book index.");
