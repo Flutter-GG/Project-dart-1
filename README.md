@@ -1,83 +1,228 @@
-# Project #1 - Library Project using Dart
+# Books Library
 
-Congratulations on reaching the project phase! This project will assess your ability to develop a "Library Project using Dart" with a Command Line Interface (CLI) to manage a library's book inventory and user interactions. Below are the key requirements and evaluation criteria:
+I create program that meets user requirements, in the first I created 5 classes each class has it is own work, I will explain more in the next steps..
 
+## Classes in the program
+<img  width="657" alt="class" src="https://github.com/Flutter-GG/Project-dart-1/assets/140311670/0f547b01-e356-4a0a-b031-6f464cb03083">
 
-## Description:
+## Books class
 
-The "Library Project using Dart" is an exciting software application designed to efficiently manage a library's book inventory and streamline user interactions through a Command Line Interface (CLI). This capstone project provides you, as a student, with an excellent opportunity to apply your knowledge and skills in Flutter Development, showcasing your proficiency in Dart programming.
+<br> The first class: <br>
+Books class has 3 functions: <br>
+1- display: to deal with the new books and to add title and copies.
+<br><br><br>
 
-The primary goal of the project is to develop a user-friendly and efficient CLI that caters to both library staff and patrons. With this CLI, users can effortlessly query books, view the number of available copies, add new books to the library, delete books from the inventory, make book purchases, and receive detailed invoices after each purchase. Additionally, the project demands an essential feature - updating the number of book copies after a purchase is made to maintain accurate inventory records.
-
-To begin, you will create a new Dart project, ensuring that the project structure is appropriately organized for a clean and manageable codebase. As you progress, it is crucial to write code that is clear, well-organized, and scalable, adhering to standard coding conventions to enhance code readability. Demonstrating your comprehensive understanding of programming concepts and techniques is essential for a successful outcome.
-
-Your CLI should allow users to search for books by title, author, or category, providing a straightforward and accessible way to retrieve information about the library's collection. Implementing a method to add new books to the library with the appropriate updates to the book count will further enhance the system's usability.
-
-Managing the library's inventory also involves implementing a method to delete books, ensuring smooth handling of cases where a book to be deleted does not exist. Facilitating book purchases through the CLI is another critical aspect, requiring you to decrease the number of book copies according to the books purchased and generate an informative invoice for the user.
-
-As an extra credit opportunity, you can implement features such as displaying all book categories in the library, returning a list of books belonging to a selected category. Additionally, providing a method to count the number of purchased books will further showcase your skills.
-
-The project must be written entirely in the Dart language and fully submitted through GitHub using version control (Git). Remember to create descriptive commits to showcase your progress and follow the provided guidelines for academic integrity.
-
-
-
-## Minimum Requirements:
-
-1. **Project Structure**: Create a new Dart project and organize its structure appropriately. Set up the necessary folders, files, and ensure a clean and organized project layout.
-
-2. **Clean Code**: Write clear, well-organized, and scalable code. Use meaningful variable and function names, following standard coding conventions to improve code readability. Well-structured and easily maintainable code is essential.
-
-3. **Applying Concepts**: Demonstrate a comprehensive understanding of programming concepts and techniques. Implement the CLI features with efficiency and correctness.
-
-4. **Query Books**: Develop a simple CLI user interface that allows users to query books and view the number of available copies. Users should be able to search for books by title, author, or category.
-
-5. **Add New Book**: Provide a method to add a new book to the library and update the number of book copies accordingly. Ensure proper error handling for invalid inputs.
-
-6. **Delete Book**: Implement a method to delete a book from the library and update the book count. Handle cases where the book to be deleted does not exist.
-
-7. **Purchase**: Implement the purchase process, allowing users to buy books from the library. Ensure that the number of book copies is decreased according to the books purchased.
-
-8. **Invoice**: Display a detailed invoice after the purchase, showing the books purchased, their prices, and the total cost.
-
-9. **Editing Capability**: Add the ability to modify book data, such as title, author, and price. Users should be able to update book information easily.
-
-## Ideas for Extra Credit:
-
-- **Display all Book Categories**: Provide a method to display a list of all book categories in the library. When a category is selected, return a list of all books belonging to that category.
-- **Reporting:** Provide a method to present a report that contains the number of all purchased books from the library, and calculate their amount.
+```
+static Books display() {
+    print('Enter the title of the book:');
+    final title = stdin.readLineSync()!;
+    print('Enter book author:');
+    final author = stdin.readLineSync()!;
+    print('Enter number of copies:');
+    final copies = int.parse(stdin.readLineSync()!);
+    return Books(title: title, author: author, copies: copies);
+  }
+  ```
+ <br>
   
+2- Delete: to delete books you do not want it or adedd by wrong.
+```
+static void delete(List<Books> books) {
+    print('Enter the title of the book to delete:');
+    final titleToDelete = stdin.readLineSync()!;
+    final bookToDelete = books.firstWhere(
+      (book) => book.title == titleToDelete,
+      orElse: () => Books(title: '', author: '', copies: 0),
+    );
+    if (bookToDelete.title.isNotEmpty) {
+      books.remove(bookToDelete);
+      print('Book deleted successfully.');
+    } else {
+      print('Book not found.');
+    }
+  }
+```
 
-## Delivery Requirements:
 
-- **Language**: The project should be written in Dart language.
 
-- **GitHub Submission**:
-   - Create a Fork from the exam’s GitHub repository.
-   - Create a new branch with your name, i.e., Nawaf-Alshawan.
-   - Commit frequently with descriptive messages to show your progress.
-   - Finally, create a Pull Request to the exam’s original repository containing your solution.
+<br> 3- Edit: this function to update books and to deal with changes.
 
-- **README.md File**: Include a README.md file with instructions on how to run and test the project. This file should provide a clear guide for users to understand how to interact with the CLI.
+```
 
-- **Screenshots**: Include relevant screenshots of the app to showcase its appearance and functionalities. Visuals can help users understand the app's design and layout.
+static void edit(List<Books> books) {
+    print('Enter the title of the book to edit:');
+    final titleToEdit = stdin.readLineSync()!;
+    final bookToEdit = books.firstWhere(
+      (book) => book.title == titleToEdit,
+      orElse: () => Books(title: '', author: '', copies: 0),
+    );
+    if (bookToEdit.title.isNotEmpty) {
+      print('Enter the new title:');
+      final newTitle = stdin.readLineSync()!;
+      print('Enter the new author:');
+      final newAuthor = stdin.readLineSync()!;
+      print('Enter the new number of copies:');
+      final newCopies = int.parse(stdin.readLineSync()!);
+      bookToEdit.title = newTitle;
+      bookToEdit.author = newAuthor;
+      bookToEdit.copies = newCopies;
+      print('Book updated successfully.');
+      print('----------------------------------');
+    } else {
+      print('Book not found.');
+    }
+```
 
-## Schedule & Deadlines:
+### Data Class
+<br>
+in this class, I have been adding some books that already exist in the library.
+<br>
 
-- Exam Start Date: 27/7/2023 - 3:00 PM
-- Exam Submission Deadline: 30/7/2023 – 11:59 PM
+```
+ List<Books> books = [
+    Books(title: 'The sky', author: 'Fahad', copies: 5),
+    Books(title: 'nice map', author: 'Ahmed', copies: 3),
+    Books(title: '1984', author: 'Salman', copies: 10),
+    Books(title: 'Good point', author: 'Sara', copies: 2),
+    Books(title: 'The Great Gatsby', author: 'Naser', copies: 4),
+    Books(title: 'bath', author: 'Samar', copies: 2),
 
-## Evaluation Criteria:
+  ];
 
-The project will be evaluated based on the following criteria:
+class Data1 {
+  static bool containsTitle(String title) {
+    return books.any((book) => book.title == title);
+  }
 
-- **Completion**: The extent to which the project meets all the minimum requirements, including the extra credit ideas if implemented.
+  static Books search(String title) {
+    return books.firstWhere(
+      (book) => book.title == title,
+      orElse: () => Books(title: '', author: '', copies: 0),
+    );
+  }
+}
+```
 
-- **Quality**: The overall quality of the project, including the coding style, organization, and ease of maintenance. Well-structured and readable code will be favorably evaluated.
+## Search Class
 
-- **Use of Programming Concepts**: How well you utilize programming concepts such as classes, abstracts, functions, and other relevant techniques.
+<br>
+In this class, I add two functions that make the user print all names of the books or see particular books from the library.
+<br>
+<br>
 
-## Resources
+```
+class Search {
+  static void displayAll(List<Books> books) {
+    if (books.isEmpty) {
+      print('There are no books in the library.');
+    } else {
+      print('All books in the library:');
+      for (Books book in books) {
+        print('${book.title} by ${book.author} - ${book.copies} copies');
+      }
+    }
+  }
+```
+## Purchase Class 
 
-- [Dart Tutorials](https://dart.dev/tutorials)
+<br>
+This class is very important for this library because it is made users to buy books and see how many books are available in the library.
 
-Good luck with the project, and feel free to ask any additional questions if needed!
+```
+static void purchase(List<Books> books) {
+    print('Enter the title of the book to purchase:');
+    final titleToPurchase = stdin.readLineSync()!;
+    final bookToPurchase = books.firstWhere(
+      (book) => book.title == titleToPurchase,
+      orElse: () => Books(title: '', author: '', copies: 0),
+    );
+    if (bookToPurchase.title.isNotEmpty) {
+      print('How many copies do you want to purchase?');
+      final copiesToPurchase = int.parse(stdin.readLineSync()!);
+      if (copiesToPurchase <= bookToPurchase.copies) {
+        bookToPurchase.copies -= copiesToPurchase;
+        print('Purchase successful.');
+      } else {
+        print('Purchase failed: not enough copies in stock.');
+      }
+    } else {
+      print('Book not found.');
+    }
+
+```
+
+## Main Class
+<br>
+It is the most important class in the program because this class is the gate to enter another class or call the rest of the class.
+
+```
+import 'dart:io';
+import 'package:firstapp/Purchase.dart';
+import 'Search.dart';
+import 'Books.dart';
+import 'Data1.dart';
+
+// final books2 = <Books>[];
+void main() {
+  while (true) {
+    print('Enter 1 to add a book.');
+    print('Enter 2 to delete a book by title.');
+    print('Enter 3 to see All books availabli');
+    print('Enter 4 to search on partcular book');
+    print('Enter 5 to purchase a book.');
+    print('Enter 6 to edite books');
+    print('Enter 0 to exit.');
+    final choice = int.parse(stdin.readLineSync()!);
+    switch (choice) {
+      case 0:
+        exit(0);
+        break;
+      case 1:
+        final book = Books.display();
+        books.add(book);
+        print('Book added successfully:');
+        print('Title: ${book.title}');
+        print('Author: ${book.author}');
+        print('Copies: ${book.copies}');
+        break;
+      case 2:
+        Books.delete(books);
+        break;
+
+      // default:
+      //   print('Invalid choice. Please try again.');
+      //   print('-------------------------------------');
+      case 3:
+        Search.displayAll(books);
+        break;
+      case 4:
+        Search.searchP(books);
+        // Data1.getBooks();
+        break;
+
+      case 5:
+        Purchase.purchase(books);
+        break;
+      case 6:
+        Books.edit(books);
+
+        break;
+    }
+  }
+}
+
+```
+
+## Result or run
+
+<br>
+here you can see the result of running the program and I have explained everything in the image.
+<br> <br>
+<img width="920" alt="expain" src="https://github.com/Flutter-GG/Project-dart-1/assets/140311670/6f00a74c-d161-4529-8d83-40c5ef744fa1">
+
+# Summary
+
+In this program, you can view all books in two options, choose a specific book, add a book, modify it, and delete it, in addition to that the user can buy the book and see it. Program codes have been added that prevent the user from making any mistake, such as buying an empty book or trying to Attach letters instead of numbers. To learn more, please run the program and see it.
+
+<br> <br> <br> 
+ 10:10 Pm 30 Jul
