@@ -1,6 +1,5 @@
 import 'bookClass.dart';
 import 'project_1.dart';
-import 'basicFuns.dart';
 import 'data.dart';
 import 'dart:io';
 
@@ -35,6 +34,23 @@ addNewBook() {
   } while (true);
 }
 
+/// increase number of copies of the book
+increaseTheCopies({required title}) {
+  for (var book in booksList) {
+    if (book.title == title) {
+      print("The book is already exist you want to increase the copics [y/n]");
+      String confirm = stdin.readLineSync()!;
+      if (confirm == "y" || confirm == "Y") {
+        print("How many copics?");
+        int copics = int.parse(stdin.readLineSync()!);
+        book.numberOfCopies += copics;
+        print("Updated successfully");
+      } else if (confirm == "n" || confirm == "N") {
+        break;
+      }
+    }
+  }
+}
 /// Delete existing book from booksList
 deleteBook() {
   List<Book> toRemove = [];
