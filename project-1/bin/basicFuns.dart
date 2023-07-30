@@ -76,7 +76,9 @@ displayCategorys() {
       for (var book in booksList) {
         if (book.category == userCategory) {
           flag = true;
+          print("--------------------");
           book.display();
+          print("--------------------");
         }
       }
       if (flag == false) {
@@ -122,7 +124,7 @@ queryBooks() {
 getDistinctTitles() {
   Set titlesLocal = {};
   // use Set to store distinct titles
-  for (var book in copyBooksList) {
+  for (var book in copyBooksData) {
     titlesLocal.add(book["title"]);
   }
 
