@@ -1,5 +1,5 @@
-import 'bookClass.dart';
-import 'project_1.dart';
+import 'classes.dart';
+import 'main.dart';
 import 'dart:io';
 
 purchase() {
