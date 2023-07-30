@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:first_project/book_data.dart';
 
-void main(List<String> arguments) {
+void main() {
   var count = 0;
   while (count < 50) {
     print("Welcome to Wejdan Library!");
