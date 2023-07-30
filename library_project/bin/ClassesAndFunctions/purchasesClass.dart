@@ -52,6 +52,7 @@ class Purchases extends Library {
             numberOfCopies <= selectedBook['avalibale copies']) {
           double totalPrice = selectedBook['price'] * numberOfCopies;
 
+          /* this is new, if the user buy the same book twice the number of bought copies will increase */
           int existingBookIndex = -1;
           for (var index = 0; index < updatedInvoice.length; index++) {
             if (updatedInvoice[index]['title'] == selectedBook['title'] &&
