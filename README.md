@@ -9,7 +9,7 @@ The "Library Project using Dart" is an exciting software application designed to
 
 
 ## If you press 2 then this menu will apper:
-![Main option 1 pic](../Project-dart-1/assest/Main1.png)  
+![Main option 1 pic](/assest/Main1.png)  
 
 
 - To view all books.  
@@ -24,7 +24,8 @@ The "Library Project using Dart" is an exciting software application designed to
 
 ![search in book title result ](../Project-dart-1/assest/bookTitle.png)  
 
-- Display all Book Categories.
+- Display all Book Categories.  
+
 :-This is to display all categories in the library, and if you select one will return to you all books belonging to this category. As shown below.  
 
 ![search in books result](../Project-dart-1/assest/Categories.png)  
@@ -42,7 +43,8 @@ The "Library Project using Dart" is an exciting software application designed to
 
 
 
-## If we press 3 this menu will apper:
+## If we press 3 this menu will apper:  
+
 This option will allow you to make a book purchase, and print invoice.
 ![Main option 3 pic](../Project-dart-1/assest/purchase.png)  
 
@@ -52,4 +54,4 @@ This option will allow you to make a book purchase, and print invoice.
 ## Resources
 
 - [Dart Tutorials](https://dart.dev/tutorials)
-- 
+- [Dart 101, 102](https://satr.codes/courses/)
