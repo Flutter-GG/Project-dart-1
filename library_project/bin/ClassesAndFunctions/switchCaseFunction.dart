@@ -35,6 +35,8 @@ switchCases() {
               break;
             case 'q' || 'Q':
               break;
+            default:
+              print("Invalid input. Please try again.");
           }
           break;
         case '2':
@@ -68,6 +70,8 @@ switchCases() {
                 break;
               case 'q' || 'Q':
                 break;
+              default:
+                print("Invalid input. Please try again.");
             }
           }
           break;
