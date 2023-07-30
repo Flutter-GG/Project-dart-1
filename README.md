@@ -53,7 +53,68 @@ Congratulations on reaching the project phase! This project will assess your abi
 
   ### 2- Delete 4 copies from book (5) form library
   ![alt text](project1_aw2/Assets/6.png)    
-  ![alt text](project1_aw2/Assets/6.0.0.png)    
+  ![alt text](project1_aw2/Assets/6.99.png)  
+  <br />
+  ![alt text](project1_aw2/Assets/6.1.png)   
+
+  ### - case : if user all copies for a book , then remove it form library
+  ![alt text](project1_aw2/Assets/6.2case.png)   
+  ![alt text](project1_aw2/Assets/6.3.png)   
+
+  <br />
+  
+  ## (4): Search for book
+  it has 3 choices:         
+  1- by title
+  2- by author
+  3- by categoryy
+
+  ### 1- search by title , then print all copies 
+  ![alt text](project1_aw2/Assets/7.1.png)
+  
+  ### 2- search by author , then print all copies 
+  ![alt text](project1_aw2/Assets/7.2.png)   
+  ### 3- search by categoryy , then print all copies 
+  ![alt text](project1_aw2/Assets/7.3.png)  
+
+  ## (5): buy a book then shows a detaile and total price
+  ![alt text](project1_aw2/Assets/8buy.png)  
+  
+  ### case : if user buy all copies , then the book will remove form library , then print Sold out
+  ![alt text](project1_aw2/Assets/8buy2.png)  
+
+  
+  ## (6): Edit book content
+  
+  change "java" To "Newjava"
+  
+  ![alt text](project1_aw2/Assets/9edit.png)  
+  ![alt text](project1_aw2/Assets/9.1.png)  
+
+  
+  ## (7): Display all Book Categories
+  
+  it has 2 choices:         
+  1- all category
+  2- specific
+
+  ### 1- all category
+  ![alt text](project1_aw2/Assets/10.png)
+  
+
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
 
   
 
