@@ -30,9 +30,9 @@ class Books {
     } else {
       print('Book not found.');
     }
-   
   }
-    static void edit(List<Books> books) {
+
+  static void edit(List<Books> books) {
     print('Enter the title of the book to edit:');
     final titleToEdit = stdin.readLineSync()!;
     final bookToEdit = books.firstWhere(
@@ -50,6 +50,7 @@ class Books {
       bookToEdit.author = newAuthor;
       bookToEdit.copies = newCopies;
       print('Book updated successfully.');
+      print('----------------------------------');
     } else {
       print('Book not found.');
     }
