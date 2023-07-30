@@ -9,7 +9,7 @@ Congratulations on reaching the project phase! This project will assess your abi
 
   it has 9 choices:
 (1): Print library content (2): Add new book (3): Delete book (4): Search for book
-(5): buy a book (6): Edit book content (7): Display all Book Categories(8): show all purchased (0): Exit
+(5): buy a book (6): Edit book content (7): Display all Book Categories (8):show all purchased (0): Exit
 
 
 ## (1) : Print library content
@@ -103,22 +103,23 @@ Congratulations on reaching the project phase! This project will assess your abi
   
 
 
-  
-  
-  
+  ## (8):show all purchased
+  After choose a book to buy it 
+  ### case : when we buy same book with same information more than 1 time , in purchase list , just increment the copies user buy 3 the 5 copies so , total is 8 
+  ![alt text](project1_aw2/Assets/12.1merge.png)
+  ![alt text](project1_aw2/Assets/12.2merge.png)
+  ![alt text](project1_aw2/Assets/12.3merge.png)
+
+  ### But when user edit title or any think , it will considered it as another book 
+  ![alt text](project1_aw2/Assets/12.4merge.png)
+  ![alt text](project1_aw2/Assets/12.5merge.png)
 
   
-  
-  
-  
-  
-  
-  
-  
-
+  ## (0):Eixt 
+  close the projramm , the print thanks message 
   
 
 
-  
-  
+
+
   
