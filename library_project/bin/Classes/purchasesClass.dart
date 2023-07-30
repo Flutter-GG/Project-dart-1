@@ -43,54 +43,58 @@ class Purchases extends Library {
       int bookNumber = int.tryParse(userInput) ?? -1;
       if (bookNumber >= 0 && bookNumber < theLibrary.length) {
         Map selectedBook = theLibrary[bookNumber];
-        print("Selected Book: ${selectedBook['title']}");
-
-        print("\nEnter the number of copies you want to purchase:");
-        int numberOfCopies = int.tryParse(stdin.readLineSync() ?? "") ?? 0;
-
-        if (numberOfCopies > 0 &&
-            numberOfCopies <= selectedBook['avalibale copies']) {
-          double totalPrice = selectedBook['price'] * numberOfCopies;
-
-          /* this is new, if the user buy the same book twice the number of bought copies will increase */
-          int existingBookIndex = -1;
-          for (var index = 0; index < updatedInvoice.length; index++) {
-            if (updatedInvoice[index]['title'] == selectedBook['title'] &&
-                updatedInvoice[index]['author'] == selectedBook['author']) {
-              existingBookIndex = index;
-              break;
-            }
-          }
-
-          if (existingBookIndex != -1) {
-            int newNumberOfCopies = updatedInvoice[existingBookIndex]
-                    ['numberOfCopies'] +
-                numberOfCopies;
-            double newTotalPrice = selectedBook['price'] * newNumberOfCopies;
-
-            updatedInvoice[existingBookIndex]['numberOfCopies'] =
-                newNumberOfCopies;
-            updatedInvoice[existingBookIndex]['totalPrice'] = newTotalPrice;
-          } else {
-            updatedInvoice.add({
-              'title': selectedBook['title'],
-              'author': selectedBook['author'],
-              'numberOfCopies': numberOfCopies,
-              'totalPrice': totalPrice,
-            });
-          }
-
-          var remainingCopies =
-              selectedBook['avalibale copies'] - numberOfCopies;
-          print(
-              "\n You purchased '$numberOfCopies' copy/copies of '${selectedBook['title']}'.\n Total Price: ${totalPrice.toStringAsFixed(2)}\$\n The remaining copies: '$remainingCopies'\n___________________________________________________\n");
-
-          selectedBook['avalibale copies'] = remainingCopies;
-          invoice = updatedInvoice;
-        } else if (selectedBook['avalibale copies'] == 0) {
-          print("The book '${selectedBook['title']}' is sold out.");
+        if (selectedBook['avalibale copies'] == 0) {
+          print("Selected Book: ${selectedBook['title']} is sold out");
         } else {
-          print("Invalid number of copies. Please enter a valid quantity.");
+          print("Selected Book: ${selectedBook['title']}");
+
+          print("\nEnter the number of copies you want to purchase:");
+          int numberOfCopies = int.tryParse(stdin.readLineSync() ?? "") ?? 0;
+
+          if (numberOfCopies > 0 &&
+              numberOfCopies <= selectedBook['avalibale copies']) {
+            double totalPrice = selectedBook['price'] * numberOfCopies;
+
+            /* this is new, if the user buy the same book twice the number of bought copies will increase */
+            int existingBookIndex = -1;
+            for (var index = 0; index < updatedInvoice.length; index++) {
+              if (updatedInvoice[index]['title'] == selectedBook['title'] &&
+                  updatedInvoice[index]['author'] == selectedBook['author']) {
+                existingBookIndex = index;
+                break;
+              }
+            }
+
+            if (existingBookIndex != -1) {
+              int newNumberOfCopies = updatedInvoice[existingBookIndex]
+                      ['numberOfCopies'] +
+                  numberOfCopies;
+              double newTotalPrice = selectedBook['price'] * newNumberOfCopies;
+
+              updatedInvoice[existingBookIndex]['numberOfCopies'] =
+                  newNumberOfCopies;
+              updatedInvoice[existingBookIndex]['totalPrice'] = newTotalPrice;
+            } else {
+              updatedInvoice.add({
+                'title': selectedBook['title'],
+                'author': selectedBook['author'],
+                'numberOfCopies': numberOfCopies,
+                'totalPrice': totalPrice,
+              });
+            }
+
+            var remainingCopies =
+                selectedBook['avalibale copies'] - numberOfCopies;
+            print(
+                "\n You purchased '$numberOfCopies' copy/copies of '${selectedBook['title']}'.\n Total Price: ${totalPrice.toStringAsFixed(2)}\$\n The remaining copies: '$remainingCopies'\n___________________________________________________\n");
+
+            selectedBook['avalibale copies'] = remainingCopies;
+            invoice = updatedInvoice;
+          } else if (selectedBook['avalibale copies'] == 0) {
+            print("The book '${selectedBook['title']}' is sold out.");
+          } else {
+            print("Invalid number of copies. Please enter a valid quantity.");
+          }
         }
       } else {
         print("Invalid book number. Please enter a valid book number.");
