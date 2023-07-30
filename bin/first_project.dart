@@ -238,7 +238,7 @@ searchByTitle() {
     bool flag = false;
     for (int i = 0; i <= myData.length - 1; i++) {
       if (myData[i]['bookTitle'] == bookTitle) {
-        print(myData[i]);
+        printMydata(i);
         flag = true;
       } else if (i == myData.length - 1 && flag != true) {
         print(
@@ -257,7 +257,7 @@ searchByAuthor() {
     bool flag = false;
     for (int i = 0; i <= myData.length - 1; i++) {
       if (myData[i]['authorName'] == authorName) {
-        print(myData[i]);
+        printMydata(i);
         flag = true;
       } else if (i == myData.length - 1 && flag != true) {
         print(
@@ -276,7 +276,7 @@ searchByCategory() {
     bool flag = false;
     for (int i = 0; i <= myData.length - 1; i++) {
       if (myData[i]['category'] == category) {
-        print(myData[i]);
+        printMydata(i);
         flag = true;
       } else if (i == myData.length - 1 && flag != true) {
         print(
@@ -294,7 +294,7 @@ searchInCategory(String category) {
     bool flag = false;
     for (int i = 0; i <= myData.length - 1; i++) {
       if (myData[i]['category'] == category) {
-        print(myData[i]);
+        printMydata(i);
         flag = true;
       } else if (i == myData.length - 1 && flag != true) {
         print(
@@ -489,4 +489,23 @@ printInvoice(List purchesInvoice) {
   print("____________________________");
   print("Thanks for shopping from Wejdan Library=)");
   exit(0);
+}
+
+printMydata(int index) {
+  for (int i = 0; i <= myData.length - 1; i++) {
+    if (i == index) {
+      var bookTitle = myData[index]['bookTitle'];
+      var authorName = myData[index]['authorName'];
+      var briefDescription = myData[index]['briefDescription'];
+      var publicationDate = myData[index]['publicationDate'];
+      var category = myData[index]['category'];
+      int availableCopies = myData[index]['availableCopies'];
+      int price = myData[index]['price'];
+      print("Book title: $bookTitle.\t Author name: $authorName");
+      print("Brief description: $briefDescription.");
+      print("Publication date: $publicationDate.\t Category: $category.\t ");
+      print("Available Copies: $availableCopies.\t Price: $price.\t ");
+      print("____________________________");
+    }
+  }
 }
