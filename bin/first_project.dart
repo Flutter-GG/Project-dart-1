@@ -3,11 +3,11 @@ import 'package:first_project/book_data.dart';
 
 void main(List<String> arguments) {
   var count = 0;
-  while (count < 10) {
+  while (count < 50) {
     print("Welcome to Wejdan Library!");
     print("please select from menu:");
     print(
-        "1: Query about books.\n2: Update the library.\n3: Make book purchases.\nQ: quite.");
+        "1: Query about books.\n2: Update the library.\n3: To make a book purchase.\nQ: quite.");
     String selected = stdin.readLineSync()!;
     switch (selected) {
       case "1":
@@ -106,13 +106,9 @@ void main(List<String> arguments) {
                 updateBookInfo(selectedBook, '5');
                 break;
               case '6':
-                print("Please entr the title of the book?");
-                String selectedBook = stdin.readLineSync()!;
                 updateBookInfo(selectedBook, '6');
                 break;
               case '7':
-                print("Please entr the title of the book?");
-                String selectedBook = stdin.readLineSync()!;
                 updateBookInfo(selectedBook, '7');
                 break;
               case 'q' || 'Q':
@@ -125,7 +121,7 @@ void main(List<String> arguments) {
         break;
 
       case "3":
-        //TODO: Make book purchases && detailed invoice after the purchase
+        makeBookPurchase();
         break;
 
       case "Q" || "q":
@@ -157,7 +153,7 @@ class Book {
       this.price});
   displayData() {
     print(
-        "Book Title:$bookTitle\nAuthor Name: $authorName\nBrief Description: $briefDescription/nPublication Date: $publicationDate/nCategory: $category\nAvailable Copies: $availableCopies\nPrice: $price");
+        "Book Title:$bookTitle\nAuthor Name: $authorName\nBrief Description: $briefDescription\nPublication Date: $publicationDate\nCategory: $category\nAvailable Copies: $availableCopies\nPrice: $price");
   }
 }
 
@@ -408,7 +404,7 @@ updateBookInfo(String selectedBook, String caseNumber) {
       bool flag = false;
       for (int i = 0; i <= myData.length - 1; i++) {
         if (myData[i]['bookTitle'] == selectedBook) {
-          print("Please entr the new category the book:");
+          print("Please entr the new price the book:");
           int newPrice = int.parse(stdin.readLineSync()!);
           myData[i]['price'] = newPrice;
           flag = true;
@@ -422,4 +418,75 @@ updateBookInfo(String selectedBook, String caseNumber) {
     case 'C' || 'c':
       break;
   }
+}
+
+makeBookPurchase() {
+  try {
+    List purchesInvoice = [];
+    var count = 0;
+    int number = 0;
+    while (count < 10) {
+      for (int i = 0; i <= myData.length - 1; i++) {
+        var bookTitle = myData[i]['bookTitle'];
+        var availableCopies = myData[i]['availableCopies'];
+        var price = myData[i]['price'];
+        print("$number:$bookTitle");
+        print("Available Copies: $availableCopies \t\t Price: $price");
+        number++;
+      }
+      number = 0;
+      print("Please enter the code of the book you want to purches:");
+      int selectedBook = int.parse(stdin.readLineSync()!);
+      print("Please enter the quantity of book u wanted:");
+      int quantity = int.parse(stdin.readLineSync()!);
+      if (myData[selectedBook]['availableCopies'] >= 0 &&
+          quantity <= myData[selectedBook]['availableCopies']) {
+        myData[selectedBook]['availableCopies'] =
+            myData[selectedBook]['availableCopies'] - quantity;
+        var bookTitle = myData[selectedBook]['bookTitle'];
+        var price = myData[selectedBook]['price'];
+        final invoice = {
+          'bookTitle': bookTitle,
+          'price': price,
+          'quantity': quantity,
+          'Total': quantity * price
+        };
+        purchesInvoice.insert(0, invoice);
+
+        print(
+            "ٌAnother book ? press Y, if you done press any key to print invoice");
+        String? complate = stdin.readLineSync();
+        if (complate == 'Y' || complate == 'y') {
+        } else {
+          printInvoice(purchesInvoice);
+          break;
+        }
+      } else {
+        print(
+            "Please enter the quantity of book u wanted less or equal to available copies");
+      }
+      count++;
+    }
+  } catch (error) {
+    print("error: $error");
+  }
+}
+
+printInvoice(List purchesInvoice) {
+  int total = 0;
+  for (int i = 0; i <= purchesInvoice.length - 1; i++) {
+    var bookTitle = purchesInvoice[i]['bookTitle'];
+    int price = purchesInvoice[i]['price'];
+    int quantity = purchesInvoice[i]['quantity'];
+    int subtotal = price * quantity;
+    total = total + subtotal;
+    print("$i: $bookTitle.");
+    print("Price: $price.\t Quantity: $quantity.");
+    print("Sub total: $subtotal.");
+    print("____________________________");
+  }
+  print("Total: $total.");
+  print("____________________________");
+  print("Thanks for shopping from Wejdan Library=)");
+  exit(0);
 }
