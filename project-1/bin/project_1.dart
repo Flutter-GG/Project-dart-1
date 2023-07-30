@@ -2,15 +2,18 @@ import 'bookClass.dart';
 import 'addEditDelFuns.dart';
 import 'basicFuns.dart';
 import 'purchaseFun.dart';
+import 'queryBooks.dart';
+import 'displayCategory.dart';
 import 'data.dart';
 import 'dart:io';
 
 List<Book> booksList = loadDateToList();
 List copyBooksData = booksData.toList();
 Set titles = getDistinctTitles();
+Library libarayName = Library(name: "Jarir");
 void main() {
   print("---------------------");
-  print("| Welcome To Library |");
+  print("| Welcome To ${libarayName.name} |");
   print("---------------------");
   do {
     print("\n Please select from menu:");

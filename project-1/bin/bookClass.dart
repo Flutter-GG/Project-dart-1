@@ -1,4 +1,10 @@
-class Book {
+class Library {
+  String? name;
+
+  Library({this.name});
+}
+
+class Book extends Library {
   late String title;
   late String author;
   late String category;
@@ -11,13 +17,15 @@ class Book {
   static int counterForAllPurchase = 0;
 
   Book(
-      {required this.title,
+      {String? libarayName,
+      required this.title,
       required this.author,
       required this.category,
       required this.numberOfCopies,
       required this.price,
       this.description,
-      this.publicationYear});
+      this.publicationYear})
+      : super(name: libarayName);
 
   getNumberOfCopies() {
     if (numberOfCopies <= 0) {

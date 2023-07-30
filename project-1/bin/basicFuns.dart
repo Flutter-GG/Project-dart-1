@@ -53,12 +53,12 @@ loadDateToList() {
   return booksListLocal;
 }
 
-/// Display distinct category 
+/// Display distinct category
 displayCategorys() {
   Set categorySet = {};
   bool flag = false;
 
-  // use Set to print distinct category 
+  // use Set to print distinct category
   for (var book in booksList) {
     categorySet.add(book.category);
   }
