@@ -37,35 +37,7 @@ void main() {
             }
             break;
           case '3':
-            print("please select the category from menu:");
-            print(
-                "1: Mystery/Thriller.\n2: Science Fiction/Dystopian.\n3: Short Stories/Fiction.\n4: Fiction/Romance.\n5: Fiction/Self-Help.\n6: NonFiction/Science.\n7: Fiction/Drama.\nQ: quite.");
-            String? selected = stdin.readLineSync();
-            switch (selected) {
-              case '1':
-                searchInCategory('Mystery/Thriller');
-                break;
-              case '2':
-                searchInCategory('Science Fiction/Dystopian');
-                break;
-              case '3':
-                searchInCategory('Short Stories/Fiction');
-                break;
-              case '4':
-                searchInCategory('Fiction/Romance');
-                break;
-              case '5':
-                searchInCategory('Fiction/Self-Help');
-                break;
-              case '6':
-                searchInCategory('NonFiction/Science');
-                break;
-              case '7':
-                searchInCategory('Fiction/Drama');
-                break;
-              case 'q' || 'Q':
-                break;
-            }
+            searchInCategory();
             break;
           case 'q' || 'Q':
             break;
@@ -288,12 +260,20 @@ searchByCategory() {
   }
 }
 
-searchInCategory(String category) {
+searchInCategory() {
   ///for Extra creadt
   try {
     bool flag = false;
+    int number = 1;
     for (int i = 0; i <= myData.length - 1; i++) {
-      if (myData[i]['category'] == category) {
+      var category = myData[i]['category'];
+      print("$number:$category");
+      number++;
+    }
+    print("please type the name of category:");
+    String? selectedCategory = stdin.readLineSync();
+    for (int i = 0; i <= myData.length - 1; i++) {
+      if (myData[i]['category'] == selectedCategory) {
         printMydata(i);
         flag = true;
       } else if (i == myData.length - 1 && flag != true) {
@@ -474,6 +454,7 @@ makeBookPurchase() {
 
 printInvoice(List purchesInvoice) {
   int total = 0;
+  print("-----------Invoice-----------");
   for (int i = 0; i <= purchesInvoice.length - 1; i++) {
     var bookTitle = purchesInvoice[i]['bookTitle'];
     int price = purchesInvoice[i]['price'];
@@ -483,7 +464,7 @@ printInvoice(List purchesInvoice) {
     print("$i: $bookTitle.");
     print("Price: $price.\t Quantity: $quantity.");
     print("Sub total: $subtotal.");
-    print("____________________________");
+    print("_____________________________");
   }
   print("Total: $total.");
   print("____________________________");
@@ -492,6 +473,7 @@ printInvoice(List purchesInvoice) {
 }
 
 printMydata(int index) {
+  print("____________________________");
   for (int i = 0; i <= myData.length - 1; i++) {
     if (i == index) {
       var bookTitle = myData[index]['bookTitle'];
