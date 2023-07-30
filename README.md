@@ -90,4 +90,5 @@ To quit the Enchanted Book Library app at any time, simply enter `4` in the main
 
 We hope you enjoy your mystical journey through the Enchanted Book Library! Happy reading! 📚✨
 
-![alt text]()
+## Screenshots
+![alt text](Assets/Data/screenshot.png)
