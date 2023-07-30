@@ -103,13 +103,14 @@ EnchantedBookLibraryViewModel(String jsonFilePath) : super(jsonFilePath);
 
   void displayMenuInstructions() {
     print("To select an option, simply utter the corresponding number and press Enter.");
-    stdout.flush();
-    sleep(Duration(seconds:3));
+  
 
     print("May the magic of words guide you on this enchanting quest! Happy reading!\n");
     stdout.flush();
-    sleep(Duration(seconds:3));
+    sleep(Duration(seconds:1));
+
     print("Your choise is:  ");
+    
   }
 
   void quitProgram() {
