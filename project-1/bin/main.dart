@@ -1,5 +1,7 @@
 import 'classes.dart';
-import 'addEditDelFuns.dart';
+import 'addNewBook.dart';
+import 'editBook.dart';
+import 'deleteBook.dart';
 import 'purchaseFun.dart';
 import 'queryBooks.dart';
 import 'displayCategory.dart';
