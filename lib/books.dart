@@ -89,7 +89,18 @@ if (Mybooks[i]["author"] == search || Mybooks[i]["title"] == search ){
 }
 }
 }
+// delete function
+deleteBook(){
+  print(" please enter the title or author for the book");
+String name = stdin.readLineSync()!;
+if(name == Mybooks[1]["title"]){
+print('true');
+}else{
+  print('false');
+}
+}
 
+/*
 numberOfCopies(){
  print(" please enter the title of the book");
 String bookTitle = stdin.readLineSync()!;
@@ -102,5 +113,6 @@ if ( Mybooks[i]["title"] == bookTitle ){
 }
 
 }
+*/
 
 //search == Mybooks.contains({"title" :"$search"}) || search == Mybooks.contains({"author" :"$search"})
