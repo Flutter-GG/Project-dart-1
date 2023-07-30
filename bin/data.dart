@@ -37,7 +37,7 @@ final List myData = [
     "description" : "hands-on guidebook for implementing collective intelligence concepts using Java.",
     "authors": ["Satnam Alag"],
     "categories": ["Internet"],
-    "copies" : 1,
+    "copies" : 3,
     "price" : 56
   },
   {
