@@ -23,7 +23,7 @@ class Library {
         String theKey = item[index].toString().toLowerCase();
         if (theKey.contains(userInput.toLowerCase())) {
           book +=
-              "\n Book name: ${item['title']}\n For author: ${item['author']}\n First published: ${item['First published']}\n Categories: ${item['categories']}\n Price: ${item['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${item['avalibale copies']}\n___________________\n";
+              "\n The book: ${item['title']}\n For author: ${item['author']}\n First published: ${item['First published']}\n Categories: ${item['categories']}\n Price: ${item['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${item['avalibale copies']}\n___________________________________________________\n";
         }
       }
       print(book);
@@ -34,4 +34,5 @@ class Library {
       print('not valid category');
     }
   }
+  
 }

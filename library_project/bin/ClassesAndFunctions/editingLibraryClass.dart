@@ -185,7 +185,7 @@ class EditingLibrary extends Library {
         }
 
         var newList =
-            "\n You just edit the book and new data is:\nname: ${bookToModify['title']}\n For author: ${bookToModify['author']}\n First published: ${bookToModify['First published']}\n Categories: ${bookToModify['categories']}\n Price: ${bookToModify['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${bookToModify['avalibale copies']}\n\n";
+            "\n You just edit the book and new data is:\nname: ${bookToModify['title']}\n For author: ${bookToModify['author']}\n First published: ${bookToModify['First published']}\n Categories: ${bookToModify['categories']}\n Price: ${bookToModify['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${bookToModify['avalibale copies']}\n___________________________________________________\n";
         print(newList);
       }
 

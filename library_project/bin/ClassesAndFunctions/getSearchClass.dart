@@ -17,7 +17,8 @@ class GetSearch extends Library {
     //? done
     try {
       print("\nPlease select what you want to search by:");
-      print("\n 1: by title name\n 2: by author name\n 3: by category\n");
+      print(
+          "\n 1: by title name\n 2: by author name\n 3: by category\n\n Q: to exit\n\n");
       String userSelector = stdin.readLineSync()!;
 
       switch (userSelector.toLowerCase()) {
@@ -37,7 +38,7 @@ class GetSearch extends Library {
           Library.searchingByFunc(userInput: userInput, index: 'categories');
           break;
         case == 'q':
-          exit(0);
+          break;
         default:
           print("\n'$userSelector'is not a valid.");
       }

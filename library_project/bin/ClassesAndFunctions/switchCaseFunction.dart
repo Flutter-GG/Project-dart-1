@@ -21,7 +21,7 @@ switchCases() {
           print('| Viewing the library |');
           print(' ---------------------');
           print(
-              "\n Please select\n\n 1: To view 'available copies'\n 2: To view 'categories'\n 3: To view all 'books'\n\nQ: to exit\n\n");
+              "\n Please select\n\n 1: To view 'available copies'\n 2: To view 'categories'\n 3: To view all 'books'\n\n Q: to exit\n\n");
           String? userInput = stdin.readLineSync();
           switch (userInput) {
             case '1':
@@ -38,6 +38,9 @@ switchCases() {
           }
           break;
         case '2':
+          print('\n ------------');
+          print('| Searching |');
+          print(' ------------');
           GetSearch searching = GetSearch();
           searching.getSearchByQuery();
           break;
@@ -47,6 +50,9 @@ switchCases() {
           print('\nAre you from the staff? Y/N\n');
           String? isStaff = stdin.readLineSync();
           if (isStaff == 'y' || isStaff == 'Y') {
+            print('\n ----------');
+            print('| Editing |');
+            print(' ----------');
             print(
                 "\n 1: To 'add new book'\n 2: To 'delete a book'\n 3: To 'edit a book'\n\n Q: to exit\n\n");
             String? userInput = stdin.readLineSync();
@@ -66,10 +72,16 @@ switchCases() {
           }
           break;
         case '4':
+          print('\n -----------------');
+          print('| Making purchase |');
+          print(' -----------------');
           Purchases purchase = Purchases();
           purchase.makePurchase();
           break;
         case '5':
+          print('\n ---------------');
+          print('| Your invoice |');
+          print(' ---------------');
           Purchases viewPurchases = Purchases();
           viewPurchases.getInvoice();
           break;

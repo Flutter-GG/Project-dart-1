@@ -46,7 +46,7 @@ class GetView extends Library {
         }
       }
     }
-    String availableCategories = "\n We have categories: $allCategories\n";
+    String availableCategories = "\n categories: $allCategories\n";
     print(availableCategories);
     print("\n Write the 'category' of the book\n\nQ: to exit\n\n");
     String userInput = stdin.readLineSync()!;
@@ -60,7 +60,7 @@ class GetView extends Library {
     String bookDetails = "";
     for (var book in theLibrary) {
       bookDetails +=
-          "\n The book name: ${book['title']}\n For author: ${book['author']}\n First published: ${book['First published']}\n Categories: ${book['categories']}\n Price: ${book['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${book['avalibale copies']}\n\n";
+          "\n The book: ${book['title']}\n For author: ${book['author']}\n First published: ${book['First published']}\n Categories: ${book['categories']}\n Price: ${book['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${book['avalibale copies']}\n___________________________________________________\n";
     }
     print(bookDetails);
   }
