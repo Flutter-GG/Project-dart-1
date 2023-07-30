@@ -8,7 +8,7 @@ The "Library Project using Dart" is an exciting software application designed to
 ![Main Function pic](/assest/Main.png)  
 
 
-## If you press 2 then this menu will apper:
+## If you press 2 in main menu then this menu will apper:
 ![Main option 1 pic](/assest/Main1.png)  
 
 
@@ -37,13 +37,14 @@ The "Library Project using Dart" is an exciting software application designed to
 
 - To add new book in the library.
 - To delete book in the library.
-- To update book info in the library. 
+- To update book info in the library.  
+
 :- You Can select the field you want to update, and enter the title of the book, then enter the new info. as shown below.
 ![Main option 2 pic](/assest/updatebookinfo.png)  
 
 
 
-## If we press 3 this menu will apper:  
+## If we press 3 in main menu this menu will apper:  
 
 This option will allow you to make a book purchase, and print invoice.
 ![Main option 3 pic](/assest/purchase.png)  
