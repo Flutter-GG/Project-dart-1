@@ -1,4 +1,4 @@
-## In this readme file I will talked about what di you expected to see from this app
+## In this readme file I will talked about what you expected to see from this app
 
 ## The 'main' section:
 
