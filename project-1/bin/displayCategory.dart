@@ -1,4 +1,4 @@
-import 'project_1.dart';
+import 'main.dart';
 import 'dart:io';
 
 /// Display distinct category
