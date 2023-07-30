@@ -14,7 +14,7 @@ class EditingLibrary extends Library {
     example: if you type (python, clean code). will be a list ['python', 'clean code'] 
     AKA the categories, because category is a list of strings */
     try {
-      print("Please enter title \n\nQ: to exit\n\n");
+      print("\nPlease enter title \n\nQ: to exit\n\n");
       String title = stdin.readLineSync() ?? "";
       if (title.toLowerCase() == 'q') {
         print("You didn't add any book");
@@ -25,8 +25,9 @@ class EditingLibrary extends Library {
           (book) => book['title'].toLowerCase() == title.toLowerCase());
 
       if (existingBookIndex != -1) {
-        print("Book '$title' already exists in the library.");
-        print("Enter the number of copies to add:");
+        print("\n Book '$title' already exists in the library.\n");
+        
+        print("Enter number of copies:\n");
         int copiesToAdd = int.parse(stdin.readLineSync() ?? "");
 
         theLibrary[existingBookIndex]['avalibale copies'] += copiesToAdd;
@@ -45,8 +46,8 @@ class EditingLibrary extends Library {
         String publishDate = stdin.readLineSync() ?? "";
 
         print("\nplease enter categories separated by comma:");
-        String categoriesInput = stdin.readLineSync() ?? "";
-        List<String> categories = categoriesInput.split(', ');
+        String categoriesUserInput = stdin.readLineSync() ?? "";
+        List<String> categories = categoriesUserInput.split(', ');
 
         theLibrary.add({
           "title": title,
@@ -57,7 +58,7 @@ class EditingLibrary extends Library {
           "First published": publishDate
         });
 
-        print("Book '$title' has been added to the library.");
+        print("\n Book '$title' has been added to the library.");
       }
     } catch (error) {
       print("Error: $error");
