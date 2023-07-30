@@ -8,7 +8,6 @@ class EditingLibrary extends Library {
   /* this class 'Edits' conatin all methods that belong to editing the library,
   for example: if you want to add a book, delete one or update one use these methods */
   addNewBook() {
-    //? done
     /* this method will add a new book to collection and print the list with the
     new book, the data that will added will be the title, author name, number of copies, 
     the price, the date of publish and the categories separated by comma, for 
@@ -21,37 +20,45 @@ class EditingLibrary extends Library {
         print("You didn't add any book");
         return;
       }
-      print("\nplease enter author name:");
-      String author = stdin.readLineSync() ?? "";
-      print("\nplease enter copies:");
-      int copies = int.parse(stdin.readLineSync() ?? "");
-      print("\nplease enter price:");
-      double price = double.parse(stdin.readLineSync() ?? "");
-      print("\nplease enter publish date:");
-      String publishDate = stdin.readLineSync() ?? "";
-      print("\nplease enter categories separated by comma:");
-      String categoriesInput = stdin.readLineSync() ?? "";
-      List<String> categories = categoriesInput.split(', ');
 
-      String newListStrig = "";
-      List updatedBookList = List.from(theLibrary);
+      int existingBookIndex = theLibrary.indexWhere(
+          (book) => book['title'].toLowerCase() == title.toLowerCase());
 
-      updatedBookList.add({
-        "title": title,
-        "author": author,
-        "categories": categories,
-        "price": price,
-        "avalibale copies": copies,
-        "First published": publishDate
-      });
+      if (existingBookIndex != -1) {
+        print("Book '$title' already exists in the library.");
+        print("Enter the number of copies to add:");
+        int copiesToAdd = int.parse(stdin.readLineSync() ?? "");
 
-      for (var book in updatedBookList) {
-        newListStrig +=
-            "\n Book name: ${book['title']}\n For author: ${book['author']}\n First published: ${book['First published']}\n Categories: ${book['categories']}\n Price: ${book['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${book['avalibale copies']}\n\n";
+        theLibrary[existingBookIndex]['avalibale copies'] += copiesToAdd;
+        print("Added $copiesToAdd copies to the existing book '$title'.");
+      } else {
+        print("\nplease enter author name:");
+        String author = stdin.readLineSync() ?? "";
+
+        print("\nplease enter copies:");
+        int copies = int.parse(stdin.readLineSync() ?? "");
+
+        print("\nplease enter price:");
+        double price = double.parse(stdin.readLineSync() ?? "");
+
+        print("\nplease enter publish date:");
+        String publishDate = stdin.readLineSync() ?? "";
+
+        print("\nplease enter categories separated by comma:");
+        String categoriesInput = stdin.readLineSync() ?? "";
+        List<String> categories = categoriesInput.split(', ');
+
+        theLibrary.add({
+          "title": title,
+          "author": author,
+          "categories": categories,
+          "price": price,
+          "avalibale copies": copies,
+          "First published": publishDate
+        });
+
+        print("Book '$title' has been added to the library.");
       }
-      print(newListStrig);
-
-      theLibrary = updatedBookList;
     } catch (error) {
       print("Error: $error");
     }
@@ -185,7 +192,7 @@ class EditingLibrary extends Library {
         }
 
         var newList =
-            "\n You just edit the book and new data is:\nname: ${bookToModify['title']}\n For author: ${bookToModify['author']}\n First published: ${bookToModify['First published']}\n Categories: ${bookToModify['categories']}\n Price: ${bookToModify['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${bookToModify['avalibale copies']}\n___________________________________________________\n";
+            "\n You just edit the book and new data is:\nname: ${bookToModify['title']}\n For author: ${bookToModify['author']}\n First published: ${bookToModify['First published']}\n Categories: ${bookToModify['categories']}\n Price: ${bookToModify['price'].toStringAsFixed(2)}\$\n Avalibale copies: ${bookToModify['avalibale copies']}\n\n";
         print(newList);
       }
 
