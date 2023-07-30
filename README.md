@@ -1,83 +1,295 @@
-# Project #1 - Library Project using Dart
+```javascript
+import 'dart:io';
+import 'books.dart';
+//import 'package:library_project/library_project.dart' ;
+//import 'books.dart';
+```
+# main fuction #
 
-Congratulations on reaching the project phase! This project will assess your ability to develop a "Library Project using Dart" with a Command Line Interface (CLI) to manage a library's book inventory and user interactions. Below are the key requirements and evaluation criteria:
+```javascript
 
-
-## Description:
-
-The "Library Project using Dart" is an exciting software application designed to efficiently manage a library's book inventory and streamline user interactions through a Command Line Interface (CLI). This capstone project provides you, as a student, with an excellent opportunity to apply your knowledge and skills in Flutter Development, showcasing your proficiency in Dart programming.
-
-The primary goal of the project is to develop a user-friendly and efficient CLI that caters to both library staff and patrons. With this CLI, users can effortlessly query books, view the number of available copies, add new books to the library, delete books from the inventory, make book purchases, and receive detailed invoices after each purchase. Additionally, the project demands an essential feature - updating the number of book copies after a purchase is made to maintain accurate inventory records.
-
-To begin, you will create a new Dart project, ensuring that the project structure is appropriately organized for a clean and manageable codebase. As you progress, it is crucial to write code that is clear, well-organized, and scalable, adhering to standard coding conventions to enhance code readability. Demonstrating your comprehensive understanding of programming concepts and techniques is essential for a successful outcome.
-
-Your CLI should allow users to search for books by title, author, or category, providing a straightforward and accessible way to retrieve information about the library's collection. Implementing a method to add new books to the library with the appropriate updates to the book count will further enhance the system's usability.
-
-Managing the library's inventory also involves implementing a method to delete books, ensuring smooth handling of cases where a book to be deleted does not exist. Facilitating book purchases through the CLI is another critical aspect, requiring you to decrease the number of book copies according to the books purchased and generate an informative invoice for the user.
-
-As an extra credit opportunity, you can implement features such as displaying all book categories in the library, returning a list of books belonging to a selected category. Additionally, providing a method to count the number of purchased books will further showcase your skills.
-
-The project must be written entirely in the Dart language and fully submitted through GitHub using version control (Git). Remember to create descriptive commits to showcase your progress and follow the provided guidelines for academic integrity.
+void main(List<String> arguments) {
+var count = 0;
+while (count < 10) {
+print("\n \n Welcome,Please select how I can help you...\n ------------");
+print(" 1 Query books \n 2 Purchase a book \n 3 Add a new book \n 4 Delete a book \n 5 categorys \n 6 modify book data \n Q Exit");
+String selected = stdin.readLineSync()!;
 
 
+    switch (selected) {
+      case "1": queryBooks();
 
-## Minimum Requirements:
+        break;
 
-1. **Project Structure**: Create a new Dart project and organize its structure appropriately. Set up the necessary folders, files, and ensure a clean and organized project layout.
+      case "2": puchases();
 
-2. **Clean Code**: Write clear, well-organized, and scalable code. Use meaningful variable and function names, following standard coding conventions to improve code readability. Well-structured and easily maintainable code is essential.
+        break;
+        
+      case "3": addNewBooks();
+       
+        break;
+        
+      case "4": deleteBooks();
+    
+        break;
 
-3. **Applying Concepts**: Demonstrate a comprehensive understanding of programming concepts and techniques. Implement the CLI features with efficiency and correctness.
+      case "5": displayCategorys();
+    
+        break;
+      
+      case "6": editBooksinfo();
 
-4. **Query Books**: Develop a simple CLI user interface that allows users to query books and view the number of available copies. Users should be able to search for books by title, author, or category.
+        break;
 
-5. **Add New Book**: Provide a method to add a new book to the library and update the number of book copies accordingly. Ensure proper error handling for invalid inputs.
+      case "Q" || "q": 
+        exit(0);
 
-6. **Delete Book**: Implement a method to delete a book from the library and update the book count. Handle cases where the book to be deleted does not exist.
+      default:
+        print("\n Please Try again and select from menu\n");
+    }
+    count++;
+  }
 
-7. **Purchase**: Implement the purchase process, allowing users to buy books from the library. Ensure that the number of book copies is decreased according to the books purchased.
 
-8. **Invoice**: Display a detailed invoice after the purchase, showing the books purchased, their prices, and the total cost.
+}
+```
+# categorys display Function
+```javascript
 
-9. **Editing Capability**: Add the ability to modify book data, such as title, author, and price. Users should be able to update book information easily.
+displayCategorys() {
+ List<BooksInfo> books = [];
+   String category = stdin.readLineSync()!;
+List<BooksInfo> booksCategory = getBooksCategory(books, category);
+for (BooksInfo book in booksCategory) {
+print("\n book Title: ${book.bookTitle}  author: ${book.author}  description: ${book.description}  publication Date: ${book.publicationDate}  category: ${book.category}  available: ${book.available}  price: ${book.price}");
+}
+}
+void displayBookCategories(List<BooksInfo> books) {
+List<String> categories = [];
+for (BooksInfo book in books) {
+if (!categories.contains(book.category)) {
+categories.add(book.category);
+}
+}
+print("Book Categories:");
+for (String category in categories) {
+print(category);
+}
+}
+List<BooksInfo> getBooksCategory(List<BooksInfo> books, String category) {
+List<BooksInfo> booksCategory = [];
+for (BooksInfo book in books) {
+if (book.category == category) {
+booksCategory.add(book);
+}
+}
 
-## Ideas for Extra Credit:
+return booksCategory;
+}
+//
+```
+# edit Function
 
-- **Display all Book Categories**: Provide a method to display a list of all book categories in the library. When a category is selected, return a list of all books belonging to that category.
-- **Reporting:** Provide a method to present a report that contains the number of all purchased books from the library, and calculate their amount.
+```javascript
+void editBooksinfo() {
+  List<BooksInfo> books = [];
+print("enter the name of the book you want to edit..");
+String title = stdin.readLineSync()!;
+BooksInfo bookEdit = books.firstWhere((book) => book.bookTitle == title);
+
+if (bookEdit != null) {
+print("Enter the new title: ");
+String newTitle = stdin.readLineSync()!;
+print("Enter the new author: ");
+String newAuthor = stdin.readLineSync()!;
+print("Enter the new description: ");
+String newDescription = stdin.readLineSync()!;
+print("Enter the new publication Date: ");
+String newDate = stdin.readLineSync()!;
+print("Enter the new category: ");
+String newCategory = stdin.readLineSync()!;
+print("Enter the new available: ");
+int newAvailable = int.parse(stdin.readLineSync()!);
+print("Enter the new price: ");
+String newPrice = stdin.readLineSync()!;
+
+bookEdit.bookTitle = newTitle;
+bookEdit.author = newAuthor;
+bookEdit.description = newDescription;
+bookEdit.publicationDate = newDate;
+bookEdit.category = newCategory;
+bookEdit.available = newAvailable;
+bookEdit.price = newPrice;
+
+}
+}
+```
+
+
+
+# Delete Function
+
+```javascript
+
+void deleteBooks() {
+List<BooksInfo> books=[];
+
+try{
+  print("enter the name of the book you want to delete..");
+  String deletBook = stdin.readLineSync()!;
+  BooksInfo bookToDelete = books.firstWhere((book) => book.bookTitle == deletBook);
+
+  if (bookToDelete == null) {
+    print("Book not found..");
+    return;
+  }
+
+  bookToDelete.available--;
+
+  if (bookToDelete.available == 0) {
+    books.remove(bookToDelete);
+  }
+  }
+catch(error){
+    print("error");
+    }
+}
+```
+# add Function
+
+```javascript
+
+void addNewBooks() {
+List<BooksInfo> newBooks=[];
+try{
+  print("Add Book Title..");
+  String bookTitle = stdin.readLineSync()!;
+  print("Add Book Author..");
+  String author = stdin.readLineSync()!;
+  print("Add Book description..");
+  String description = stdin.readLineSync()!;
+  print("Add Book publication Date..");
+  String publicationDate = stdin.readLineSync()!;
+  print("Add Book Category..");
+  String category = stdin.readLineSync()!;
+  print("Add Book number Of Copies..");
+  int available = int.parse(stdin.readLineSync()!);
+  print("Add Book Price..");
+  String price = stdin.readLineSync()!;
+
+  bool bookFound = newBooks.any((book) => book.bookTitle == bookTitle && book.author == author && book.description == description && book.publicationDate == publicationDate && book.category == category && book.available == available );
+  if (!bookFound) {
+    newBooks.add(BooksInfo(bookTitle: bookTitle, author: author, description: description, publicationDate: publicationDate, category:category, available: available, price:price));
+    //print("$newBooks");
+    print(" book Title: $bookTitle author: $author \n description: $description \n publicationDate: $publicationDate \n category: $category \n available: $available \n price: $price");
+  }
+
+ final booksMap = {
+      "bookTitle": bookTitle,
+      "author": author,
+      "description": description,
+      "publicationDate": publicationDate,
+      "category": category,
+      "available":available,
+      "price": price
+    };
+    books.add(booksMap);
+    print("added successfully...");
+    print("book Title: $bookTitle  author: $author  description: $description  publicationDate: $publicationDate  category: $category  available: $available  price: $price");
+
+  } catch (error) {
+    print("error");
+  }
+}
+```
+
+# Puchases Function
+
+```javascript
+
+void puchases() {
+  List<BooksInfo> books=[];
+print("enter the name of the book you want..");
+String bookTitles = stdin.readLineSync()!;
+List<String> bookTitlesList = bookTitles.split(" ");
+for (String bookTitle in bookTitlesList) {
+BooksInfo bookToPurchase = books.firstWhere((book) => book.bookTitle == bookTitle);
+
+if (bookToPurchase != null) {
+  bookToPurchase.available--;
+print(invoice());
+}
+}
+}
+ invoice() {
+  List<BooksInfo> books=[];
+
+print("\n Invoice \n -------------------------------");
+
+for (BooksInfo book in books) {
+print("${book.bookTitle} - ${book.price}");
+}
+
+
+double totalCost = 0;
+for (BooksInfo book in books) {
+totalCost += book.price as double;
+}
+print(" \n Total: ${totalCost}");
+ }
+
+```
+
+# Query Function 
+
+```javascript
+
+ queryBooks() {
+      try {
+    print("enter the title, author, or category of the book...");
+    String search = stdin.readLineSync()!;
+    bool found = false;
+    for (int i = 0; i <= books.length - 1; i++) {
+      if (books[i]['bookTitle'] == search || books[i]['author'] == search|| books[i]['category'] == search) {
+        print(books[i]);
+        found = true;
+      } else if (i == books.length - 1 && found != true) {
+        print("the book you are looking for doesn't Exist");
+      }
+    }
+  } catch (error) {
+    print("Error: $error");
+  }
+}
+
+```
+    
+# books class #
+
+```javascript
+
+class BooksInfo {
+  late String bookTitle;
+  late String author;
+  late String description;
+  late String publicationDate;
+  late String category;
+  late int available;
+  late String price;
+
+  BooksInfo({
+    required this.bookTitle,
+    required this.author,
+    required this.description,
+    required this.publicationDate,
+    required this.category,
+    required this.available,
+    required this.price,
+  });
+
+  displayData() {
+    print("bookTitle:$bookTitle author:$author description:$description publicationDate:$publicationDate category:$category available:$available price:$price");
+  }
   
-
-## Delivery Requirements:
-
-- **Language**: The project should be written in Dart language.
-
-- **GitHub Submission**:
-   - Create a Fork from the exam’s GitHub repository.
-   - Create a new branch with your name, i.e., Nawaf-Alshawan.
-   - Commit frequently with descriptive messages to show your progress.
-   - Finally, create a Pull Request to the exam’s original repository containing your solution.
-
-- **README.md File**: Include a README.md file with instructions on how to run and test the project. This file should provide a clear guide for users to understand how to interact with the CLI.
-
-- **Screenshots**: Include relevant screenshots of the app to showcase its appearance and functionalities. Visuals can help users understand the app's design and layout.
-
-## Schedule & Deadlines:
-
-- Exam Start Date: 27/7/2023 - 3:00 PM
-- Exam Submission Deadline: 30/7/2023 – 11:59 PM
-
-## Evaluation Criteria:
-
-The project will be evaluated based on the following criteria:
-
-- **Completion**: The extent to which the project meets all the minimum requirements, including the extra credit ideas if implemented.
-
-- **Quality**: The overall quality of the project, including the coding style, organization, and ease of maintenance. Well-structured and readable code will be favorably evaluated.
-
-- **Use of Programming Concepts**: How well you utilize programming concepts such as classes, abstracts, functions, and other relevant techniques.
-
-## Resources
-
-- [Dart Tutorials](https://dart.dev/tutorials)
-
-Good luck with the project, and feel free to ask any additional questions if needed!
+  }
+```
