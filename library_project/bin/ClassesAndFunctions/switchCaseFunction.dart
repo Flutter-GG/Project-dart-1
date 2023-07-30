@@ -5,6 +5,7 @@ import 'getViewClass.dart';
 import 'purchasesClass.dart';
 
 switchCases() {
+  /* I hope this switch cases function will handel all choices in the main section */
   try {
     do {
       print('\n ------------------------');
