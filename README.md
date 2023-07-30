@@ -1,6 +1,3 @@
-# Project #1 - Library Project using Dart
-
-Congratulations on reaching the project phase! This project will assess your ability to develop a "Library Project using Dart" with a Command Line Interface (CLI) to manage a library's book inventory and user interactions. Below are the key requirements and evaluation criteria:
 
 ## Project Description:
 - when running the project, it will show a greeting (read text from file), then display the services menu:
@@ -121,6 +118,3 @@ Congratulations on reaching the project phase! This project will assess your abi
   
 
 
-
-
-  
