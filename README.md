@@ -1,83 +1,327 @@
-# Project #1 - Library Project using Dart
+# Project #1 - Abdulelah Aljuraysi 
 
-Congratulations on reaching the project phase! This project will assess your ability to develop a "Library Project using Dart" with a Command Line Interface (CLI) to manage a library's book inventory and user interactions. Below are the key requirements and evaluation criteria:
-
-
-## Description:
-
-The "Library Project using Dart" is an exciting software application designed to efficiently manage a library's book inventory and streamline user interactions through a Command Line Interface (CLI). This capstone project provides you, as a student, with an excellent opportunity to apply your knowledge and skills in Flutter Development, showcasing your proficiency in Dart programming.
-
-The primary goal of the project is to develop a user-friendly and efficient CLI that caters to both library staff and patrons. With this CLI, users can effortlessly query books, view the number of available copies, add new books to the library, delete books from the inventory, make book purchases, and receive detailed invoices after each purchase. Additionally, the project demands an essential feature - updating the number of book copies after a purchase is made to maintain accurate inventory records.
-
-To begin, you will create a new Dart project, ensuring that the project structure is appropriately organized for a clean and manageable codebase. As you progress, it is crucial to write code that is clear, well-organized, and scalable, adhering to standard coding conventions to enhance code readability. Demonstrating your comprehensive understanding of programming concepts and techniques is essential for a successful outcome.
-
-Your CLI should allow users to search for books by title, author, or category, providing a straightforward and accessible way to retrieve information about the library's collection. Implementing a method to add new books to the library with the appropriate updates to the book count will further enhance the system's usability.
-
-Managing the library's inventory also involves implementing a method to delete books, ensuring smooth handling of cases where a book to be deleted does not exist. Facilitating book purchases through the CLI is another critical aspect, requiring you to decrease the number of book copies according to the books purchased and generate an informative invoice for the user.
-
-As an extra credit opportunity, you can implement features such as displaying all book categories in the library, returning a list of books belonging to a selected category. Additionally, providing a method to count the number of purchased books will further showcase your skills.
-
-The project must be written entirely in the Dart language and fully submitted through GitHub using version control (Git). Remember to create descriptive commits to showcase your progress and follow the provided guidelines for academic integrity.
+## How the program works in as admin user 
 
 
+Please select:
 
-## Minimum Requirements:
+```
+(base) ~$ dart run main.dart
+------------
+Welcome to Abdulelah Library
+please select from menu:
+1:Admin User
+2:End User
+Q:Quite
+```
+If you choose 1 You will be logged in as the Admin user
 
-1. **Project Structure**: Create a new Dart project and organize its structure appropriately. Set up the necessary folders, files, and ensure a clean and organized project layout.
+User information is requested
+Example\_\_
 
-2. **Clean Code**: Write clear, well-organized, and scalable code. Use meaningful variable and function names, following standard coding conventions to improve code readability. Well-structured and easily maintainable code is essential.
+Email ```admin@gamil.com```
+password ```123```
+```
+please enter admin Email?
+admin@gmail.com
+please enter admin Password?
+123
+Welcome Admin user admin@gmail.com
+1:Add new book
+2:Delete book
+3:Update Book
+Q:Quite
+```
+If option 1 is selected, a new book will be added after adding the book's information
+```
+Welcome to Abdulelah Library
+please select from menu:
+1:Admin User
+2:End User
+Q:Quite
+1
+please enter admin Email?
+admin@gmail.com
+please enter admin Password?
+123
+Welcome Admin user admin@gmail.com
+1:Add new book
+2:Delete book
+3:Update Book
+Q:Quite
+1
+please inter book name?
+python
+please inter Author Name?
+Abdulelah
+please inter Brief Description?
+python Book
+please inter PublicationDate?
+2023
+please inter Category?
+programming books
+please enter Available Copies?
+5
+please enter Price?
+100
+```
+If option 2 is chosen, the book will be deleted after choosing its name
+```
+Welcome Admin user admin@gmail.com
+1:Add new book
+2:Delete book
+3:Update Book
+Q:Quite
+2
+Please enter the name of the book that you want to delete?
+python
+Book 'python' has been deleted successfully.
+```
+If option 3 is selected, the book information will be updated after choosing the name of the book and adding the new information
+```
+Welcome Admin user admin@gmail.com
+1:Add new book
+2:Delete book
+3:Update Book
+Q:Quite
+3
+Please enter the name of the book that you want to update?
+1984
+Please enter the updated book name?
+python
+Please enter the updated author name?
+abdulelah
+Please enter the updated brief description?
+python book
+Please enter the updated publication date?
+2022
+Please enter the updated category?
+programming books
+Please enter the updated available copies?
+50
+Please enter the updated price?
+100
+Book '1984' has been updated successfully.
+```
 
-3. **Applying Concepts**: Demonstrate a comprehensive understanding of programming concepts and techniques. Implement the CLI features with efficiency and correctness.
+## How the program works in as End user 
+We choose option number A to log in as an end user
+```
+Welcome to Abdulelah Library
+please select from menu:
+1:Admin User
+2:End User
+Q:Quite
+2
+Welcome End User
+1:Display Book
+2:Search Book
+3:Pay Book
+4:Show Category
+5:show Purchased Books
+Q:quite
+```
+If entry number 1 is selected, all available books will be displayed
+```
+Welcome End User
+1:Display Book
+2:Search Book
+3:Pay Book
+4:Show Category
+5:show Purchased Books
+Q:quite
+1
+------------
+Book Name: The Blue Elephant
+Author Name: Ahmed Mourad
+Brief Description: A novel narrating the story of a psychiatrist dealing with a mysterious case at a mental hospital.
+Publication Date: 2014
+Category: Mystery/Thriller
+Available Copies: 5
+Price: 10
+------------
+Book Name: The Handmaid's Tale
+Author Name: Margaret Atwood
+Brief Description: A dystopian novel depicting a future characterized by oppression and persecution.
+Publication Date: 1985
+Category: Science Fiction/Dystopian
+Available Copies: 3
+Price: 8
+------------
+Book Name: The Invisible Man
+Author Name: Mohamed Reda
+Brief Description: A collection of short stories addressing identity and existence.
+Publication Date: 2021
+Category: Short Stories/Fiction
+Available Copies: 8
+Price: 12
+------------
+Book Name: Memory of the Body
+Author Name: Ahlam Mosteghanemi
+Brief Description: A novel revolving around a woman living between the past and the present.
+Publication Date: 1993
+Category: Fiction/Romance
+Available Copies: 2
+Price: 7
+------------
+Book Name: The Alchemist
+Author Name: Paulo Coelho
+Brief Description: A symbolic novel shedding light on the journey in search of true treasure.
+Publication Date: 1988
+Category: Fiction/Self-Help
+Available Copies: 6
+Price: 9
+------------
+Book Name: A Brief History of Time
+Author Name: Stephen Hawking
+Brief Description: A scientific book explaining the theory of the Big Bang and the evolution of the universe.
+Publication Date: 1998
+Category: NonFiction/Science
+Available Copies: 4
+Price: 15
+------------
+Book Name: Nineteen Minutes
+Author Name: Nineteen Minutes
+Brief Description: A novel exploring themes of love, fate, and destiny.
+Publication Date: 2004
+Category: Fiction/Drama
+Available Copies: 7
+Price: 14
+------------
+Book Name: Pride and Prejudice
+Author Name: Jane Austen
+Brief Description: A classic romance novel depicting societal norms and prejudices.
+Publication Date: 1813
+Category: Fiction/Romance
+Available Copies: 10
+Price: 5
+------------
+Book Name: python
+Author Name: abdulelah
+Brief Description: python book
+Publication Date: 2022
+Category: programming books
+Available Copies: 50
+Price: 100
+------------
+Book Name: To Kill a Mockingbird
+Author Name: Harper Lee
+Brief Description: A coming-of-age novel addressing racial injustice in the American South.
+Publication Date: 1960
+Category: Fiction/Drama
+Available Copies: 1
+Price: 11
+------------
+```
+If entry 2 is selected, books are searched
+```
+Welcome End User
+1:Display Book
+2:Search Book
+3:Pay Book
+4:Show Category
+5:show Purchased Books
+Q:quite
+2
+Please select from the menu:
+1: Search Book by name, 2: Search Book by author name, 3: Search Book by category
+```
+Options such as option 1 to search by name are displayed \_\_ 
 
-4. **Query Books**: Develop a simple CLI user interface that allows users to query books and view the number of available copies. Users should be able to search for books by title, author, or category.
+Option number 2 searches by the author's name\_\_ 
 
-5. **Add New Book**: Provide a method to add a new book to the library and update the number of book copies accordingly. Ensure proper error handling for invalid inputs.
+Option number 2 searches by the category\_\_ 
 
-6. **Delete Book**: Implement a method to delete a book from the library and update the book count. Handle cases where the book to be deleted does not exist.
+Let me try option #2, search by author name
+```
+Please select from the menu:
+1: Search Book by name, 2: Search Book by author name, 3: Search Book by category
+2
+Please enter the author_Name of the book that you want to search?
+abdulelah
+Book Name: python
+Author Name: abdulelah
+Brief Description: python book
+Publication Date: 2022
+Category: programming books
+Available Copies: 50
+Price: 100
+------------
+```
+If option number 3 is chosen, the user can purchase a book through the name of the book, then a message will appear if he agrees to the purchase, and if the approval is approved, a simplified invoice for the purchases will appear
+```
+Welcome End User
+1:Display Book
+2:Search Book
+3:Pay Book
+4:Show Category
+5:show Purchased Books
+Q:quite
+3
+Please enter the name of the book that you want to pay?
+python
+Are you sure you want to pay for python? The price is $100.00
+Choose 'Y' to pay or 'N' to cancel.
+y
+Successfully paid This is your receipt:
+Book: python
+Price: 100
+------------
+```
+If option number 4 is chosen, all Category will be displayed, and one of them can be selected to display all books belonging to this Category
+```
+Welcome End User
+1:Display Book
+2:Search Book
+3:Pay Book
+4:Show Category
+5:show Purchased Books
+Q:quite
+4
+Available Categories: Mystery/Thriller
+ Science Fiction/Dystopian
+ Short Stories/Fiction
+ Fiction/Romance
+ Fiction/Self-Help
+ NonFiction/Science
+ Fiction/Drama
+ programming books
+Please enter the Category of the book you want to search?
+programming books
+Books in Category 'programming books':
+------------
+Book Name: python
+Author Name: abdulelah
+Brief Description: python book
+Publication Date: 2022
+Category: programming books
+Available Copies: 49
+Price: 100
+------------
+```
+If number 5 is chosen, all books that have been purchased are displayed, and the total amount of sales is displayed
+```
+Welcome End User
+1:Display Book
+2:Search Book
+3:Pay Book
+4:Show Category
+5:show Purchased Books
+Q:quite
+5
 
-7. **Purchase**: Implement the purchase process, allowing users to buy books from the library. Ensure that the number of book copies is decreased according to the books purchased.
-
-8. **Invoice**: Display a detailed invoice after the purchase, showing the books purchased, their prices, and the total cost.
-
-9. **Editing Capability**: Add the ability to modify book data, such as title, author, and price. Users should be able to update book information easily.
-
-## Ideas for Extra Credit:
-
-- **Display all Book Categories**: Provide a method to display a list of all book categories in the library. When a category is selected, return a list of all books belonging to that category.
-- **Reporting:** Provide a method to present a report that contains the number of all purchased books from the library, and calculate their amount.
-  
-
-## Delivery Requirements:
-
-- **Language**: The project should be written in Dart language.
-
-- **GitHub Submission**:
-   - Create a Fork from the exam’s GitHub repository.
-   - Create a new branch with your name, i.e., Nawaf-Alshawan.
-   - Commit frequently with descriptive messages to show your progress.
-   - Finally, create a Pull Request to the exam’s original repository containing your solution.
-
-- **README.md File**: Include a README.md file with instructions on how to run and test the project. This file should provide a clear guide for users to understand how to interact with the CLI.
-
-- **Screenshots**: Include relevant screenshots of the app to showcase its appearance and functionalities. Visuals can help users understand the app's design and layout.
-
-## Schedule & Deadlines:
-
-- Exam Start Date: 27/7/2023 - 3:00 PM
-- Exam Submission Deadline: 30/7/2023 – 11:59 PM
-
-## Evaluation Criteria:
-
-The project will be evaluated based on the following criteria:
-
-- **Completion**: The extent to which the project meets all the minimum requirements, including the extra credit ideas if implemented.
-
-- **Quality**: The overall quality of the project, including the coding style, organization, and ease of maintenance. Well-structured and readable code will be favorably evaluated.
-
-- **Use of Programming Concepts**: How well you utilize programming concepts such as classes, abstracts, functions, and other relevant techniques.
-
-## Resources
-
-- [Dart Tutorials](https://dart.dev/tutorials)
-
-Good luck with the project, and feel free to ask any additional questions if needed!
+-- Purchased Books --
+Book: python, Price: 100$
+Book: Pride and Prejudice, Price: 5$
+Total Sales: 105$
+------------
+```
+In all cases where the Q option appears, the program is closed if Q is selected
+```
+Welcome to Abdulelah Library
+please select from menu:
+1:Admin User
+2:End User
+Q:Quite
+q
+```
