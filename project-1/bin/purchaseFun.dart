@@ -32,7 +32,11 @@ purchase() {
               counterForCurrent += quantity;
               book.invoice(counterForCurrent);
             } else if (quantity > book.numberOfCopies) {
-              print("There is only ${book.numberOfCopies}");
+               if (book.numberOfCopies <= 0) {
+                print("The book has been sold");
+              } else {
+                print("There is only ${book.numberOfCopies}");
+               }
             }
             break;
           } else if (confirm == "n" || confirm == "N") {
