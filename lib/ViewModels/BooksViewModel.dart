@@ -3,6 +3,7 @@ import 'dart:io';
 import '../Models/Book.dart';
 
 class BooksViewModel {
+
   List<Book> books = [];
   List<Map<String, dynamic>> purchases = [];
 
@@ -16,6 +17,7 @@ class BooksViewModel {
     books = jsonData.map((json) => Book.fromJson(json)).toList();
   }
 
+// Filtering Functions --------------------------------------------------------
 void searchBooksByTitle() {
   print("Enter the title you want to search for:");
   String title = stdin.readLineSync()?.toLowerCase() ?? '';
@@ -33,8 +35,6 @@ void searchBooksByTitle() {
 }
 
 
-
-
   List<Book> searchBooksByAuthor() {
   print("Enter the name of the esteemed author you wish to explore:");
   String author = stdin.readLineSync()?.toLowerCase() ?? '';
@@ -50,15 +50,14 @@ void searchBooksByTitle() {
     }
   }
 
-  return matchingBooks; // Add the return statement at the end of the function
+  return matchingBooks; 
 }
-
 
 
 
   List<String> getAvailableCategories() {
   return books.map((book) => book.category).toSet().toList();
-}
+  }
 
 List<Book> searchBooksByCategory() {
   List<String> availableCategories = getAvailableCategories();
@@ -106,9 +105,14 @@ List<Book> searchBooksByCategory() {
   }
 }
 
+//---------------------------------------------------------------------------
+
+
+
+// Crud Functions -----------------------------------------------------------
 
 void createBook() {
-  // Read user input for the book details
+
   print("Enter the title of the new book:");
   String title = stdin.readLineSync() ?? '';
 
@@ -141,7 +145,7 @@ void createBook() {
     availableCopies: availableCopies,
   );
 
-  // Add the new book to the library
+
   books.add(newBook);
 
   print("New book added successfully:");
@@ -149,7 +153,7 @@ void createBook() {
 }
 
 void updateBookInfo() {
-  // Read user input for the book index to update
+
   print("Enter the index of the book to update:");
   String? indexInput = stdin.readLineSync();
   int bookIndex = int.tryParse(indexInput ?? '') ?? -1;
@@ -157,11 +161,11 @@ void updateBookInfo() {
   if (bookIndex >= 0 && bookIndex < books.length) {
     Book selectedBook = books[bookIndex];
 
-    // Display the book info before updating
+   
     print("Current book information:");
     printBookInfo(selectedBook);
 
-    // Read user input for the property to update
+    
     print("Which property do you want to update?");
     print("1: Title");
     print("2: Author");
@@ -173,7 +177,7 @@ void updateBookInfo() {
     String? propertyInput = stdin.readLineSync();
     int propertyChoice = int.tryParse(propertyInput ?? '') ?? 0;
 
-    // Read user input for the updated property value
+    
     String? updatedValue;
     switch (propertyChoice) {
       case 1:
@@ -209,7 +213,7 @@ void updateBookInfo() {
         return;
     }
 
-    // Update the book property
+    
     switch (propertyChoice) {
       case 1:
         selectedBook.title = updatedValue ?? '';
@@ -237,7 +241,7 @@ void updateBookInfo() {
         break;
     }
 
-    // Display the book info after updating
+    
     print("Book information updated:");
     printBookInfo(selectedBook);
   } else {
@@ -260,21 +264,24 @@ void deleteBook() {
   }
 }
 
+//---------------------------------------------------------------------------
 
 
+
+// Purchase and report Functions---------------------------------------------
 void purchaseBook() {
   if (books.isEmpty) {
     print("No books available for purchase.");
     return;
   }
 
-  // Display the list of available books with numbers
+  
   print("Available Books:");
   for (int i = 0; i < books.length; i++) {
     print("${i + 1}: ${books[i].title} (Remaining Copies: ${books[i].availableCopies})");
   }
 
-  // Read user input for the book index to purchase
+  
   print("Enter the number of the book you want to purchase:");
   String? bookInput = stdin.readLineSync();
   int bookIndex = int.tryParse(bookInput ?? '') ?? -1;
@@ -287,7 +294,7 @@ void purchaseBook() {
   int selectedBookIndex = bookIndex - 1;
   Book selectedBook = books[selectedBookIndex];
 
-  // Read user input for the number of copies to purchase
+  
   print("Enter the number of copies you want to purchase:");
   String? copiesInput = stdin.readLineSync();
   int numberOfCopies = int.tryParse(copiesInput ?? '') ?? 0;
@@ -302,20 +309,20 @@ void purchaseBook() {
     return;
   }
 
-  // Calculate the total price
+  
   double totalPrice = selectedBook.price * numberOfCopies;
 
-  // Generate the receipt
+  
   print("Receipt:");
   print("Title: ${selectedBook.title}");
   print("Author: ${selectedBook.author}");
   print("Number of Copies Purchased: $numberOfCopies");
   print("Total Price: \$${totalPrice.toStringAsFixed(2)}");
 
-  // Update the number of available copies
+  
   selectedBook.availableCopies -= numberOfCopies;
 
-  // Add the purchase to the purchases list
+  
   purchases.add({
     'title': selectedBook.title,
     'author': selectedBook.author,
@@ -351,7 +358,7 @@ void purchaseBook() {
   print("Category: ${book.category}");
   print("Price: ${book.price}");
   print("Available Copies: ${book.availableCopies}");
-}
+ }
 
 
 }
@@ -359,6 +366,6 @@ void main() {
     String jsonFilePath = 'Assets/Data/books.json';
   BooksViewModel booksViewModel = BooksViewModel(jsonFilePath);
 
-booksViewModel.searchBooksByTitle();
+booksViewModel.searchBooksByCategory();
 
 }
